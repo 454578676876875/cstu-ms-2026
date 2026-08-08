@@ -21,4 +21,8 @@ dev = [
     "jupyter>=1.1",
     "nbconvert>=7.16",
     "ipykernel>=6.29",
+    "pytest>=8.0",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

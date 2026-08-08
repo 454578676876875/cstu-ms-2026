@@ -32,6 +32,9 @@ uv run python src/rca_agent.py
 
 # 6. Full notebook (Part A/B + assignment visualizations, already executed and committed)
 uv run jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
+
+# 7. Run the test suite
+uv run pytest -v
 ```
 
 ## Project structure
@@ -57,6 +60,11 @@ output/
   spans_sample.json      captured OTel spans (ConsoleSpanExporter) from the RCA agent run
   part_b_summary.md      Part B's window-size / tokens / latency / cost table
   part_b_spans.log       captured OTel spans from the Part B agent run
+
+tests/
+  test_anomaly_detector.py  ground truth, accuracy-trap case, IsoForest recall, contamination sweep
+  test_alert_grouper.py     per-metric threshold logic, gap-based grouping (incl. edge cases)
+  test_telemetry.py         token/cost estimation, span attributes, parent/child span nesting
 
 WRITEUP.md               reflection questions (lab) + 1-page reflection (assignment)
 ```
