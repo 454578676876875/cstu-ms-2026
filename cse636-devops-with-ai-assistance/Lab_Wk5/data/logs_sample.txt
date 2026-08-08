@@ -1,0 +1,769 @@
+2025-10-01T08:00:17 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:00:46 INFO  service=inventory-svc db query completed rows=1 duration_ms=108
+2025-10-01T08:01:07 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:01:18 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:02:26 INFO  service=payments-svc db query completed rows=1 duration_ms=34
+2025-10-01T08:03:59 INFO  service=inventory-svc cache hit key=session:55849
+2025-10-01T08:04:51 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:04:59 INFO  service=auth-svc db query completed rows=1 duration_ms=76
+2025-10-01T08:05:08 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T08:05:55 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:06:05 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:06:29 INFO  service=inventory-svc cache hit key=session:33964
+2025-10-01T08:07:43 INFO  service=auth-svc db query completed rows=1 duration_ms=106
+2025-10-01T08:08:39 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:09:11 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:10:02 DEBUG service=auth-svc heartbeat ok
+2025-10-01T08:10:32 INFO  service=inventory-svc cache hit key=session:32003
+2025-10-01T08:11:21 INFO  service=inventory-svc db query completed rows=1 duration_ms=105
+2025-10-01T08:11:39 INFO  service=inventory-svc cache hit key=session:15332
+2025-10-01T08:12:22 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:13:23 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:13:38 INFO  service=inventory-svc cache hit key=session:50113
+2025-10-01T08:14:26 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:14:49 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:15:00 DEBUG service=payments-svc heartbeat ok
+2025-10-01T08:16:05 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T08:16:50 INFO  service=inventory-svc cache hit key=session:86104
+2025-10-01T08:17:34 INFO  service=auth-svc db query completed rows=1 duration_ms=108
+2025-10-01T08:18:55 INFO  service=checkout-api cache hit key=session:77518
+2025-10-01T08:19:53 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:20:22 INFO  service=inventory-svc cache hit key=session:15455
+2025-10-01T08:20:42 INFO  service=auth-svc cache hit key=session:31553
+2025-10-01T08:21:45 DEBUG service=auth-svc heartbeat ok
+2025-10-01T08:22:01 INFO  service=checkout-api db query completed rows=1 duration_ms=47
+2025-10-01T08:22:03 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:23:26 INFO  service=inventory-svc cache hit key=session:57136
+2025-10-01T08:23:39 INFO  service=checkout-api cache hit key=session:19765
+2025-10-01T08:24:16 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:24:31 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:25:09 INFO  service=auth-svc db query completed rows=1 duration_ms=109
+2025-10-01T08:25:34 DEBUG service=payments-svc heartbeat ok
+2025-10-01T08:26:00 DEBUG service=payments-svc heartbeat ok
+2025-10-01T08:26:50 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:27:11 INFO  service=checkout-api db query completed rows=1 duration_ms=31
+2025-10-01T08:27:30 INFO  service=inventory-svc cache hit key=session:95698
+2025-10-01T08:28:23 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:29:59 DEBUG service=payments-svc heartbeat ok
+2025-10-01T08:30:13 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T08:31:57 DEBUG service=checkout-api heartbeat ok
+2025-10-01T08:32:34 DEBUG service=auth-svc heartbeat ok
+2025-10-01T08:32:52 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:33:04 INFO  service=payments-svc db query completed rows=1 duration_ms=111
+2025-10-01T08:34:57 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:35:40 INFO  service=payments-svc db query completed rows=1 duration_ms=97
+2025-10-01T08:35:55 INFO  service=payments-svc db query completed rows=1 duration_ms=20
+2025-10-01T08:36:12 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T08:36:43 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T08:37:06 DEBUG service=auth-svc heartbeat ok
+2025-10-01T08:38:07 INFO  service=payments-svc db query completed rows=1 duration_ms=48
+2025-10-01T08:38:35 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:39:03 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:39:24 INFO  service=auth-svc cache hit key=session:66528
+2025-10-01T08:40:48 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:40:55 INFO  service=auth-svc db query completed rows=1 duration_ms=101
+2025-10-01T08:41:02 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:41:53 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:42:15 INFO  service=checkout-api cache hit key=session:33305
+2025-10-01T08:43:06 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T08:43:34 DEBUG service=checkout-api heartbeat ok
+2025-10-01T08:44:27 INFO  service=checkout-api db query completed rows=1 duration_ms=15
+2025-10-01T08:45:38 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:46:02 INFO  service=checkout-api db query completed rows=1 duration_ms=71
+2025-10-01T08:46:14 INFO  service=payments-svc db query completed rows=1 duration_ms=29
+2025-10-01T08:47:51 INFO  service=auth-svc cache hit key=session:91049
+2025-10-01T08:48:19 INFO  service=checkout-api cache hit key=session:85771
+2025-10-01T08:49:47 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T08:50:47 INFO  service=payments-svc db query completed rows=1 duration_ms=104
+2025-10-01T08:51:52 DEBUG service=checkout-api heartbeat ok
+2025-10-01T08:52:38 INFO  service=checkout-api cache hit key=session:44743
+2025-10-01T08:53:39 INFO  service=inventory-svc db query completed rows=1 duration_ms=16
+2025-10-01T08:54:48 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T08:55:52 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:56:01 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T08:57:33 INFO  service=inventory-svc db query completed rows=1 duration_ms=29
+2025-10-01T08:58:15 DEBUG service=auth-svc heartbeat ok
+2025-10-01T08:58:35 INFO  service=auth-svc cache hit key=session:69151
+2025-10-01T08:59:11 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:00:12 INFO  service=payments-svc db query completed rows=1 duration_ms=67
+2025-10-01T09:00:18 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T09:01:27 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T09:01:46 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:02:07 DEBUG service=auth-svc heartbeat ok
+2025-10-01T09:02:11 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:03:45 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:03:54 INFO  service=checkout-api db query completed rows=1 duration_ms=14
+2025-10-01T09:04:01 INFO  service=payments-svc db query completed rows=1 duration_ms=103
+2025-10-01T09:04:22 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:05:43 INFO  service=inventory-svc cache hit key=session:69628
+2025-10-01T09:06:40 INFO  service=auth-svc cache hit key=session:86502
+2025-10-01T09:07:31 INFO  service=payments-svc db query completed rows=1 duration_ms=12
+2025-10-01T09:08:15 DEBUG service=auth-svc heartbeat ok
+2025-10-01T09:08:38 INFO  service=inventory-svc cache hit key=session:77349
+2025-10-01T09:09:03 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:09:43 INFO  service=auth-svc cache hit key=session:21670
+2025-10-01T09:10:50 INFO  service=auth-svc db query completed rows=1 duration_ms=113
+2025-10-01T09:11:38 INFO  service=auth-svc db query completed rows=1 duration_ms=50
+2025-10-01T09:12:45 DEBUG service=checkout-api heartbeat ok
+2025-10-01T09:13:22 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:14:50 INFO  service=payments-svc cache hit key=session:40804
+2025-10-01T09:15:32 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:16:49 INFO  service=inventory-svc db query completed rows=1 duration_ms=48
+2025-10-01T09:17:08 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:18:08 DEBUG service=auth-svc heartbeat ok
+2025-10-01T09:19:55 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T09:20:59 INFO  service=checkout-api cache hit key=session:71077
+2025-10-01T09:21:34 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T09:22:11 DEBUG service=payments-svc heartbeat ok
+2025-10-01T09:22:50 DEBUG service=payments-svc heartbeat ok
+2025-10-01T09:23:09 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T09:23:18 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T09:24:03 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:25:44 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:25:54 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:26:59 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:27:11 INFO  service=auth-svc db query completed rows=1 duration_ms=60
+2025-10-01T09:27:34 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:28:31 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T09:29:37 DEBUG service=payments-svc heartbeat ok
+2025-10-01T09:29:56 INFO  service=payments-svc cache hit key=session:45603
+2025-10-01T09:30:15 DEBUG service=checkout-api heartbeat ok
+2025-10-01T09:30:58 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T09:31:26 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:31:58 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:32:45 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T09:33:30 INFO  service=payments-svc cache hit key=session:15975
+2025-10-01T09:34:06 INFO  service=auth-svc cache hit key=session:89276
+2025-10-01T09:35:40 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:35:50 DEBUG service=auth-svc heartbeat ok
+2025-10-01T09:36:10 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:36:23 INFO  service=checkout-api db query completed rows=1 duration_ms=95
+2025-10-01T09:37:30 INFO  service=auth-svc cache hit key=session:36457
+2025-10-01T09:37:50 INFO  service=auth-svc cache hit key=session:39648
+2025-10-01T09:38:34 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T09:39:48 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:40:57 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T09:41:41 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:42:40 INFO  service=auth-svc db query completed rows=1 duration_ms=43
+2025-10-01T09:43:46 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T09:44:00 INFO  service=checkout-api db query completed rows=1 duration_ms=88
+2025-10-01T09:45:24 INFO  service=auth-svc db query completed rows=1 duration_ms=58
+2025-10-01T09:45:55 INFO  service=checkout-api db query completed rows=1 duration_ms=66
+2025-10-01T09:46:02 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:46:24 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:47:19 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:47:33 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:48:30 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T09:49:55 INFO  service=inventory-svc cache hit key=session:77525
+2025-10-01T09:50:09 INFO  service=checkout-api cache hit key=session:82633
+2025-10-01T09:50:49 DEBUG service=payments-svc heartbeat ok
+2025-10-01T09:51:24 INFO  service=inventory-svc db query completed rows=1 duration_ms=78
+2025-10-01T09:52:44 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:53:09 INFO  service=auth-svc cache hit key=session:40422
+2025-10-01T09:53:45 INFO  service=payments-svc cache hit key=session:16489
+2025-10-01T09:54:05 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:54:42 DEBUG service=auth-svc heartbeat ok
+2025-10-01T09:55:49 INFO  service=payments-svc cache hit key=session:60203
+2025-10-01T09:55:51 INFO  service=checkout-api db query completed rows=1 duration_ms=49
+2025-10-01T09:56:17 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T09:56:22 INFO  service=auth-svc db query completed rows=1 duration_ms=33
+2025-10-01T09:57:55 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:57:59 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:58:16 INFO  service=checkout-api cache hit key=session:95309
+2025-10-01T09:59:19 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T09:59:41 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:00:18 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T10:01:09 DEBUG service=payments-svc heartbeat ok
+2025-10-01T10:01:25 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:02:49 INFO  service=auth-svc db query completed rows=1 duration_ms=82
+2025-10-01T10:03:31 INFO  service=inventory-svc cache hit key=session:28120
+2025-10-01T10:04:30 INFO  service=inventory-svc db query completed rows=1 duration_ms=97
+2025-10-01T10:05:29 INFO  service=checkout-api db query completed rows=1 duration_ms=73
+2025-10-01T10:06:34 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T10:07:16 INFO  service=payments-svc db query completed rows=1 duration_ms=48
+2025-10-01T10:08:11 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:08:12 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T10:09:18 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:10:25 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:11:11 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:11:47 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T10:12:16 INFO  service=payments-svc cache hit key=session:93085
+2025-10-01T10:12:46 INFO  service=inventory-svc cache hit key=session:82238
+2025-10-01T10:13:15 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:14:08 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:14:29 INFO  service=payments-svc cache hit key=session:67583
+2025-10-01T10:15:56 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:16:00 DEBUG service=auth-svc heartbeat ok
+2025-10-01T10:17:50 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:18:01 INFO  service=checkout-api cache hit key=session:24662
+2025-10-01T10:19:26 INFO  service=auth-svc db query completed rows=1 duration_ms=63
+2025-10-01T10:20:28 INFO  service=checkout-api cache hit key=session:47583
+2025-10-01T10:20:55 INFO  service=auth-svc db query completed rows=1 duration_ms=23
+2025-10-01T10:21:02 INFO  service=auth-svc cache hit key=session:39805
+2025-10-01T10:22:46 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T10:23:19 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T10:23:53 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T10:24:56 DEBUG service=auth-svc heartbeat ok
+2025-10-01T10:25:47 INFO  service=payments-svc db query completed rows=1 duration_ms=92
+2025-10-01T10:25:57 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:26:15 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:26:30 INFO  service=inventory-svc db query completed rows=1 duration_ms=43
+2025-10-01T10:27:04 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:27:57 INFO  service=inventory-svc cache hit key=session:86632
+2025-10-01T10:28:18 INFO  service=checkout-api cache hit key=session:34394
+2025-10-01T10:29:16 INFO  service=payments-svc cache hit key=session:11248
+2025-10-01T10:29:22 DEBUG service=payments-svc heartbeat ok
+2025-10-01T10:30:05 INFO  service=checkout-api cache hit key=session:10294
+2025-10-01T10:30:08 DEBUG service=auth-svc heartbeat ok
+2025-10-01T10:31:12 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:32:16 INFO  service=payments-svc db query completed rows=1 duration_ms=113
+2025-10-01T10:33:20 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:33:48 INFO  service=inventory-svc cache hit key=session:38311
+2025-10-01T10:34:30 INFO  service=inventory-svc cache hit key=session:86195
+2025-10-01T10:35:49 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T10:36:17 INFO  service=payments-svc db query completed rows=1 duration_ms=104
+2025-10-01T10:36:22 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:37:10 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T10:37:44 DEBUG service=auth-svc heartbeat ok
+2025-10-01T10:38:12 INFO  service=auth-svc cache hit key=session:30604
+2025-10-01T10:38:19 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T10:39:22 DEBUG service=checkout-api heartbeat ok
+2025-10-01T10:39:28 INFO  service=inventory-svc cache hit key=session:87585
+2025-10-01T10:40:50 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:41:42 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:42:21 INFO  service=auth-svc cache hit key=session:29295
+2025-10-01T10:43:04 DEBUG service=auth-svc heartbeat ok
+2025-10-01T10:43:04 INFO  service=inventory-svc cache hit key=session:57331
+2025-10-01T10:44:28 DEBUG service=checkout-api heartbeat ok
+2025-10-01T10:45:00 DEBUG service=payments-svc heartbeat ok
+2025-10-01T10:45:35 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:46:33 INFO  service=payments-svc cache hit key=session:43210
+2025-10-01T10:47:17 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T10:47:27 INFO  service=auth-svc cache hit key=session:98088
+2025-10-01T10:48:02 DEBUG service=auth-svc heartbeat ok
+2025-10-01T10:48:10 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:49:34 INFO  service=checkout-api cache hit key=session:95820
+2025-10-01T10:50:35 INFO  service=inventory-svc db query completed rows=1 duration_ms=91
+2025-10-01T10:50:36 INFO  service=inventory-svc db query completed rows=1 duration_ms=94
+2025-10-01T10:51:11 DEBUG service=auth-svc heartbeat ok
+2025-10-01T10:52:09 INFO  service=inventory-svc db query completed rows=1 duration_ms=61
+2025-10-01T10:53:08 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T10:53:18 INFO  service=auth-svc cache hit key=session:76031
+2025-10-01T10:54:41 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:55:08 INFO  service=payments-svc db query completed rows=1 duration_ms=25
+2025-10-01T10:55:55 DEBUG service=checkout-api heartbeat ok
+2025-10-01T10:56:10 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T10:56:42 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T10:57:29 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T10:58:47 DEBUG service=payments-svc heartbeat ok
+2025-10-01T10:59:35 INFO  service=checkout-api cache hit key=session:57162
+2025-10-01T11:00:45 INFO  service=payments-svc cache hit key=session:78618
+2025-10-01T11:00:52 INFO  service=payments-svc cache hit key=session:22702
+2025-10-01T11:01:18 INFO  service=checkout-api cache hit key=session:33525
+2025-10-01T11:01:28 INFO  service=auth-svc db query completed rows=1 duration_ms=33
+2025-10-01T11:02:09 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:02:36 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T11:03:03 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T11:04:27 DEBUG service=checkout-api heartbeat ok
+2025-10-01T11:04:44 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T11:05:48 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T11:06:25 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:06:53 DEBUG service=auth-svc heartbeat ok
+2025-10-01T11:07:44 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:07:58 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:08:40 INFO  service=payments-svc db query completed rows=1 duration_ms=96
+2025-10-01T11:09:51 INFO  service=payments-svc db query completed rows=1 duration_ms=99
+2025-10-01T11:10:12 DEBUG service=payments-svc heartbeat ok
+2025-10-01T11:11:42 DEBUG service=checkout-api heartbeat ok
+2025-10-01T11:12:55 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:13:52 DEBUG service=payments-svc heartbeat ok
+2025-10-01T11:14:50 INFO  service=payments-svc cache hit key=session:51290
+2025-10-01T11:15:37 INFO  service=payments-svc db query completed rows=1 duration_ms=102
+2025-10-01T11:15:48 INFO  service=auth-svc db query completed rows=1 duration_ms=23
+2025-10-01T11:16:53 INFO  service=payments-svc db query completed rows=1 duration_ms=95
+2025-10-01T11:17:27 INFO  service=auth-svc cache hit key=session:29453
+2025-10-01T11:18:22 INFO  service=auth-svc cache hit key=session:70562
+2025-10-01T11:19:22 INFO  service=auth-svc db query completed rows=1 duration_ms=51
+2025-10-01T11:20:23 WARN  service=auth-svc circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:20:48 WARN  service=auth-svc circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:20:49 WARN  service=checkout-api circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:21:15 WARN  service=checkout-api retrying request attempt=3 backoff_ms=3522
+2025-10-01T11:21:18 ERROR service=checkout-api request failed status=503 path=/api/v1/checkout
+2025-10-01T11:21:18 ERROR service=inventory-svc connection reset by peer during db query
+2025-10-01T11:21:39 ERROR service=checkout-api connection reset by peer during db query
+2025-10-01T11:21:41 ERROR service=inventory-svc upstream timeout calling payments-svc after 1872ms
+2025-10-01T11:22:09 ERROR service=payments-svc connection reset by peer during db query
+2025-10-01T11:22:18 ERROR service=checkout-api connection reset by peer during db query
+2025-10-01T11:22:28 ERROR service=inventory-svc upstream timeout calling payments-svc after 1661ms
+2025-10-01T11:22:36 ERROR service=auth-svc connection reset by peer during db query
+2025-10-01T11:22:59 ERROR service=checkout-api connection reset by peer during db query
+2025-10-01T11:23:00 ERROR service=inventory-svc request failed status=503 path=/api/v1/checkout
+2025-10-01T11:23:01 ERROR service=checkout-api request failed status=503 path=/api/v1/checkout
+2025-10-01T11:23:35 WARN  service=checkout-api retrying request attempt=3 backoff_ms=4678
+2025-10-01T11:23:44 ERROR service=payments-svc db connection pool exhausted: waited 2020ms for connection
+2025-10-01T11:24:06 ERROR service=payments-svc db connection pool exhausted: waited 4969ms for connection
+2025-10-01T11:24:09 ERROR service=checkout-api upstream timeout calling payments-svc after 1851ms
+2025-10-01T11:24:10 WARN  service=inventory-svc retrying request attempt=3 backoff_ms=3331
+2025-10-01T11:24:19 WARN  service=auth-svc retrying request attempt=3 backoff_ms=1826
+2025-10-01T11:24:39 ERROR service=auth-svc db connection pool exhausted: waited 2854ms for connection
+2025-10-01T11:25:35 WARN  service=inventory-svc retrying request attempt=3 backoff_ms=2411
+2025-10-01T11:25:36 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T11:25:40 ERROR service=inventory-svc connection reset by peer during db query
+2025-10-01T11:26:08 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T11:26:13 WARN  service=payments-svc circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:26:21 WARN  service=auth-svc circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:26:47 ERROR service=checkout-api connection reset by peer during db query
+2025-10-01T11:26:51 DEBUG service=auth-svc heartbeat ok
+2025-10-01T11:27:07 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:27:19 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T11:27:41 WARN  service=inventory-svc circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:28:26 ERROR service=checkout-api db connection pool exhausted: waited 3264ms for connection
+2025-10-01T11:28:38 DEBUG service=auth-svc heartbeat ok
+2025-10-01T11:28:43 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T11:29:18 ERROR service=payments-svc db connection pool exhausted: waited 4966ms for connection
+2025-10-01T11:29:49 ERROR service=inventory-svc db connection pool exhausted: waited 2235ms for connection
+2025-10-01T11:29:57 INFO  service=payments-svc cache hit key=session:66137
+2025-10-01T11:30:10 WARN  service=inventory-svc retrying request attempt=3 backoff_ms=3798
+2025-10-01T11:30:15 ERROR service=payments-svc upstream timeout calling payments-svc after 1698ms
+2025-10-01T11:30:23 WARN  service=payments-svc retrying request attempt=3 backoff_ms=2380
+2025-10-01T11:30:52 ERROR service=inventory-svc db connection pool exhausted: waited 4056ms for connection
+2025-10-01T11:31:04 WARN  service=inventory-svc retrying request attempt=3 backoff_ms=2725
+2025-10-01T11:31:27 DEBUG service=auth-svc heartbeat ok
+2025-10-01T11:31:34 WARN  service=inventory-svc retrying request attempt=3 backoff_ms=3528
+2025-10-01T11:31:36 ERROR service=payments-svc request failed status=503 path=/api/v1/checkout
+2025-10-01T11:31:41 WARN  service=checkout-api retrying request attempt=3 backoff_ms=2446
+2025-10-01T11:32:12 ERROR service=auth-svc upstream timeout calling payments-svc after 4895ms
+2025-10-01T11:32:17 ERROR service=inventory-svc db connection pool exhausted: waited 3318ms for connection
+2025-10-01T11:32:22 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T11:32:38 DEBUG service=checkout-api heartbeat ok
+2025-10-01T11:32:40 ERROR service=payments-svc db connection pool exhausted: waited 1841ms for connection
+2025-10-01T11:33:22 WARN  service=checkout-api circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:33:25 WARN  service=checkout-api retrying request attempt=3 backoff_ms=3541
+2025-10-01T11:33:44 ERROR service=inventory-svc db connection pool exhausted: waited 2444ms for connection
+2025-10-01T11:33:54 WARN  service=payments-svc retrying request attempt=3 backoff_ms=3121
+2025-10-01T11:33:55 ERROR service=checkout-api db connection pool exhausted: waited 4304ms for connection
+2025-10-01T11:34:05 ERROR service=checkout-api upstream timeout calling payments-svc after 2246ms
+2025-10-01T11:34:34 ERROR service=payments-svc db connection pool exhausted: waited 2960ms for connection
+2025-10-01T11:34:34 WARN  service=inventory-svc circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:34:36 WARN  service=payments-svc circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:34:53 WARN  service=checkout-api circuit breaker OPEN for downstream=payments-svc
+2025-10-01T11:34:59 WARN  service=inventory-svc retrying request attempt=3 backoff_ms=1978
+2025-10-01T11:35:25 ERROR service=checkout-api db connection pool exhausted: waited 3703ms for connection
+2025-10-01T11:35:27 DEBUG service=auth-svc heartbeat ok
+2025-10-01T11:35:44 WARN  service=auth-svc retrying request attempt=3 backoff_ms=4345
+2025-10-01T11:36:32 INFO  service=inventory-svc cache hit key=session:78979
+2025-10-01T11:37:24 INFO  service=inventory-svc db query completed rows=1 duration_ms=53
+2025-10-01T11:37:31 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:38:23 INFO  service=inventory-svc db query completed rows=1 duration_ms=119
+2025-10-01T11:38:38 INFO  service=auth-svc cache hit key=session:84479
+2025-10-01T11:39:18 DEBUG service=payments-svc heartbeat ok
+2025-10-01T11:39:56 INFO  service=inventory-svc cache hit key=session:51839
+2025-10-01T11:40:05 DEBUG service=auth-svc heartbeat ok
+2025-10-01T11:40:56 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T11:41:32 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:41:54 INFO  service=payments-svc db query completed rows=1 duration_ms=52
+2025-10-01T11:42:18 INFO  service=checkout-api cache hit key=session:68809
+2025-10-01T11:42:38 INFO  service=auth-svc db query completed rows=1 duration_ms=25
+2025-10-01T11:43:26 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:43:57 DEBUG service=checkout-api heartbeat ok
+2025-10-01T11:44:39 INFO  service=checkout-api cache hit key=session:77438
+2025-10-01T11:45:17 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:46:07 DEBUG service=auth-svc heartbeat ok
+2025-10-01T11:47:08 INFO  service=auth-svc cache hit key=session:28688
+2025-10-01T11:48:32 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T11:48:35 INFO  service=inventory-svc db query completed rows=1 duration_ms=17
+2025-10-01T11:49:02 INFO  service=auth-svc cache hit key=session:98528
+2025-10-01T11:50:17 INFO  service=checkout-api db query completed rows=1 duration_ms=94
+2025-10-01T11:51:03 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T11:51:44 INFO  service=payments-svc cache hit key=session:89942
+2025-10-01T11:52:15 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T11:53:28 DEBUG service=checkout-api heartbeat ok
+2025-10-01T11:53:37 INFO  service=payments-svc db query completed rows=1 duration_ms=73
+2025-10-01T11:54:17 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:55:03 INFO  service=payments-svc cache hit key=session:78415
+2025-10-01T11:55:05 INFO  service=inventory-svc db query completed rows=1 duration_ms=38
+2025-10-01T11:56:35 INFO  service=payments-svc cache hit key=session:84286
+2025-10-01T11:57:06 INFO  service=inventory-svc cache hit key=session:62840
+2025-10-01T11:57:23 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T11:58:17 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T11:58:42 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T11:59:03 DEBUG service=checkout-api heartbeat ok
+2025-10-01T11:59:29 INFO  service=payments-svc db query completed rows=1 duration_ms=98
+2025-10-01T12:00:20 DEBUG service=payments-svc heartbeat ok
+2025-10-01T12:01:03 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:01:50 INFO  service=checkout-api db query completed rows=1 duration_ms=73
+2025-10-01T12:02:18 INFO  service=auth-svc db query completed rows=1 duration_ms=105
+2025-10-01T12:03:28 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:04:14 INFO  service=checkout-api cache hit key=session:78914
+2025-10-01T12:05:38 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T12:05:54 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:06:58 INFO  service=auth-svc cache hit key=session:99052
+2025-10-01T12:07:10 INFO  service=auth-svc cache hit key=session:92291
+2025-10-01T12:08:30 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:09:04 DEBUG service=checkout-api heartbeat ok
+2025-10-01T12:10:02 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:11:53 DEBUG service=auth-svc heartbeat ok
+2025-10-01T12:12:15 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:12:45 DEBUG service=payments-svc heartbeat ok
+2025-10-01T12:13:37 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T12:13:55 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:14:08 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:14:59 DEBUG service=auth-svc heartbeat ok
+2025-10-01T12:15:33 INFO  service=payments-svc db query completed rows=1 duration_ms=119
+2025-10-01T12:15:47 INFO  service=checkout-api cache hit key=session:95308
+2025-10-01T12:16:14 DEBUG service=payments-svc heartbeat ok
+2025-10-01T12:17:03 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:18:40 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:18:45 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:19:05 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:19:10 INFO  service=inventory-svc cache hit key=session:14523
+2025-10-01T12:20:14 INFO  service=inventory-svc db query completed rows=1 duration_ms=10
+2025-10-01T12:20:49 INFO  service=checkout-api db query completed rows=1 duration_ms=103
+2025-10-01T12:21:31 DEBUG service=auth-svc heartbeat ok
+2025-10-01T12:22:10 DEBUG service=checkout-api heartbeat ok
+2025-10-01T12:22:42 INFO  service=inventory-svc cache hit key=session:59209
+2025-10-01T12:23:42 DEBUG service=payments-svc heartbeat ok
+2025-10-01T12:23:52 DEBUG service=checkout-api heartbeat ok
+2025-10-01T12:24:26 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T12:24:46 INFO  service=auth-svc cache hit key=session:49969
+2025-10-01T12:25:29 INFO  service=inventory-svc db query completed rows=1 duration_ms=52
+2025-10-01T12:25:42 INFO  service=inventory-svc db query completed rows=1 duration_ms=50
+2025-10-01T12:26:21 INFO  service=payments-svc cache hit key=session:78180
+2025-10-01T12:27:14 DEBUG service=payments-svc heartbeat ok
+2025-10-01T12:28:07 DEBUG service=auth-svc heartbeat ok
+2025-10-01T12:28:17 INFO  service=checkout-api cache hit key=session:60765
+2025-10-01T12:29:52 INFO  service=auth-svc db query completed rows=1 duration_ms=24
+2025-10-01T12:30:42 INFO  service=checkout-api cache hit key=session:49919
+2025-10-01T12:31:00 DEBUG service=auth-svc heartbeat ok
+2025-10-01T12:31:47 DEBUG service=auth-svc heartbeat ok
+2025-10-01T12:32:19 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:33:30 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:33:42 INFO  service=payments-svc db query completed rows=1 duration_ms=65
+2025-10-01T12:34:19 INFO  service=auth-svc db query completed rows=1 duration_ms=15
+2025-10-01T12:35:34 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:35:35 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:36:13 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:37:08 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:37:44 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:38:39 INFO  service=inventory-svc db query completed rows=1 duration_ms=30
+2025-10-01T12:38:46 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:39:22 INFO  service=payments-svc cache hit key=session:50301
+2025-10-01T12:40:31 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:41:19 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:41:40 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:42:22 INFO  service=inventory-svc db query completed rows=1 duration_ms=8
+2025-10-01T12:43:04 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T12:43:50 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:44:21 INFO  service=inventory-svc db query completed rows=1 duration_ms=107
+2025-10-01T12:44:39 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T12:45:14 DEBUG service=payments-svc heartbeat ok
+2025-10-01T12:46:12 INFO  service=payments-svc cache hit key=session:20608
+2025-10-01T12:47:20 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:48:25 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:48:39 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:49:44 INFO  service=payments-svc cache hit key=session:42902
+2025-10-01T12:50:14 DEBUG service=checkout-api heartbeat ok
+2025-10-01T12:50:49 DEBUG service=checkout-api heartbeat ok
+2025-10-01T12:51:22 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:51:56 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T12:52:10 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:52:18 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:53:06 INFO  service=payments-svc cache hit key=session:81795
+2025-10-01T12:53:40 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T12:54:24 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T12:55:05 INFO  service=inventory-svc db query completed rows=1 duration_ms=26
+2025-10-01T12:55:10 INFO  service=checkout-api cache hit key=session:31106
+2025-10-01T12:56:11 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T12:56:48 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T12:57:31 INFO  service=payments-svc db query completed rows=1 duration_ms=73
+2025-10-01T12:57:44 DEBUG service=auth-svc heartbeat ok
+2025-10-01T12:58:39 INFO  service=inventory-svc db query completed rows=1 duration_ms=38
+2025-10-01T12:59:23 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T13:00:27 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:01:30 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:01:35 INFO  service=payments-svc db query completed rows=1 duration_ms=45
+2025-10-01T13:02:43 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:02:57 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T13:03:30 INFO  service=payments-svc cache hit key=session:46430
+2025-10-01T13:03:35 INFO  service=inventory-svc cache hit key=session:81784
+2025-10-01T13:04:18 INFO  service=checkout-api cache hit key=session:23929
+2025-10-01T13:04:23 DEBUG service=payments-svc heartbeat ok
+2025-10-01T13:05:01 DEBUG service=auth-svc heartbeat ok
+2025-10-01T13:06:06 DEBUG service=payments-svc heartbeat ok
+2025-10-01T13:06:46 DEBUG service=auth-svc heartbeat ok
+2025-10-01T13:07:24 INFO  service=checkout-api cache hit key=session:99477
+2025-10-01T13:07:38 DEBUG service=checkout-api heartbeat ok
+2025-10-01T13:08:02 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T13:08:54 INFO  service=checkout-api db query completed rows=1 duration_ms=57
+2025-10-01T13:09:11 DEBUG service=auth-svc heartbeat ok
+2025-10-01T13:09:17 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:10:41 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:11:51 INFO  service=payments-svc db query completed rows=1 duration_ms=83
+2025-10-01T13:12:04 INFO  service=auth-svc db query completed rows=1 duration_ms=96
+2025-10-01T13:12:06 INFO  service=checkout-api cache hit key=session:70837
+2025-10-01T13:13:06 INFO  service=payments-svc cache hit key=session:28664
+2025-10-01T13:14:57 INFO  service=checkout-api db query completed rows=1 duration_ms=33
+2025-10-01T13:15:30 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T13:15:41 INFO  service=inventory-svc db query completed rows=1 duration_ms=103
+2025-10-01T13:16:00 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T13:17:20 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:17:38 INFO  service=payments-svc cache hit key=session:57875
+2025-10-01T13:18:10 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T13:19:45 INFO  service=payments-svc db query completed rows=1 duration_ms=37
+2025-10-01T13:20:01 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:20:07 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T13:21:51 DEBUG service=payments-svc heartbeat ok
+2025-10-01T13:21:51 INFO  service=payments-svc cache hit key=session:41393
+2025-10-01T13:22:00 DEBUG service=payments-svc heartbeat ok
+2025-10-01T13:23:37 INFO  service=checkout-api db query completed rows=1 duration_ms=102
+2025-10-01T13:24:21 DEBUG service=auth-svc heartbeat ok
+2025-10-01T13:24:30 INFO  service=checkout-api db query completed rows=1 duration_ms=67
+2025-10-01T13:25:18 INFO  service=auth-svc cache hit key=session:67386
+2025-10-01T13:26:43 INFO  service=auth-svc cache hit key=session:26159
+2025-10-01T13:26:51 INFO  service=inventory-svc cache hit key=session:26934
+2025-10-01T13:27:14 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:27:41 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:28:20 INFO  service=payments-svc cache hit key=session:38952
+2025-10-01T13:29:11 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T13:30:28 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T13:31:52 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:32:38 DEBUG service=auth-svc heartbeat ok
+2025-10-01T13:33:47 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:34:59 INFO  service=auth-svc db query completed rows=1 duration_ms=32
+2025-10-01T13:35:15 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:35:45 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T13:36:32 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T13:36:46 INFO  service=payments-svc cache hit key=session:67347
+2025-10-01T13:37:33 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:38:12 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T13:38:16 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:39:49 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:40:18 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:41:00 INFO  service=payments-svc cache hit key=session:11076
+2025-10-01T13:42:51 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T13:43:13 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:44:30 INFO  service=auth-svc db query completed rows=1 duration_ms=92
+2025-10-01T13:45:22 INFO  service=checkout-api db query completed rows=1 duration_ms=29
+2025-10-01T13:45:46 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:46:27 INFO  service=auth-svc cache hit key=session:35836
+2025-10-01T13:47:09 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:48:08 INFO  service=inventory-svc cache hit key=session:27782
+2025-10-01T13:48:27 INFO  service=auth-svc db query completed rows=1 duration_ms=64
+2025-10-01T13:49:50 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:50:21 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:50:43 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:51:23 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:52:29 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:53:02 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:53:05 INFO  service=auth-svc db query completed rows=1 duration_ms=43
+2025-10-01T13:54:27 DEBUG service=checkout-api heartbeat ok
+2025-10-01T13:54:58 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T13:55:58 INFO  service=payments-svc db query completed rows=1 duration_ms=119
+2025-10-01T13:56:04 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:56:21 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T13:57:16 INFO  service=auth-svc db query completed rows=1 duration_ms=71
+2025-10-01T13:58:31 INFO  service=payments-svc db query completed rows=1 duration_ms=64
+2025-10-01T13:59:21 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T14:00:02 INFO  service=auth-svc db query completed rows=1 duration_ms=55
+2025-10-01T14:01:00 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:02:32 INFO  service=auth-svc db query completed rows=1 duration_ms=38
+2025-10-01T14:02:53 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:03:09 DEBUG service=payments-svc heartbeat ok
+2025-10-01T14:03:10 INFO  service=payments-svc db query completed rows=1 duration_ms=47
+2025-10-01T14:04:41 INFO  service=inventory-svc db query completed rows=1 duration_ms=18
+2025-10-01T14:04:45 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:05:18 INFO  service=checkout-api cache hit key=session:73254
+2025-10-01T14:06:03 INFO  service=inventory-svc cache hit key=session:85663
+2025-10-01T14:07:50 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:08:09 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:08:16 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:09:34 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:09:42 DEBUG service=auth-svc heartbeat ok
+2025-10-01T14:10:39 INFO  service=checkout-api db query completed rows=1 duration_ms=12
+2025-10-01T14:11:18 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T14:12:43 INFO  service=inventory-svc cache hit key=session:80319
+2025-10-01T14:13:07 INFO  service=checkout-api cache hit key=session:53853
+2025-10-01T14:14:07 INFO  service=checkout-api cache hit key=session:24481
+2025-10-01T14:15:03 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:16:14 INFO  service=inventory-svc db query completed rows=1 duration_ms=40
+2025-10-01T14:16:36 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T14:17:40 DEBUG service=payments-svc heartbeat ok
+2025-10-01T14:17:49 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T14:18:29 INFO  service=inventory-svc cache hit key=session:47413
+2025-10-01T14:19:42 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T14:20:07 INFO  service=inventory-svc db query completed rows=1 duration_ms=114
+2025-10-01T14:21:52 DEBUG service=payments-svc heartbeat ok
+2025-10-01T14:22:44 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:22:53 INFO  service=checkout-api cache hit key=session:71449
+2025-10-01T14:23:45 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:23:49 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:24:04 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:25:32 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:26:11 INFO  service=auth-svc cache hit key=session:16844
+2025-10-01T14:27:19 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:27:19 INFO  service=payments-svc db query completed rows=1 duration_ms=23
+2025-10-01T14:28:37 DEBUG service=auth-svc heartbeat ok
+2025-10-01T14:29:56 INFO  service=payments-svc cache hit key=session:75986
+2025-10-01T14:30:41 INFO  service=checkout-api db query completed rows=1 duration_ms=107
+2025-10-01T14:30:52 DEBUG service=payments-svc heartbeat ok
+2025-10-01T14:31:02 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:31:06 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:32:13 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:33:00 INFO  service=payments-svc cache hit key=session:28503
+2025-10-01T14:33:37 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:34:10 DEBUG service=auth-svc heartbeat ok
+2025-10-01T14:35:12 INFO  service=auth-svc cache hit key=session:59994
+2025-10-01T14:36:03 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:36:10 DEBUG service=checkout-api heartbeat ok
+2025-10-01T14:37:21 INFO  service=auth-svc cache hit key=session:84802
+2025-10-01T14:38:16 INFO  service=inventory-svc db query completed rows=1 duration_ms=61
+2025-10-01T14:39:20 INFO  service=payments-svc cache hit key=session:23289
+2025-10-01T14:40:17 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T14:41:43 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:42:23 INFO  service=inventory-svc db query completed rows=1 duration_ms=16
+2025-10-01T14:42:58 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:43:21 INFO  service=auth-svc cache hit key=session:29266
+2025-10-01T14:44:08 INFO  service=inventory-svc cache hit key=session:74770
+2025-10-01T14:45:23 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:45:49 INFO  service=checkout-api cache hit key=session:28898
+2025-10-01T14:46:19 INFO  service=auth-svc db query completed rows=1 duration_ms=89
+2025-10-01T14:46:43 INFO  service=checkout-api cache hit key=session:85113
+2025-10-01T14:47:12 DEBUG service=checkout-api heartbeat ok
+2025-10-01T14:48:16 DEBUG service=auth-svc heartbeat ok
+2025-10-01T14:49:03 INFO  service=auth-svc db query completed rows=1 duration_ms=90
+2025-10-01T14:49:32 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:50:38 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T14:50:57 INFO  service=checkout-api cache hit key=session:32945
+2025-10-01T14:51:03 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T14:51:49 INFO  service=payments-svc cache hit key=session:10802
+2025-10-01T14:52:06 INFO  service=auth-svc db query completed rows=1 duration_ms=60
+2025-10-01T14:52:49 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:53:18 INFO  service=payments-svc db query completed rows=1 duration_ms=43
+2025-10-01T14:54:29 INFO  service=payments-svc cache hit key=session:40058
+2025-10-01T14:55:22 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:56:50 INFO  service=payments-svc db query completed rows=1 duration_ms=75
+2025-10-01T14:57:11 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:57:35 INFO  service=auth-svc cache hit key=session:74220
+2025-10-01T14:58:04 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T14:58:53 DEBUG service=payments-svc heartbeat ok
+2025-10-01T14:59:10 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T14:59:45 INFO  service=payments-svc db query completed rows=1 duration_ms=33
+2025-10-01T15:00:54 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:01:44 DEBUG service=checkout-api heartbeat ok
+2025-10-01T15:02:12 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T15:02:36 INFO  service=auth-svc db query completed rows=1 duration_ms=78
+2025-10-01T15:03:03 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T15:03:14 DEBUG service=payments-svc heartbeat ok
+2025-10-01T15:04:45 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:05:15 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:05:49 INFO  service=payments-svc db query completed rows=1 duration_ms=58
+2025-10-01T15:06:56 DEBUG service=auth-svc heartbeat ok
+2025-10-01T15:07:40 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T15:07:52 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:08:44 INFO  service=auth-svc db query completed rows=1 duration_ms=33
+2025-10-01T15:09:18 DEBUG service=payments-svc heartbeat ok
+2025-10-01T15:09:46 INFO  service=inventory-svc cache hit key=session:60303
+2025-10-01T15:10:35 DEBUG service=auth-svc heartbeat ok
+2025-10-01T15:10:59 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T15:11:45 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:12:15 INFO  service=inventory-svc db query completed rows=1 duration_ms=21
+2025-10-01T15:13:52 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:14:16 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:14:26 INFO  service=inventory-svc cache hit key=session:66469
+2025-10-01T15:15:45 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:16:48 INFO  service=auth-svc cache hit key=session:72651
+2025-10-01T15:17:26 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:17:30 DEBUG service=checkout-api heartbeat ok
+2025-10-01T15:18:31 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:19:30 DEBUG service=auth-svc heartbeat ok
+2025-10-01T15:20:49 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:21:10 DEBUG service=checkout-api heartbeat ok
+2025-10-01T15:21:39 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T15:22:52 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:23:07 INFO  service=checkout-api cache hit key=session:50037
+2025-10-01T15:23:14 INFO  service=payments-svc db query completed rows=1 duration_ms=32
+2025-10-01T15:24:26 DEBUG service=payments-svc heartbeat ok
+2025-10-01T15:24:29 INFO  service=checkout-api cache hit key=session:91396
+2025-10-01T15:25:05 INFO  service=inventory-svc db query completed rows=1 duration_ms=43
+2025-10-01T15:25:28 INFO  service=payments-svc cache hit key=session:72406
+2025-10-01T15:26:28 INFO  service=checkout-api db query completed rows=1 duration_ms=73
+2025-10-01T15:26:38 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T15:27:13 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:27:49 INFO  service=inventory-svc cache hit key=session:20867
+2025-10-01T15:28:09 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:29:04 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T15:29:37 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:30:25 INFO  service=checkout-api db query completed rows=1 duration_ms=58
+2025-10-01T15:31:37 DEBUG service=auth-svc heartbeat ok
+2025-10-01T15:32:02 INFO  service=payments-svc db query completed rows=1 duration_ms=95
+2025-10-01T15:32:56 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:33:07 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:33:33 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:34:35 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:35:34 INFO  service=payments-svc db query completed rows=1 duration_ms=36
+2025-10-01T15:36:07 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T15:37:06 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T15:37:17 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T15:38:10 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:38:46 INFO  service=checkout-api db query completed rows=1 duration_ms=30
+2025-10-01T15:39:06 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T15:39:20 INFO  service=payments-svc db query completed rows=1 duration_ms=7
+2025-10-01T15:40:06 INFO  service=payments-svc cache hit key=session:70707
+2025-10-01T15:41:14 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:41:44 DEBUG service=checkout-api heartbeat ok
+2025-10-01T15:42:12 INFO  service=inventory-svc cache hit key=session:62232
+2025-10-01T15:43:12 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T15:43:43 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:44:17 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:44:51 INFO  service=auth-svc db query completed rows=1 duration_ms=104
+2025-10-01T15:45:12 INFO  service=inventory-svc cache hit key=session:12038
+2025-10-01T15:46:07 INFO  service=inventory-svc db query completed rows=1 duration_ms=84
+2025-10-01T15:46:24 INFO  service=inventory-svc db query completed rows=1 duration_ms=108
+2025-10-01T15:47:20 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:48:38 INFO  service=inventory-svc db query completed rows=1 duration_ms=117
+2025-10-01T15:49:07 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T15:50:16 INFO  service=checkout-api cache hit key=session:61840
+2025-10-01T15:50:50 INFO  service=auth-svc cache hit key=session:37394
+2025-10-01T15:51:00 INFO  service=payments-svc db query completed rows=1 duration_ms=31
+2025-10-01T15:51:39 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:52:05 DEBUG service=checkout-api heartbeat ok
+2025-10-01T15:52:32 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:53:50 INFO  service=inventory-svc db query completed rows=1 duration_ms=92
+2025-10-01T15:53:51 DEBUG service=checkout-api heartbeat ok
+2025-10-01T15:54:15 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T15:54:22 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:55:57 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T15:56:22 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T15:56:59 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T15:57:01 INFO  service=inventory-svc db query completed rows=1 duration_ms=47
+2025-10-01T15:57:43 DEBUG service=payments-svc heartbeat ok
+2025-10-01T15:58:49 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:58:49 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T15:59:06 DEBUG service=checkout-api heartbeat ok
+2025-10-01T15:59:07 INFO  service=inventory-svc cache hit key=session:55069
+2025-10-01T16:00:00 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T16:01:19 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:01:45 INFO  service=payments-svc db query completed rows=1 duration_ms=119
+2025-10-01T16:02:05 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:03:46 INFO  service=checkout-api request completed status=200 path=/api/v1/health
+2025-10-01T16:04:30 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T16:04:56 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T16:05:06 INFO  service=payments-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:05:50 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:06:02 DEBUG service=payments-svc heartbeat ok
+2025-10-01T16:06:22 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:07:15 INFO  service=inventory-svc db query completed rows=1 duration_ms=117
+2025-10-01T16:08:40 INFO  service=inventory-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:09:09 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T16:10:53 INFO  service=checkout-api db query completed rows=1 duration_ms=45
+2025-10-01T16:11:21 INFO  service=inventory-svc db query completed rows=1 duration_ms=96
+2025-10-01T16:12:28 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T16:13:25 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:13:28 INFO  service=payments-svc request completed status=200 path=/api/v1/cart
+2025-10-01T16:14:23 INFO  service=auth-svc request completed status=200 path=/api/v1/health
+2025-10-01T16:15:59 INFO  service=checkout-api request completed status=200 path=/api/v1/cart
+2025-10-01T16:16:32 DEBUG service=inventory-svc heartbeat ok
+2025-10-01T16:16:54 INFO  service=payments-svc db query completed rows=1 duration_ms=72
+2025-10-01T16:17:11 INFO  service=auth-svc request completed status=200 path=/api/v1/cart
+2025-10-01T16:18:19 INFO  service=inventory-svc request completed status=200 path=/api/v1/cart
+2025-10-01T16:19:07 INFO  service=inventory-svc db query completed rows=1 duration_ms=46

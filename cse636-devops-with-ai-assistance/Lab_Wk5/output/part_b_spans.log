@@ -1,0 +1,200 @@
+{
+    "name": "analyze_log_window",
+    "context": {
+        "trace_id": "0x610040b27be55053814ab09e894c9fae",
+        "span_id": "0x8be78e968e59df58",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-08-08T22:54:10.499962Z",
+    "end_time": "2026-08-08T22:54:10.749366Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.system": "anthropic",
+        "gen_ai.request.model": "claude-sonnet-5",
+        "gen_ai.response.model": "claude-sonnet-5",
+        "gen_ai.usage.input_tokens": 260,
+        "gen_ai.usage.output_tokens": 29,
+        "gen_ai.request.max_tokens": 1024,
+        "gen_ai.operation.name": "chat",
+        "simulated": true,
+        "gen_ai.estimated_cost_usd": 0.001215,
+        "log_window.chars": 862,
+        "log_window.lines": 10
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.name": "log-analyzer-agent"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "analyze_log_window",
+    "context": {
+        "trace_id": "0x0ddb2e1fcbf6e35e4adfd662241d899f",
+        "span_id": "0x5bee2fff39808e44",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-08-08T22:54:10.749801Z",
+    "end_time": "2026-08-08T22:54:11.021913Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.system": "anthropic",
+        "gen_ai.request.model": "claude-sonnet-5",
+        "gen_ai.response.model": "claude-sonnet-5",
+        "gen_ai.usage.input_tokens": 623,
+        "gen_ai.usage.output_tokens": 29,
+        "gen_ai.request.max_tokens": 1024,
+        "gen_ai.operation.name": "chat",
+        "simulated": true,
+        "gen_ai.estimated_cost_usd": 0.002304,
+        "log_window.chars": 2311,
+        "log_window.lines": 30
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.name": "log-analyzer-agent"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "analyze_log_window",
+    "context": {
+        "trace_id": "0x0b63a65a28a01248dbfbb4aa2994ea8a",
+        "span_id": "0x066c7b4855d0cc6b",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-08-08T22:54:11.022149Z",
+    "end_time": "2026-08-08T22:54:11.572379Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.system": "anthropic",
+        "gen_ai.request.model": "claude-sonnet-5",
+        "gen_ai.response.model": "claude-sonnet-5",
+        "gen_ai.usage.input_tokens": 1810,
+        "gen_ai.usage.output_tokens": 75,
+        "gen_ai.request.max_tokens": 1024,
+        "gen_ai.operation.name": "chat",
+        "simulated": true,
+        "gen_ai.estimated_cost_usd": 0.006555,
+        "log_window.chars": 7061,
+        "log_window.lines": 80
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.name": "log-analyzer-agent"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "analyze_log_window",
+    "context": {
+        "trace_id": "0x0f1a6bd8bab0c24810a9ec0448d59ca8",
+        "span_id": "0x241270f6222b6e0a",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-08-08T22:54:11.572895Z",
+    "end_time": "2026-08-08T22:54:12.238789Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.system": "anthropic",
+        "gen_ai.request.model": "claude-sonnet-5",
+        "gen_ai.response.model": "claude-sonnet-5",
+        "gen_ai.usage.input_tokens": 4176,
+        "gen_ai.usage.output_tokens": 75,
+        "gen_ai.request.max_tokens": 1024,
+        "gen_ai.operation.name": "chat",
+        "simulated": true,
+        "gen_ai.estimated_cost_usd": 0.013653,
+        "log_window.chars": 16523,
+        "log_window.lines": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.name": "log-analyzer-agent"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "analyze_log_window",
+    "context": {
+        "trace_id": "0x64de7b29f796f4a56bc5378f5a518f54",
+        "span_id": "0x9f74eda7ea79dcb9",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-08-08T22:54:12.240149Z",
+    "end_time": "2026-08-08T22:54:12.931353Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.system": "anthropic",
+        "gen_ai.request.model": "claude-sonnet-5",
+        "gen_ai.response.model": "claude-sonnet-5",
+        "gen_ai.usage.input_tokens": 8273,
+        "gen_ai.usage.output_tokens": 75,
+        "gen_ai.request.max_tokens": 1024,
+        "gen_ai.operation.name": "chat",
+        "simulated": true,
+        "gen_ai.estimated_cost_usd": 0.025944000000000002,
+        "log_window.chars": 32914,
+        "log_window.lines": 400
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.name": "log-analyzer-agent"
+        },
+        "schema_url": ""
+    }
+}

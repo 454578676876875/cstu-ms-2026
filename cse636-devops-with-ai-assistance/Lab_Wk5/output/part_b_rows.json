@@ -1,0 +1,47 @@
+[
+  {
+    "window": "tiny (10 lines, normal)",
+    "chars": 862,
+    "input_tokens": 260,
+    "output_tokens": 29,
+    "latency_ms": 249.3,
+    "cost_usd": 0.001215,
+    "analysis": "No anomalies detected in this 10-line window. All entries are INFO/DEBUG level and consistent with normal operation."
+  },
+  {
+    "window": "small (30 lines, normal)",
+    "chars": 2311,
+    "input_tokens": 623,
+    "output_tokens": 29,
+    "latency_ms": 272.0,
+    "cost_usd": 0.002304,
+    "analysis": "No anomalies detected in this 30-line window. All entries are INFO/DEBUG level and consistent with normal operation."
+  },
+  {
+    "window": "medium (80 lines, incident)",
+    "chars": 7061,
+    "input_tokens": 1810,
+    "output_tokens": 75,
+    "latency_ms": 550.1,
+    "cost_usd": 0.006555,
+    "analysis": "Detected 31 error(s) and 24 warning(s) across 80 lines, concentrated in service=inventory-svc. Representative signal: 'checkout-api request failed status=503 path=/api/v1/checkout'. Pattern suggests a downstream dependency degradation (timeouts/connection issues) rather than an isolated client error."
+  },
+  {
+    "window": "large (200 lines, incident+recovery)",
+    "chars": 16523,
+    "input_tokens": 4176,
+    "output_tokens": 75,
+    "latency_ms": 665.8,
+    "cost_usd": 0.013653,
+    "analysis": "Detected 31 error(s) and 24 warning(s) across 200 lines, concentrated in service=inventory-svc. Representative signal: 'checkout-api request failed status=503 path=/api/v1/checkout'. Pattern suggests a downstream dependency degradation (timeouts/connection issues) rather than an isolated client error."
+  },
+  {
+    "window": "xlarge (400 lines, full context)",
+    "chars": 32914,
+    "input_tokens": 8273,
+    "output_tokens": 75,
+    "latency_ms": 691.1,
+    "cost_usd": 0.025944,
+    "analysis": "Detected 31 error(s) and 24 warning(s) across 400 lines, concentrated in service=inventory-svc. Representative signal: 'checkout-api request failed status=503 path=/api/v1/checkout'. Pattern suggests a downstream dependency degradation (timeouts/connection issues) rather than an isolated client error."
+  }
+]

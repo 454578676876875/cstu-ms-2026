@@ -1,0 +1,238 @@
+# Week 5 — Lab & Assignment
+
+> 🧪 **Hands-on work for Week 5.** For the lecture notes, foundations primer, discussion questions, and references, see **[week-05-notes.md](week-05-notes.md)**.
+
+---
+
+## 🧪 Lab — Week 5
+
+**Title:** Anomaly Detection + Agent Instrumentation
+
+**Estimated time:** 2–3 hours out-of-class (or structured in-lab session)
+
+**Deliverables:** A Jupyter notebook (.ipynb) plus a short write-up (PDF or Markdown) answering the reflection questions.
+
+> 🎯 **At a glance**
+>
+> | | |
+> |---|---|
+> | **Part A** | Detect anomalies in metrics with an Isolation Forest and **score it against ground truth** (precision/recall/F1) |
+> | **Part B** | Instrument an agent with **OTel GenAI conventions** (tokens, latency, cost) |
+> | **Shortcut** | A runnable Part A lives in [`project/anomaly/`](../../project/anomaly/): `make data && make detect`. Read it, then build your notebook around it. |
+> | **Observe** | `cd project/anomaly && make serve` streams synthetic anomaly + agent-cost telemetry to Grafana (dashboard **"Week 5 — Observability"** + alerts) — zero LLM cost |
+> | **Ties to notes** | [Unsupervised anomaly detection](week-05-notes.md#concept-2-unsupervised-approaches--clustering-and-isolation-forests) and [OTel GenAI conventions](week-05-notes.md#concept-5-observability-for-ai-agents--why-we-must-watch-the-agents) |
+
+> 💡 **Starter provided.** [`project/anomaly/`](../../project/anomaly/) ships `generate_data.py` (labelled synthetic metrics),
+> `detect.py` (Isolation Forest → precision/recall/F1), and a **tested** pure `evaluation.py`.
+> Run `cd project/anomaly && make setup && make detect`. The steps below explain the pieces so you can reproduce them in your notebook.
+
+---
+
+### Part A: Log and Metric Anomaly Detection
+
+#### Step 1: Get Sample Data
+
+Download the provided sample datasets (or generate synthetic data using the snippet below):
+
+```python
+import numpy as np
+import pandas as pd
+
+rng = np.random.default_rng(42)
+n = 500
+
+# Normal operation: low error rate, stable latency
+timestamps = pd.date_range("2025-10-01 08:00", periods=n, freq="1min")
+cpu = rng.normal(35, 5, n)
+error_rate = rng.exponential(0.002, n)
+latency_p99 = rng.normal(150, 20, n)
+
+# Inject anomalies at indices 200–215 (simulated incident)
+cpu[200:216] = rng.normal(85, 5, 16)
+error_rate[200:216] = rng.uniform(0.05, 0.15, 16)
+latency_p99[200:216] = rng.normal(3500, 200, 16)
+
+df = pd.DataFrame({
+"timestamp": timestamps,
+"cpu_pct": np.clip(cpu, 0, 100),
+"error_rate": np.clip(error_rate, 0, 1),
+"latency_p99_ms": np.clip(latency_p99, 0, None)
+})
+df.to_csv("metrics_sample.csv", index=False)
+print(df.head())
+```
+
+#### Step 2: Visualize the Data
+
+```python
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(3, 1, figsize=(14, 8), sharex=True)
+df.set_index("timestamp")[["cpu_pct"]].plot(ax=axes[0], title="CPU %")
+df.set_index("timestamp")[["error_rate"]].plot(ax=axes[1], title="Error Rate", color="red")
+df.set_index("timestamp")[["latency_p99_ms"]].plot(ax=axes[2], title="Latency p99 (ms)", color="orange")
+plt.tight_layout()
+plt.savefig("metrics_overview.png", dpi=150)
+plt.show()
+```
+
+#### Step 3: Run Isolation Forest
+
+Apply isolation forest to the metrics and mark detected anomalies. Plot the anomaly scores overlaid on the original data.
+
+```python
+from sklearn.ensemble import IsolationForest
+from sklearn.preprocessing import StandardScaler
+
+features = df[["cpu_pct", "error_rate", "latency_p99_ms"]]
+scaler = StandardScaler()
+X = scaler.fit_transform(features)
+
+model = IsolationForest(n_estimators=200, contamination=0.04, random_state=42)
+model.fit(X)
+
+df["anomaly_score"] = model.decision_function(X)
+df["is_anomaly"] = (model.predict(X) == -1)
+
+print(f"Anomalies detected: {df['is_anomaly'].sum()} of {len(df)} points")
+print(df[df["is_anomaly"]][["timestamp", "cpu_pct", "error_rate", "latency_p99_ms"]])
+```
+
+#### Step 4: Evaluate Your Detector
+
+Since you injected the anomalies yourself (indices 200–215), you know the ground truth. Compute precision and recall:
+
+```python
+from sklearn.metrics import classification_report
+
+ground_truth = [1 if 200 <= i <= 215 else 0 for i in range(len(df))]
+predictions = df["is_anomaly"].astype(int).tolist()
+
+print(classification_report(ground_truth, predictions,
+target_names=["Normal", "Anomaly"]))
+```
+
+**Experiment:** Change the `contamination` parameter to 0.01 and 0.10. How does precision vs. recall change?
+
+> The starter packages the scoring as a tested pure function in
+> [`project/anomaly/evaluation.py`](../../project/anomaly/evaluation.py) — including the "accuracy trap" test. Run `make test` there to see it.
+
+<details><summary>✅ Check your understanding — why not just report accuracy?</summary>
+
+Your dataset is ~98% normal. A detector that predicts **"normal" for everything** scores ~98% accuracy while catching **zero** anomalies (recall = 0) — useless. That's why `classification_report` shows **precision and recall for the Anomaly class**, and why tuning `contamination` is really tuning the precision↔recall trade-off:
+
+- **Lower `contamination`** → fewer flags → higher precision, lower recall (you miss some).
+- **Higher `contamination`** → more flags → higher recall, lower precision (more false alarms → alert fatigue).
+
+Pick the balance from the *cost* of a miss vs. a false alarm for your service.
+
+</details>
+
+#### Step 5: Bonus — DBSCAN Comparison
+
+Repeat steps 3–4 using DBSCAN instead of isolation forest. Which algorithm performs better on this dataset? Hypothesize why.
+
+---
+
+### Part B: Instrument an Agent with OpenTelemetry GenAI Conventions
+
+#### Step 1: Install Dependencies
+
+```bash
+pip install opentelemetry-sdk opentelemetry-api anthropic
+```
+
+#### Step 2: Write an Instrumented Agent
+
+Adapt the code from Session 9 (Concept 5) to build a small "log analyzer agent" that:
+1. Accepts a chunk of log text.
+2. Calls an LLM to identify anomalies (or simulate a response if you don't have API access).
+3. Emits OTel spans with the GenAI attributes: `gen_ai.system`, `gen_ai.request.model`, `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens`.
+
+#### Step 3: Export Spans and Analyze
+
+Run your agent on 5 different log windows of varying sizes. Collect the span data (the `ConsoleSpanExporter` will print it to stdout; capture it in a file).
+
+Build a small summary table:
+
+| Log window size (chars) | Input tokens | Output tokens | Latency (ms) | Estimated cost ($) |
+|---|---|---|---|---|
+| ... | ... | ... | ... | ... |
+
+Use Anthropic's current pricing to estimate the cost per call.
+
+#### Step 4: Reflection Questions (submit in your write-up)
+
+1. How did input token count correlate with log window size? Was the relationship linear?
+2. At what rate would your agent's LLM cost accumulate if it processed 10 log windows per minute, 24/7 for a month?
+3. What guardrail would you add to prevent runaway costs?
+4. In the Foundations primer we said "treat your agents as first-class services." What would a production-grade dashboard for this agent look like? List five metrics you would track.
+
+---
+
+## Assignment — Week 5
+
+**Title:** Intelligent Anomaly Detection and AI-Generated Root Cause Analysis
+
+**Due:** Before the start of Week 6
+
+**Submission:** GitHub repository link + 1-page written reflection (PDF)
+
+---
+
+### Objective
+
+Build a small but complete anomaly detection and RCA system that:
+1. Detects anomalies in a metric/log dataset using at least one ML-based approach.
+2. Groups related alerts.
+3. Uses an LLM agent to generate a structured root cause analysis report.
+4. Emits OpenTelemetry GenAI spans from the agent steps.
+
+---
+
+### Suggested System Architecture
+
+```
+data/
+metrics_sample.csv (can be synthetic or real)
+logs_sample.txt (structured logs, at least 200 lines)
+
+src/
+anomaly_detector.py (isolation forest or DBSCAN)
+alert_grouper.py (rule-based or LLM-based grouping)
+rca_agent.py (agentic RCA using tool calls)
+telemetry.py (OTel setup + GenAI span helpers)
+
+notebooks/
+analysis.ipynb (visualizations, evaluation metrics)
+
+output/
+rca_report.md (generated report for a sample incident)
+spans_sample.json (captured OTel spans from a run)
+
+README.md (how to run, what choices you made)
+```
+
+---
+
+### Requirements
+
+| Requirement | Points |
+|---|---|
+| Working anomaly detector with precision/recall evaluation | 20 |
+| At least one visualization of detected anomalies | 10 |
+| Alert grouping (any approach) applied to 10+ sample alerts | 15 |
+| Agentic RCA system with at least 2 tools (metrics + logs) | 25 |
+| Generated RCA report for a sample incident (in `output/`) | 15 |
+| OTel GenAI spans emitted and captured | 10 |
+| README + reflection: explains key decisions and trade-offs | 5 |
+| **Total** | **100** |
+
+---
+
+### Rubric Hints
+
+- **Anomaly detector:** Don't just run the code — tune the `contamination` or `eps` parameter and explain your reasoning. Full points require showing both precision and recall.
+- **RCA report:** Quality matters more than length. A good report cites specific evidence, proposes a plausible causal mechanism, and suggests concrete preventive measures.
+- **OTel spans:** At minimum, capture spans to a file using `ConsoleSpanExporter`. Bonus points for sending to a running Jaeger instance.
+- **Reflection:** The best reflections discuss *failures* — what didn't work as expected and why. Describing a smooth experience with no surprises is less credible than honestly describing a bug you hit.
