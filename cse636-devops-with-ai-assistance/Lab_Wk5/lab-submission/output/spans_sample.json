@@ -1,0 +1,136 @@
+{
+    "name": "execute_tool get_metrics",
+    "context": {
+        "trace_id": "0xb594ba3a91e0d46cbb53fdbcc6c7717a",
+        "span_id": "0x7dacb8d868d6f74c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x24a1753f32f5babd",
+    "start_time": "2026-08-08T23:53:14.555987Z",
+    "end_time": "2026-08-08T23:53:14.557204Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "get_metrics",
+        "incident.start": "2025-10-01 11:20:00",
+        "incident.end": "2025-10-01 11:35:00"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "096f4abe-1791-40b8-adfb-e201ed0956a7",
+            "service.name": "rca-agent"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "execute_tool get_logs",
+    "context": {
+        "trace_id": "0xb594ba3a91e0d46cbb53fdbcc6c7717a",
+        "span_id": "0x45ebb7c888e409aa",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x24a1753f32f5babd",
+    "start_time": "2026-08-08T23:53:14.557302Z",
+    "end_time": "2026-08-08T23:53:14.558825Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "get_logs",
+        "incident.start": "2025-10-01 11:20:00",
+        "incident.end": "2025-10-01 11:35:00"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "096f4abe-1791-40b8-adfb-e201ed0956a7",
+            "service.name": "rca-agent"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "synthesize_rca_report",
+    "context": {
+        "trace_id": "0xb594ba3a91e0d46cbb53fdbcc6c7717a",
+        "span_id": "0xdc697e551f9776eb",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x24a1753f32f5babd",
+    "start_time": "2026-08-08T23:53:14.558968Z",
+    "end_time": "2026-08-08T23:53:19.208075Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "gen_ai.system": "anthropic",
+        "gen_ai.request.model": "claude-sonnet-5",
+        "gen_ai.response.model": "claude-sonnet-5",
+        "gen_ai.usage.input_tokens": 115,
+        "gen_ai.usage.output_tokens": 583,
+        "gen_ai.request.max_tokens": 1024,
+        "gen_ai.operation.name": "chat",
+        "simulated": true,
+        "gen_ai.estimated_cost_usd": 0.009089999999999999
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "096f4abe-1791-40b8-adfb-e201ed0956a7",
+            "service.name": "rca-agent"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "name": "rca_agent.run",
+    "context": {
+        "trace_id": "0xb594ba3a91e0d46cbb53fdbcc6c7717a",
+        "span_id": "0x24a1753f32f5babd",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-08-08T23:53:14.555871Z",
+    "end_time": "2026-08-08T23:53:19.208138Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "incident.start": "2025-10-01 11:20:00",
+        "incident.end": "2025-10-01 11:35:00",
+        "incident.alert_count": 48
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.44.0",
+            "service.instance.id": "096f4abe-1791-40b8-adfb-e201ed0956a7",
+            "service.name": "rca-agent"
+        },
+        "schema_url": ""
+    }
+}
