@@ -100,7 +100,7 @@ def synthesize_rca(metrics_evidence: dict, logs_evidence: dict, group: AlertGrou
     )
     sample_error_lines = "\n".join(f"  - `{e.strip()}`" for e in logs_evidence["sample_errors"]) or "  - (none captured)"
 
-    report = f"""# RCA Report — Incident {group.start} to {group.end}
+    report = f"""# RCA Report: Incident {group.start} to {group.end}
 
 ## Summary
 Between **{group.start}** and **{group.end}**, {len(group.alerts)} alerts fired across
@@ -125,7 +125,7 @@ The simultaneous spike in `latency_p99_ms` and `error_rate` alongside `cpu_pct`,
 evidence of **connection pool exhaustion** and **upstream timeouts**, points to a downstream
 dependency (most likely `payments-svc`, per log volume) becoming slow or unavailable. Elevated CPU is
 consistent with request threads blocking/retrying while waiting on that dependency rather than being
-the primary trigger — i.e. CPU is a symptom of backed-up retries, not the root cause.
+the primary trigger, so CPU looks more like a symptom of backed-up retries than the root cause.
 
 ## Recommended Preventive Measures
 1. Add a circuit breaker with a tighter timeout on calls to the implicated downstream service so

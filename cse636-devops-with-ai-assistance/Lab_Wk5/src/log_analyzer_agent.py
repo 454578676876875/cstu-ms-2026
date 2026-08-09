@@ -132,7 +132,7 @@ def main() -> None:
 
     summary_path = OUTPUT_DIR / "part_b_summary.md"
     lines_md = [
-        "# Part B — Log Window Summary\n",
+        "# Part B: Log Window Summary\n",
         "| Log window | Log window size (chars) | Input tokens | Output tokens | Latency (ms) | Estimated cost ($) |",
         "|---|---|---|---|---|---|",
     ]

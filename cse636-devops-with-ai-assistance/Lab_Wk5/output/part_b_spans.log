@@ -1,14 +1,14 @@
 {
     "name": "analyze_log_window",
     "context": {
-        "trace_id": "0x610040b27be55053814ab09e894c9fae",
-        "span_id": "0x8be78e968e59df58",
+        "trace_id": "0xdb1b7a9cbeb8adf96fc11dfe3ead8b1c",
+        "span_id": "0x0bbb14896e833123",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
     "parent_id": null,
-    "start_time": "2026-08-08T22:54:10.499962Z",
-    "end_time": "2026-08-08T22:54:10.749366Z",
+    "start_time": "2026-08-09T00:19:50.554518Z",
+    "end_time": "2026-08-09T00:19:50.811091Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -32,7 +32,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.instance.id": "ca3befeb-c9d1-41d6-a1ef-a245979e5864",
             "service.name": "log-analyzer-agent"
         },
         "schema_url": ""
@@ -41,14 +41,14 @@
 {
     "name": "analyze_log_window",
     "context": {
-        "trace_id": "0x0ddb2e1fcbf6e35e4adfd662241d899f",
-        "span_id": "0x5bee2fff39808e44",
+        "trace_id": "0xa7e2c99afa642bf31dac3fae96f5b53a",
+        "span_id": "0x29394177e3a5ae4b",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
     "parent_id": null,
-    "start_time": "2026-08-08T22:54:10.749801Z",
-    "end_time": "2026-08-08T22:54:11.021913Z",
+    "start_time": "2026-08-09T00:19:50.811496Z",
+    "end_time": "2026-08-09T00:19:51.107702Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -72,7 +72,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.instance.id": "ca3befeb-c9d1-41d6-a1ef-a245979e5864",
             "service.name": "log-analyzer-agent"
         },
         "schema_url": ""
@@ -81,14 +81,14 @@
 {
     "name": "analyze_log_window",
     "context": {
-        "trace_id": "0x0b63a65a28a01248dbfbb4aa2994ea8a",
-        "span_id": "0x066c7b4855d0cc6b",
+        "trace_id": "0xa7c959edac0d06cd96125d185887dd43",
+        "span_id": "0x1002fd57ec191e2e",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
     "parent_id": null,
-    "start_time": "2026-08-08T22:54:11.022149Z",
-    "end_time": "2026-08-08T22:54:11.572379Z",
+    "start_time": "2026-08-09T00:19:51.108259Z",
+    "end_time": "2026-08-09T00:19:51.751008Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -112,7 +112,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.instance.id": "ca3befeb-c9d1-41d6-a1ef-a245979e5864",
             "service.name": "log-analyzer-agent"
         },
         "schema_url": ""
@@ -121,14 +121,14 @@
 {
     "name": "analyze_log_window",
     "context": {
-        "trace_id": "0x0f1a6bd8bab0c24810a9ec0448d59ca8",
-        "span_id": "0x241270f6222b6e0a",
+        "trace_id": "0x7a770044cace69ba1d1eda97c9610c54",
+        "span_id": "0x89b30cb96b2bf9b8",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
     "parent_id": null,
-    "start_time": "2026-08-08T22:54:11.572895Z",
-    "end_time": "2026-08-08T22:54:12.238789Z",
+    "start_time": "2026-08-09T00:19:51.751543Z",
+    "end_time": "2026-08-09T00:19:52.333773Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -152,7 +152,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.instance.id": "ca3befeb-c9d1-41d6-a1ef-a245979e5864",
             "service.name": "log-analyzer-agent"
         },
         "schema_url": ""
@@ -161,14 +161,14 @@
 {
     "name": "analyze_log_window",
     "context": {
-        "trace_id": "0x64de7b29f796f4a56bc5378f5a518f54",
-        "span_id": "0x9f74eda7ea79dcb9",
+        "trace_id": "0x5bd17ed83f82d3b9502c6d78560c610c",
+        "span_id": "0x8c6c4183368cc5c7",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
     "parent_id": null,
-    "start_time": "2026-08-08T22:54:12.240149Z",
-    "end_time": "2026-08-08T22:54:12.931353Z",
+    "start_time": "2026-08-09T00:19:52.334928Z",
+    "end_time": "2026-08-09T00:19:52.898443Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -192,7 +192,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "949f22ba-23f4-4f5d-9f52-ffed49f7838b",
+            "service.instance.id": "ca3befeb-c9d1-41d6-a1ef-a245979e5864",
             "service.name": "log-analyzer-agent"
         },
         "schema_url": ""

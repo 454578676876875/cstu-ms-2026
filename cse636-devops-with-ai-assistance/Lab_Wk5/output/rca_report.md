@@ -1,4 +1,4 @@
-# RCA Report — Incident 2025-10-01 11:20:00 to 2025-10-01 11:35:00
+# RCA Report: Incident 2025-10-01 11:20:00 to 2025-10-01 11:35:00
 
 ## Summary
 Between **2025-10-01 11:20:00** and **2025-10-01 11:35:00**, 48 alerts fired across
@@ -6,7 +6,7 @@ Between **2025-10-01 11:20:00** and **2025-10-01 11:35:00**, 48 alerts fired acr
 **error_rate**, which moved +5207.2% relative to the preceding
 60-minute baseline. Logs corroborate an active incident: 30
 ERROR and 23 WARN lines were emitted in the window, concentrated in
-checkout-api, inventory-svc, payments-svc.
+inventory-svc, checkout-api, payments-svc.
 
 ## Evidence: Metrics
 - **cpu_pct**: baseline 34.858 -> incident 83.387 (+139.2%)
@@ -16,7 +16,7 @@ checkout-api, inventory-svc, payments-svc.
 ## Evidence: Logs
 - 64 total log lines in window
 - 30 ERROR, 23 WARN
-- Top services: checkout-api, inventory-svc, payments-svc
+- Top services: inventory-svc, checkout-api, payments-svc
 - Representative errors:
   - `2025-10-01T11:21:18 ERROR service=checkout-api request failed status=503 path=/api/v1/checkout`
   - `2025-10-01T11:21:18 ERROR service=inventory-svc connection reset by peer during db query`
@@ -29,7 +29,7 @@ The simultaneous spike in `latency_p99_ms` and `error_rate` alongside `cpu_pct`,
 evidence of **connection pool exhaustion** and **upstream timeouts**, points to a downstream
 dependency (most likely `payments-svc`, per log volume) becoming slow or unavailable. Elevated CPU is
 consistent with request threads blocking/retrying while waiting on that dependency rather than being
-the primary trigger — i.e. CPU is a symptom of backed-up retries, not the root cause.
+the primary trigger, so CPU looks more like a symptom of backed-up retries than the root cause.
 
 ## Recommended Preventive Measures
 1. Add a circuit breaker with a tighter timeout on calls to the implicated downstream service so

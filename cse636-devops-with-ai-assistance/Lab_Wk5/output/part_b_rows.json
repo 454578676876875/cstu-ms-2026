@@ -4,7 +4,7 @@
     "chars": 862,
     "input_tokens": 260,
     "output_tokens": 29,
-    "latency_ms": 249.3,
+    "latency_ms": 256.4,
     "cost_usd": 0.001215,
     "analysis": "No anomalies detected in this 10-line window. All entries are INFO/DEBUG level and consistent with normal operation."
   },
@@ -13,7 +13,7 @@
     "chars": 2311,
     "input_tokens": 623,
     "output_tokens": 29,
-    "latency_ms": 272.0,
+    "latency_ms": 296.1,
     "cost_usd": 0.002304,
     "analysis": "No anomalies detected in this 30-line window. All entries are INFO/DEBUG level and consistent with normal operation."
   },
@@ -22,7 +22,7 @@
     "chars": 7061,
     "input_tokens": 1810,
     "output_tokens": 75,
-    "latency_ms": 550.1,
+    "latency_ms": 642.7,
     "cost_usd": 0.006555,
     "analysis": "Detected 31 error(s) and 24 warning(s) across 80 lines, concentrated in service=inventory-svc. Representative signal: 'checkout-api request failed status=503 path=/api/v1/checkout'. Pattern suggests a downstream dependency degradation (timeouts/connection issues) rather than an isolated client error."
   },
@@ -31,16 +31,16 @@
     "chars": 16523,
     "input_tokens": 4176,
     "output_tokens": 75,
-    "latency_ms": 665.8,
+    "latency_ms": 582.2,
     "cost_usd": 0.013653,
-    "analysis": "Detected 31 error(s) and 24 warning(s) across 200 lines, concentrated in service=inventory-svc. Representative signal: 'checkout-api request failed status=503 path=/api/v1/checkout'. Pattern suggests a downstream dependency degradation (timeouts/connection issues) rather than an isolated client error."
+    "analysis": "Detected 31 error(s) and 24 warning(s) across 200 lines, concentrated in service=checkout-api. Representative signal: 'checkout-api request failed status=503 path=/api/v1/checkout'. Pattern suggests a downstream dependency degradation (timeouts/connection issues) rather than an isolated client error."
   },
   {
     "window": "xlarge (400 lines, full context)",
     "chars": 32914,
     "input_tokens": 8273,
     "output_tokens": 75,
-    "latency_ms": 691.1,
+    "latency_ms": 563.4,
     "cost_usd": 0.025944,
     "analysis": "Detected 31 error(s) and 24 warning(s) across 400 lines, concentrated in service=inventory-svc. Representative signal: 'checkout-api request failed status=503 path=/api/v1/checkout'. Pattern suggests a downstream dependency degradation (timeouts/connection issues) rather than an isolated client error."
   }
