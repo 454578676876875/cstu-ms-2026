@@ -1,0 +1,1615 @@
+local CI run of .github/workflows/ci.yml
+started: 2026-08-16T05:34:24Z
+repo:    https://github.com/dockersamples/example-voting-app.git @ 63e9150
+docker:  29.7.2 (server)
+compose: 5.3.1
+
+##[group] job: build (matrix: vote, result, worker)
+----------------------------------------------------------------
+>>> docker build -t example-voting-app-vote:ci ./vote
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 30B 0.0s
+#1 transferring dockerfile: 1.12kB 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 1.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 6.72kB 0.0s done
+#4 DONE 0.2s
+
+#5 [base 1/5] FROM docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
+#5 resolve docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1 0.1s done
+#5 DONE 0.4s
+
+#5 [base 1/5] FROM docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 0B / 14.45MB 0.2s
+#5 sha256:7ce8f1a1db8f7a913c17b3b6aa717c65c735bb723a8b6c3958e3a122a971869f 0B / 1.29MB 0.2s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 0B / 29.78MB 0.2s
+#5 sha256:605d2cb1fe61c64de721db128eab03d7fdb885947126722e2d98a49b18147fe2 0B / 249B 0.2s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 1.05MB / 14.45MB 0.6s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 2.10MB / 14.45MB 1.2s
+#5 sha256:7ce8f1a1db8f7a913c17b3b6aa717c65c735bb723a8b6c3958e3a122a971869f 1.29MB / 1.29MB 1.1s done
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 3.15MB / 14.45MB 1.4s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 2.10MB / 29.78MB 1.2s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 4.19MB / 14.45MB 1.5s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 5.24MB / 14.45MB 1.7s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 4.19MB / 29.78MB 1.5s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 6.29MB / 14.45MB 1.8s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 7.34MB / 14.45MB 2.0s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 6.29MB / 29.78MB 1.8s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 8.39MB / 14.45MB 2.3s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 9.44MB / 14.45MB 2.7s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 8.39MB / 29.78MB 2.6s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 10.49MB / 14.45MB 2.9s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 11.53MB / 14.45MB 4.4s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 10.49MB / 29.78MB 4.2s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 12.58MB / 14.45MB 6.3s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 11.53MB / 29.78MB 9.3s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 12.58MB / 14.45MB 11.4s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 13.63MB / 14.45MB 12.3s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 14.45MB / 14.45MB 13.5s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 13.63MB / 29.78MB 13.9s
+#5 sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 14.45MB / 14.45MB 13.9s done
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 15.73MB / 29.78MB 15.4s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 17.83MB / 29.78MB 16.2s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 19.92MB / 29.78MB 16.5s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 22.02MB / 29.78MB 16.9s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 25.17MB / 29.78MB 17.4s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 27.26MB / 29.78MB 18.0s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 29.36MB / 29.78MB 19.3s
+#5 sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 29.78MB / 29.78MB 20.2s done
+#5 DONE 20.9s
+
+#5 [base 1/5] FROM docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
+#5 extracting sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d
+#5 extracting sha256:26c307b5e35a59ce911f5fde5b9458120ec8734e831ea2da5649a9ad14abfd3d 4.0s done
+#5 DONE 24.9s
+
+#5 [base 1/5] FROM docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
+#5 extracting sha256:7ce8f1a1db8f7a913c17b3b6aa717c65c735bb723a8b6c3958e3a122a971869f
+#5 extracting sha256:7ce8f1a1db8f7a913c17b3b6aa717c65c735bb723a8b6c3958e3a122a971869f 0.3s done
+#5 DONE 25.2s
+
+#5 [base 1/5] FROM docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
+#5 extracting sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3
+#5 extracting sha256:daff6f8ae2ef893f1b47c500d35ae0ba6f0c1bb82a4bf0f084f84a4a363644c3 1.4s done
+#5 DONE 26.6s
+
+#5 [base 1/5] FROM docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
+#5 extracting sha256:605d2cb1fe61c64de721db128eab03d7fdb885947126722e2d98a49b18147fe2 0.1s done
+#5 DONE 26.7s
+
+#6 [base 2/5] RUN apt-get update &&     apt-get install -y --no-install-recommends curl &&     rm -rf /var/lib/apt/lists/*
+#6 0.912 Hit:1 http://deb.debian.org/debian trixie InRelease
+#6 0.912 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#6 0.945 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#6 0.970 Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9673 kB]
+#6 5.104 Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [4412 B]
+#6 5.104 Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [242 kB]
+#6 5.912 Fetched 10.0 MB in 5s (1950 kB/s)
+#6 5.912 Reading package lists...
+#6 7.678 Reading package lists...
+#6 8.946 Building dependency tree...
+#6 9.396 Reading state information...
+#6 10.59 The following additional packages will be installed:
+#6 10.59   libbrotli1 libcom-err2 libcurl4t64 libgnutls30t64 libgssapi-krb5-2 libidn2-0
+#6 10.59   libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2 libnghttp2-14
+#6 10.59   libnghttp3-9 libp11-kit0 libpsl5t64 librtmp1 libsasl2-2 libsasl2-modules-db
+#6 10.60   libssh2-1t64 libtasn1-6 libunistring5
+#6 10.60 Suggested packages:
+#6 10.60   gnutls-bin krb5-doc krb5-user
+#6 10.60 Recommended packages:
+#6 10.60   bash-completion krb5-locales libldap-common publicsuffix libsasl2-modules
+#6 11.10 The following NEW packages will be installed:
+#6 11.11   curl libbrotli1 libcom-err2 libcurl4t64 libgnutls30t64 libgssapi-krb5-2
+#6 11.11   libidn2-0 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2
+#6 11.11   libnghttp2-14 libnghttp3-9 libp11-kit0 libpsl5t64 librtmp1 libsasl2-2
+#6 11.11   libsasl2-modules-db libssh2-1t64 libtasn1-6 libunistring5
+#6 11.26 0 upgraded, 22 newly installed, 0 to remove and 9 not upgraded.
+#6 11.26 Need to get 4887 kB of archives.
+#6 11.26 After this operation, 14.7 MB of additional disk space will be used.
+#6 11.26 Get:1 http://deb.debian.org/debian trixie/main amd64 libbrotli1 amd64 1.1.0-2+b7 [307 kB]
+#6 11.35 Get:2 http://deb.debian.org/debian trixie/main amd64 libkrb5support0 amd64 1.21.3-5+deb13u1 [33.1 kB]
+#6 11.36 Get:3 http://deb.debian.org/debian trixie/main amd64 libcom-err2 amd64 1.47.2-3+b11 [25.0 kB]
+#6 11.36 Get:4 http://deb.debian.org/debian trixie/main amd64 libk5crypto3 amd64 1.21.3-5+deb13u1 [81.2 kB]
+#6 11.38 Get:5 http://deb.debian.org/debian trixie/main amd64 libkeyutils1 amd64 1.6.3-6 [9456 B]
+#6 11.39 Get:6 http://deb.debian.org/debian trixie/main amd64 libkrb5-3 amd64 1.21.3-5+deb13u1 [326 kB]
+#6 11.45 Get:7 http://deb.debian.org/debian trixie/main amd64 libgssapi-krb5-2 amd64 1.21.3-5+deb13u1 [138 kB]
+#6 11.54 Get:8 http://deb.debian.org/debian trixie/main amd64 libunistring5 amd64 1.3-2 [477 kB]
+#6 11.67 Get:9 http://deb.debian.org/debian trixie/main amd64 libidn2-0 amd64 2.3.8-2 [109 kB]
+#6 11.69 Get:10 http://deb.debian.org/debian trixie/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-9 [19.8 kB]
+#6 11.69 Get:11 http://deb.debian.org/debian trixie/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-9 [57.5 kB]
+#6 11.70 Get:12 http://deb.debian.org/debian trixie/main amd64 libldap2 amd64 2.6.10+dfsg-1 [194 kB]
+#6 11.73 Get:13 http://deb.debian.org/debian trixie/main amd64 libnghttp2-14 amd64 1.64.0-1.1+deb13u1 [76.2 kB]
+#6 11.74 Get:14 http://deb.debian.org/debian trixie/main amd64 libnghttp3-9 amd64 1.8.0-1 [67.7 kB]
+#6 11.76 Get:15 http://deb.debian.org/debian trixie/main amd64 libpsl5t64 amd64 0.21.2-1.1+b1 [57.2 kB]
+#6 11.80 Get:16 http://deb.debian.org/debian trixie/main amd64 libp11-kit0 amd64 0.25.5-3 [425 kB]
+#6 11.96 Get:17 http://deb.debian.org/debian trixie/main amd64 libtasn1-6 amd64 4.20.0-2+deb13u1 [50.1 kB]
+#6 11.97 Get:18 http://deb.debian.org/debian trixie/main amd64 libgnutls30t64 amd64 3.8.9-3+deb13u4 [1469 kB]
+#6 12.25 Get:19 http://deb.debian.org/debian trixie/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b5 [58.8 kB]
+#6 12.25 Get:20 http://deb.debian.org/debian trixie/main amd64 libssh2-1t64 amd64 1.11.1-1+deb13u1 [245 kB]
+#6 12.30 Get:21 http://deb.debian.org/debian trixie/main amd64 libcurl4t64 amd64 8.14.1-2+deb13u4 [392 kB]
+#6 12.38 Get:22 http://deb.debian.org/debian trixie/main amd64 curl amd64 8.14.1-2+deb13u4 [270 kB]
+#6 12.98 debconf: unable to initialize frontend: Dialog
+#6 12.98 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#6 12.98 debconf: falling back to frontend: Readline
+#6 12.98 debconf: unable to initialize frontend: Readline
+#6 12.98 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 22.)
+#6 12.98 debconf: falling back to frontend: Teletype
+#6 13.00 debconf: unable to initialize frontend: Teletype
+#6 13.00 debconf: (This frontend requires a controlling tty.)
+#6 13.00 debconf: falling back to frontend: Noninteractive
+#6 15.06 Fetched 4887 kB in 1s (3836 kB/s)
+#6 15.17 Selecting previously unselected package libbrotli1:amd64.
+#6 15.17 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5645 files and directories currently installed.)
+#6 15.19 Preparing to unpack .../00-libbrotli1_1.1.0-2+b7_amd64.deb ...
+#6 15.22 Unpacking libbrotli1:amd64 (1.1.0-2+b7) ...
+#6 15.43 Selecting previously unselected package libkrb5support0:amd64.
+#6 15.44 Preparing to unpack .../01-libkrb5support0_1.21.3-5+deb13u1_amd64.deb ...
+#6 15.46 Unpacking libkrb5support0:amd64 (1.21.3-5+deb13u1) ...
+#6 15.59 Selecting previously unselected package libcom-err2:amd64.
+#6 15.59 Preparing to unpack .../02-libcom-err2_1.47.2-3+b11_amd64.deb ...
+#6 15.61 Unpacking libcom-err2:amd64 (1.47.2-3+b11) ...
+#6 15.76 Selecting previously unselected package libk5crypto3:amd64.
+#6 15.77 Preparing to unpack .../03-libk5crypto3_1.21.3-5+deb13u1_amd64.deb ...
+#6 15.78 Unpacking libk5crypto3:amd64 (1.21.3-5+deb13u1) ...
+#6 16.28 Selecting previously unselected package libkeyutils1:amd64.
+#6 16.28 Preparing to unpack .../04-libkeyutils1_1.6.3-6_amd64.deb ...
+#6 16.30 Unpacking libkeyutils1:amd64 (1.6.3-6) ...
+#6 16.58 Selecting previously unselected package libkrb5-3:amd64.
+#6 16.58 Preparing to unpack .../05-libkrb5-3_1.21.3-5+deb13u1_amd64.deb ...
+#6 16.61 Unpacking libkrb5-3:amd64 (1.21.3-5+deb13u1) ...
+#6 16.90 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#6 16.91 Preparing to unpack .../06-libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb ...
+#6 16.93 Unpacking libgssapi-krb5-2:amd64 (1.21.3-5+deb13u1) ...
+#6 17.16 Selecting previously unselected package libunistring5:amd64.
+#6 17.16 Preparing to unpack .../07-libunistring5_1.3-2_amd64.deb ...
+#6 17.19 Unpacking libunistring5:amd64 (1.3-2) ...
+#6 17.45 Selecting previously unselected package libidn2-0:amd64.
+#6 17.45 Preparing to unpack .../08-libidn2-0_2.3.8-2_amd64.deb ...
+#6 17.48 Unpacking libidn2-0:amd64 (2.3.8-2) ...
+#6 17.62 Selecting previously unselected package libsasl2-modules-db:amd64.
+#6 17.62 Preparing to unpack .../09-libsasl2-modules-db_2.1.28+dfsg1-9_amd64.deb ...
+#6 17.64 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+#6 17.81 Selecting previously unselected package libsasl2-2:amd64.
+#6 17.81 Preparing to unpack .../10-libsasl2-2_2.1.28+dfsg1-9_amd64.deb ...
+#6 17.83 Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+#6 17.97 Selecting previously unselected package libldap2:amd64.
+#6 17.97 Preparing to unpack .../11-libldap2_2.6.10+dfsg-1_amd64.deb ...
+#6 17.99 Unpacking libldap2:amd64 (2.6.10+dfsg-1) ...
+#6 18.16 Selecting previously unselected package libnghttp2-14:amd64.
+#6 18.17 Preparing to unpack .../12-libnghttp2-14_1.64.0-1.1+deb13u1_amd64.deb ...
+#6 18.18 Unpacking libnghttp2-14:amd64 (1.64.0-1.1+deb13u1) ...
+#6 18.33 Selecting previously unselected package libnghttp3-9:amd64.
+#6 18.34 Preparing to unpack .../13-libnghttp3-9_1.8.0-1_amd64.deb ...
+#6 18.35 Unpacking libnghttp3-9:amd64 (1.8.0-1) ...
+#6 18.49 Selecting previously unselected package libpsl5t64:amd64.
+#6 18.49 Preparing to unpack .../14-libpsl5t64_0.21.2-1.1+b1_amd64.deb ...
+#6 18.50 Unpacking libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+#6 18.63 Selecting previously unselected package libp11-kit0:amd64.
+#6 18.63 Preparing to unpack .../15-libp11-kit0_0.25.5-3_amd64.deb ...
+#6 18.65 Unpacking libp11-kit0:amd64 (0.25.5-3) ...
+#6 18.83 Selecting previously unselected package libtasn1-6:amd64.
+#6 18.83 Preparing to unpack .../16-libtasn1-6_4.20.0-2+deb13u1_amd64.deb ...
+#6 18.85 Unpacking libtasn1-6:amd64 (4.20.0-2+deb13u1) ...
+#6 18.99 Selecting previously unselected package libgnutls30t64:amd64.
+#6 18.99 Preparing to unpack .../17-libgnutls30t64_3.8.9-3+deb13u4_amd64.deb ...
+#6 19.01 Unpacking libgnutls30t64:amd64 (3.8.9-3+deb13u4) ...
+#6 19.60 Selecting previously unselected package librtmp1:amd64.
+#6 19.60 Preparing to unpack .../18-librtmp1_2.4+20151223.gitfa8646d.1-2+b5_amd64.deb ...
+#6 19.63 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+#6 20.16 Selecting previously unselected package libssh2-1t64:amd64.
+#6 20.16 Preparing to unpack .../19-libssh2-1t64_1.11.1-1+deb13u1_amd64.deb ...
+#6 20.18 Unpacking libssh2-1t64:amd64 (1.11.1-1+deb13u1) ...
+#6 20.37 Selecting previously unselected package libcurl4t64:amd64.
+#6 20.37 Preparing to unpack .../20-libcurl4t64_8.14.1-2+deb13u4_amd64.deb ...
+#6 20.40 Unpacking libcurl4t64:amd64 (8.14.1-2+deb13u4) ...
+#6 20.73 Selecting previously unselected package curl.
+#6 20.73 Preparing to unpack .../21-curl_8.14.1-2+deb13u4_amd64.deb ...
+#6 20.76 Unpacking curl (8.14.1-2+deb13u4) ...
+#6 20.95 Setting up libkeyutils1:amd64 (1.6.3-6) ...
+#6 21.02 Setting up libbrotli1:amd64 (1.1.0-2+b7) ...
+#6 21.07 Setting up libnghttp2-14:amd64 (1.64.0-1.1+deb13u1) ...
+#6 21.15 Setting up libcom-err2:amd64 (1.47.2-3+b11) ...
+#6 21.24 Setting up libkrb5support0:amd64 (1.21.3-5+deb13u1) ...
+#6 21.29 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+#6 21.34 Setting up libp11-kit0:amd64 (0.25.5-3) ...
+#6 21.38 Setting up libunistring5:amd64 (1.3-2) ...
+#6 21.58 Setting up libk5crypto3:amd64 (1.21.3-5+deb13u1) ...
+#6 21.71 Setting up libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+#6 21.82 Setting up libnghttp3-9:amd64 (1.8.0-1) ...
+#6 21.91 Setting up libtasn1-6:amd64 (4.20.0-2+deb13u1) ...
+#6 22.02 Setting up libkrb5-3:amd64 (1.21.3-5+deb13u1) ...
+#6 22.13 Setting up libssh2-1t64:amd64 (1.11.1-1+deb13u1) ...
+#6 22.23 Setting up libldap2:amd64 (2.6.10+dfsg-1) ...
+#6 22.31 Setting up libidn2-0:amd64 (2.3.8-2) ...
+#6 22.35 Setting up libgssapi-krb5-2:amd64 (1.21.3-5+deb13u1) ...
+#6 22.39 Setting up libgnutls30t64:amd64 (3.8.9-3+deb13u4) ...
+#6 22.42 Setting up libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+#6 22.48 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+#6 22.52 Setting up libcurl4t64:amd64 (8.14.1-2+deb13u4) ...
+#6 22.56 Setting up curl (8.14.1-2+deb13u4) ...
+#6 22.60 Processing triggers for libc-bin (2.41-12+deb13u3) ...
+#6 DONE 24.5s
+
+#7 [base 3/5] WORKDIR /usr/local/app
+#7 DONE 0.1s
+
+#8 [base 4/5] COPY requirements.txt ./requirements.txt
+#8 DONE 0.1s
+
+#9 [base 5/5] RUN pip install --no-cache-dir -r requirements.txt
+#9 3.522 Collecting Flask (from -r requirements.txt (line 1))
+#9 3.657   Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
+#9 3.741 Collecting Redis (from -r requirements.txt (line 2))
+#9 3.764   Downloading redis-8.1.0-py3-none-any.whl.metadata (16 kB)
+#9 3.832 Collecting gunicorn (from -r requirements.txt (line 3))
+#9 3.854   Downloading gunicorn-26.0.0-py3-none-any.whl.metadata (5.4 kB)
+#9 3.908 Collecting blinker>=1.9.0 (from Flask->-r requirements.txt (line 1))
+#9 3.930   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+#9 3.987 Collecting click>=8.1.3 (from Flask->-r requirements.txt (line 1))
+#9 4.010   Downloading click-8.4.2-py3-none-any.whl.metadata (2.6 kB)
+#9 4.049 Collecting itsdangerous>=2.2.0 (from Flask->-r requirements.txt (line 1))
+#9 4.071   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#9 4.124 Collecting jinja2>=3.1.2 (from Flask->-r requirements.txt (line 1))
+#9 4.146   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#9 4.274 Collecting markupsafe>=2.1.1 (from Flask->-r requirements.txt (line 1))
+#9 4.294   Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#9 4.354 Collecting werkzeug>=3.1.0 (from Flask->-r requirements.txt (line 1))
+#9 4.374   Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
+#9 4.404 Requirement already satisfied: packaging in /usr/local/lib/python3.11/site-packages (from gunicorn->-r requirements.txt (line 3)) (26.3)
+#9 4.442 Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+#9 4.470    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.4/103.4 kB 3.8 MB/s eta 0:00:00
+#9 4.492 Downloading redis-8.1.0-py3-none-any.whl (560 kB)
+#9 4.576    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 560.6/560.6 kB 6.9 MB/s eta 0:00:00
+#9 4.603 Downloading gunicorn-26.0.0-py3-none-any.whl (212 kB)
+#9 4.626    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 212.0/212.0 kB 10.1 MB/s eta 0:00:00
+#9 4.647 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+#9 4.671 Downloading click-8.4.2-py3-none-any.whl (119 kB)
+#9 4.682    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 119.2/119.2 kB 15.2 MB/s eta 0:00:00
+#9 4.704 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#9 4.725 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#9 4.738    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 11.7 MB/s eta 0:00:00
+#9 4.762 Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#9 4.785 Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+#9 4.830    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 226.5/226.5 kB 5.6 MB/s eta 0:00:00
+#9 4.935 Installing collected packages: Redis, markupsafe, itsdangerous, gunicorn, click, blinker, werkzeug, jinja2, Flask
+#9 6.234 Successfully installed Flask-3.1.3 Redis-8.1.0 blinker-1.9.0 click-8.4.2 gunicorn-26.0.0 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.3 werkzeug-3.1.8
+#9 6.234 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#9 6.397 
+#9 6.397 [notice] A new release of pip is available: 24.0 -> 26.2.1
+#9 6.397 [notice] To update, run: pip install --upgrade pip
+#9 DONE 6.9s
+
+#10 [final 1/1] COPY . .
+#10 DONE 0.2s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 2.0s done
+#11 exporting manifest sha256:9d6ca1e08f0dc90419c5b99af3f17e2de5840e924f00204f2a11a2142ecab6ee 0.1s done
+#11 exporting config sha256:36a8a038255f3685552b51758e26bc7001b456d432d90065da5d50da57f176dd 0.0s done
+#11 exporting attestation manifest sha256:613466989eba4c6b69cd665e9ed94dde2bb4ef25de753bd954e78c4b149c9e82 0.0s done
+#11 exporting manifest list sha256:9e03368154fda4ba8122e6ab3644fca69f9aeab9527acda81c9afb7f68d36866 0.0s done
+#11 naming to docker.io/library/example-voting-app-vote:ci
+#11 naming to docker.io/library/example-voting-app-vote:ci done
+#11 unpacking to docker.io/library/example-voting-app-vote:ci
+#11 unpacking to docker.io/library/example-voting-app-vote:ci 2.0s done
+#11 DONE 4.4s
+<<< vote build exit=0
+>>> docker build -t example-voting-app-result:ci ./result
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 550B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:18-slim
+#2 DONE 1.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 55B done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 281.44kB 0.1s done
+#4 DONE 0.3s
+
+#5 [1/7] FROM docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e
+#5 resolve docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e 0.2s done
+#5 DONE 0.5s
+
+#5 [1/7] FROM docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e
+#5 sha256:8c994cf49dd19aec88c96926e1a13b36a8f3e159942a5a2d0a9e2dc3e9e6c3dc 448B / 448B 0.1s done
+#5 sha256:c768ab8cba73bb84835e67ed974c93e3e0e3ce1f67a73802422d66021fc9a07a 0B / 1.71MB 0.2s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 0B / 38.25MB 0.2s
+#5 sha256:b98d3ae1ab80d768fc7be41c07c4757d205cc33d2d26261b8273defb45455315 0B / 3.31kB 0.2s
+#5 sha256:c768ab8cba73bb84835e67ed974c93e3e0e3ce1f67a73802422d66021fc9a07a 1.71MB / 1.71MB 0.3s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 0B / 28.23MB 0.2s
+#5 sha256:c768ab8cba73bb84835e67ed974c93e3e0e3ce1f67a73802422d66021fc9a07a 1.71MB / 1.71MB 0.3s done
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 3.15MB / 28.23MB 0.5s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 3.44MB / 38.25MB 0.9s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 5.24MB / 28.23MB 0.8s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 6.29MB / 38.25MB 1.2s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 7.34MB / 28.23MB 1.2s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 9.44MB / 38.25MB 1.5s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 9.44MB / 28.23MB 1.4s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 12.58MB / 38.25MB 1.8s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 12.58MB / 28.23MB 1.7s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 14.68MB / 38.25MB 2.0s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 14.68MB / 28.23MB 2.0s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 17.83MB / 38.25MB 2.3s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 16.78MB / 28.23MB 2.1s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 19.92MB / 38.25MB 2.6s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 19.92MB / 28.23MB 2.4s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 22.02MB / 38.25MB 2.7s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 22.02MB / 28.23MB 2.7s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 24.12MB / 38.25MB 3.0s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 24.12MB / 28.23MB 3.0s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 26.21MB / 38.25MB 3.3s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 26.21MB / 28.23MB 3.3s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 28.31MB / 38.25MB 3.6s
+#5 sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 28.23MB / 28.23MB 3.6s done
+#5 extracting sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 30.41MB / 38.25MB 3.8s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 32.51MB / 38.25MB 4.1s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 34.60MB / 38.25MB 4.4s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 36.70MB / 38.25MB 4.7s
+#5 sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 38.25MB / 38.25MB 5.0s done
+#5 extracting sha256:61320b01ae5e0798393ef25f2dc72faf43703e60ba089b07d7170acbabbf8f62 3.0s done
+#5 DONE 7.4s
+
+#5 [1/7] FROM docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e
+#5 extracting sha256:b98d3ae1ab80d768fc7be41c07c4757d205cc33d2d26261b8273defb45455315 0.1s done
+#5 extracting sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d
+#5 extracting sha256:b1831021e35a69864dfc4c89eab9ab1232cf3508c787b082c55ee386c5c8527d 2.4s done
+#5 DONE 9.9s
+
+#5 [1/7] FROM docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e
+#5 extracting sha256:c768ab8cba73bb84835e67ed974c93e3e0e3ce1f67a73802422d66021fc9a07a
+#5 extracting sha256:c768ab8cba73bb84835e67ed974c93e3e0e3ce1f67a73802422d66021fc9a07a 0.2s done
+#5 DONE 10.1s
+
+#5 [1/7] FROM docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e
+#5 extracting sha256:8c994cf49dd19aec88c96926e1a13b36a8f3e159942a5a2d0a9e2dc3e9e6c3dc 0.1s done
+#5 DONE 10.1s
+
+#6 [2/7] RUN apt-get update &&     apt-get install -y --no-install-recommends curl tini &&     rm -rf /var/lib/apt/lists/*
+#6 0.740 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#6 0.819 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#6 0.835 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+#6 1.144 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#6 4.362 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#6 4.365 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [336 kB]
+#6 6.132 Fetched 9375 kB in 6s (1699 kB/s)
+#6 6.132 Reading package lists...
+#6 8.102 Reading package lists...
+#6 9.706 Building dependency tree...
+#6 10.04 Reading state information...
+#6 10.35 The following additional packages will be installed:
+#6 10.35   libbrotli1 libcurl4 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+#6 10.35   libkrb5support0 libldap-2.5-0 libnghttp2-14 libpsl5 librtmp1 libsasl2-2
+#6 10.35   libsasl2-modules-db libssh2-1 libssl3
+#6 10.35 Suggested packages:
+#6 10.35   krb5-doc krb5-user
+#6 10.35 Recommended packages:
+#6 10.35   ca-certificates krb5-locales libldap-common publicsuffix libsasl2-modules
+#6 10.57 The following NEW packages will be installed:
+#6 10.57   curl libbrotli1 libcurl4 libgssapi-krb5-2 libk5crypto3 libkeyutils1
+#6 10.57   libkrb5-3 libkrb5support0 libldap-2.5-0 libnghttp2-14 libpsl5 librtmp1
+#6 10.58   libsasl2-2 libsasl2-modules-db libssh2-1 libssl3 tini
+#6 10.65 0 upgraded, 17 newly installed, 0 to remove and 27 not upgraded.
+#6 10.65 Need to get 4510 kB of archives.
+#6 10.65 After this operation, 12.7 MB of additional disk space will be used.
+#6 10.65 Get:1 http://deb.debian.org/debian bookworm/main amd64 libbrotli1 amd64 1.0.9-2+b6 [275 kB]
+#6 10.72 Get:2 http://deb.debian.org/debian bookworm/main amd64 libkrb5support0 amd64 1.20.1-2+deb12u5 [33.2 kB]
+#6 10.72 Get:3 http://deb.debian.org/debian bookworm/main amd64 libk5crypto3 amd64 1.20.1-2+deb12u5 [79.7 kB]
+#6 10.73 Get:4 http://deb.debian.org/debian bookworm/main amd64 libkeyutils1 amd64 1.6.3-2 [8808 B]
+#6 10.74 Get:5 http://deb.debian.org/debian bookworm/main amd64 libssl3 amd64 3.0.20-1~deb12u2 [2036 kB]
+#6 10.94 Get:6 http://deb.debian.org/debian bookworm/main amd64 libkrb5-3 amd64 1.20.1-2+deb12u5 [332 kB]
+#6 10.98 Get:7 http://deb.debian.org/debian bookworm/main amd64 libgssapi-krb5-2 amd64 1.20.1-2+deb12u5 [135 kB]
+#6 10.98 Get:8 http://deb.debian.org/debian bookworm/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg-10 [20.3 kB]
+#6 10.99 Get:9 http://deb.debian.org/debian bookworm/main amd64 libsasl2-2 amd64 2.1.28+dfsg-10 [59.7 kB]
+#6 10.99 Get:10 http://deb.debian.org/debian bookworm/main amd64 libldap-2.5-0 amd64 2.5.13+dfsg-5 [183 kB]
+#6 11.01 Get:11 http://deb.debian.org/debian bookworm/main amd64 libnghttp2-14 amd64 1.52.0-1+deb12u3 [72.4 kB]
+#6 11.01 Get:12 http://deb.debian.org/debian bookworm/main amd64 libpsl5 amd64 0.21.2-1 [58.7 kB]
+#6 11.02 Get:13 http://deb.debian.org/debian bookworm/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b2 [60.8 kB]
+#6 11.02 Get:14 http://deb.debian.org/debian bookworm/main amd64 libssh2-1 amd64 1.10.0-3+b1 [179 kB]
+#6 11.06 Get:15 http://deb.debian.org/debian bookworm/main amd64 libcurl4 amd64 7.88.1-10+deb12u15 [392 kB]
+#6 11.10 Get:16 http://deb.debian.org/debian bookworm/main amd64 curl amd64 7.88.1-10+deb12u15 [316 kB]
+#6 11.16 Get:17 http://deb.debian.org/debian bookworm/main amd64 tini amd64 0.19.0-1+b3 [267 kB]
+#6 11.40 debconf: delaying package configuration, since apt-utils is not installed
+#6 11.46 Fetched 4510 kB in 1s (7565 kB/s)
+#6 11.53 Selecting previously unselected package libbrotli1:amd64.
+#6 11.53 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6089 files and directories currently installed.)
+#6 11.54 Preparing to unpack .../00-libbrotli1_1.0.9-2+b6_amd64.deb ...
+#6 11.57 Unpacking libbrotli1:amd64 (1.0.9-2+b6) ...
+#6 11.84 Selecting previously unselected package libkrb5support0:amd64.
+#6 11.84 Preparing to unpack .../01-libkrb5support0_1.20.1-2+deb12u5_amd64.deb ...
+#6 11.86 Unpacking libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#6 11.99 Selecting previously unselected package libk5crypto3:amd64.
+#6 11.99 Preparing to unpack .../02-libk5crypto3_1.20.1-2+deb12u5_amd64.deb ...
+#6 12.01 Unpacking libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#6 12.32 Selecting previously unselected package libkeyutils1:amd64.
+#6 12.32 Preparing to unpack .../03-libkeyutils1_1.6.3-2_amd64.deb ...
+#6 12.33 Unpacking libkeyutils1:amd64 (1.6.3-2) ...
+#6 12.45 Selecting previously unselected package libssl3:amd64.
+#6 12.45 Preparing to unpack .../04-libssl3_3.0.20-1~deb12u2_amd64.deb ...
+#6 12.47 Unpacking libssl3:amd64 (3.0.20-1~deb12u2) ...
+#6 12.78 Selecting previously unselected package libkrb5-3:amd64.
+#6 12.78 Preparing to unpack .../05-libkrb5-3_1.20.1-2+deb12u5_amd64.deb ...
+#6 12.79 Unpacking libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#6 12.95 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#6 12.95 Preparing to unpack .../06-libgssapi-krb5-2_1.20.1-2+deb12u5_amd64.deb ...
+#6 12.96 Unpacking libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#6 13.14 Selecting previously unselected package libsasl2-modules-db:amd64.
+#6 13.14 Preparing to unpack .../07-libsasl2-modules-db_2.1.28+dfsg-10_amd64.deb ...
+#6 13.16 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+#6 13.45 Selecting previously unselected package libsasl2-2:amd64.
+#6 13.45 Preparing to unpack .../08-libsasl2-2_2.1.28+dfsg-10_amd64.deb ...
+#6 13.51 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+#6 13.83 Selecting previously unselected package libldap-2.5-0:amd64.
+#6 13.83 Preparing to unpack .../09-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+#6 13.85 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#6 14.14 Selecting previously unselected package libnghttp2-14:amd64.
+#6 14.14 Preparing to unpack .../10-libnghttp2-14_1.52.0-1+deb12u3_amd64.deb ...
+#6 14.17 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#6 14.34 Selecting previously unselected package libpsl5:amd64.
+#6 14.35 Preparing to unpack .../11-libpsl5_0.21.2-1_amd64.deb ...
+#6 14.38 Unpacking libpsl5:amd64 (0.21.2-1) ...
+#6 14.57 Selecting previously unselected package librtmp1:amd64.
+#6 14.58 Preparing to unpack .../12-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...
+#6 14.59 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#6 14.69 Selecting previously unselected package libssh2-1:amd64.
+#6 14.69 Preparing to unpack .../13-libssh2-1_1.10.0-3+b1_amd64.deb ...
+#6 14.70 Unpacking libssh2-1:amd64 (1.10.0-3+b1) ...
+#6 14.82 Selecting previously unselected package libcurl4:amd64.
+#6 14.82 Preparing to unpack .../14-libcurl4_7.88.1-10+deb12u15_amd64.deb ...
+#6 14.83 Unpacking libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#6 14.94 Selecting previously unselected package curl.
+#6 14.94 Preparing to unpack .../15-curl_7.88.1-10+deb12u15_amd64.deb ...
+#6 14.95 Unpacking curl (7.88.1-10+deb12u15) ...
+#6 15.08 Selecting previously unselected package tini.
+#6 15.08 Preparing to unpack .../16-tini_0.19.0-1+b3_amd64.deb ...
+#6 15.09 Unpacking tini (0.19.0-1+b3) ...
+#6 15.23 Setting up libkeyutils1:amd64 (1.6.3-2) ...
+#6 15.28 Setting up libpsl5:amd64 (0.21.2-1) ...
+#6 15.32 Setting up libbrotli1:amd64 (1.0.9-2+b6) ...
+#6 15.35 Setting up libssl3:amd64 (3.0.20-1~deb12u2) ...
+#6 15.39 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#6 15.43 Setting up libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#6 15.47 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+#6 15.51 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#6 15.55 Setting up tini (0.19.0-1+b3) ...
+#6 15.59 Setting up libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#6 15.63 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+#6 15.68 Setting up libssh2-1:amd64 (1.10.0-3+b1) ...
+#6 15.72 Setting up libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#6 15.76 Setting up libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#6 15.95 Setting up libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#6 16.05 Setting up libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#6 16.12 Setting up curl (7.88.1-10+deb12u15) ...
+#6 16.24 Processing triggers for libc-bin (2.36-9+deb12u10) ...
+#6 DONE 18.6s
+
+#7 [3/7] WORKDIR /usr/local/app
+#7 DONE 0.2s
+
+#8 [4/7] RUN npm install -g nodemon
+#8 1.921 npm warn EBADENGINE Unsupported engine {
+#8 1.921 npm warn EBADENGINE   package: 'brace-expansion@5.0.9',
+#8 1.921 npm warn EBADENGINE   required: { node: '20 || >=22' },
+#8 1.921 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+#8 1.921 npm warn EBADENGINE }
+#8 2.506 
+#8 2.506 added 28 packages in 2s
+#8 2.506 
+#8 2.506 5 packages are looking for funding
+#8 2.506   run `npm fund` for details
+#8 2.509 npm notice
+#8 2.509 npm notice New major version of npm available! 10.8.2 -> 12.0.2
+#8 2.509 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+#8 2.509 npm notice To update run: npm install -g npm@12.0.2
+#8 2.509 npm notice
+#8 DONE 2.7s
+
+#9 [5/7] COPY package*.json ./
+#9 DONE 0.2s
+
+#10 [6/7] RUN npm ci &&  npm cache clean --force &&  mv /usr/local/app/node_modules /node_modules
+#10 3.865 
+#10 3.865 added 99 packages, and audited 100 packages in 3s
+#10 3.865 
+#10 3.865 8 packages are looking for funding
+#10 3.865   run `npm fund` for details
+#10 3.895 
+#10 3.895 13 vulnerabilities (4 low, 1 moderate, 8 high)
+#10 3.895 
+#10 3.895 To address all issues, run:
+#10 3.895   npm audit fix
+#10 3.895 
+#10 3.895 Run `npm audit` for details.
+#10 4.057 npm warn using --force Recommended protections disabled.
+#10 DONE 4.9s
+
+#11 [7/7] COPY . .
+#11 DONE 0.2s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 1.7s done
+#12 exporting manifest sha256:ceb85b5f9f3775fec5aed1c46fd2b7044977d36e1d7825d531c513c3b77e185d 0.0s done
+#12 exporting config sha256:2ace03b8f69cd33b30a71bb1b5bf0ffd5dc63018ee43e7554c90814b2fa1c67b 0.0s done
+#12 exporting attestation manifest sha256:7fc8912158049d63c994328c62f523b4ad58f4d79f2c7a0ad68596f62767b13a
+#12 exporting attestation manifest sha256:7fc8912158049d63c994328c62f523b4ad58f4d79f2c7a0ad68596f62767b13a 0.0s done
+#12 exporting manifest list sha256:a408f1460c7c8d414be8da0759aeae7b73315ffdaebff4ff1fceacc9e62be9d0 0.0s done
+#12 naming to docker.io/library/example-voting-app-result:ci done
+#12 unpacking to docker.io/library/example-voting-app-result:ci
+#12 unpacking to docker.io/library/example-voting-app-result:ci 0.9s done
+#12 DONE 2.9s
+<<< result build exit=0
+>>> docker build -t example-voting-app-worker:ci ./worker
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.13kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:7.0
+#2 DONE 0.9s
+
+#3 [internal] load metadata for mcr.microsoft.com/dotnet/runtime:7.0
+#3 DONE 0.9s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#6 resolve mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f 0.1s done
+#6 ...
+
+#5 [internal] load build context
+#5 transferring context: 7.32kB 0.0s done
+#5 DONE 0.3s
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 resolve mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d 0.1s done
+#7 ...
+
+#6 [stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#6 DONE 0.6s
+
+#6 [stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#6 sha256:f1b39e168c1c776458e172f157167607b9fd3cc550af8e6ff0a7dd363c1e64ea 0B / 153B 0.2s
+#6 ...
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 DONE 1.0s
+
+#6 [stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 0B / 32.46MB 0.2s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 0B / 14.97MB 0.2s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 0B / 31.43MB 0.2s
+#6 sha256:f1b39e168c1c776458e172f157167607b9fd3cc550af8e6ff0a7dd363c1e64ea 153B / 153B 0.3s done
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 1.05MB / 14.97MB 0.5s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 2.10MB / 14.97MB 0.6s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 3.15MB / 14.97MB 0.9s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 2.10MB / 32.46MB 1.2s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 4.19MB / 14.97MB 1.2s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 2.10MB / 31.43MB 1.2s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 5.24MB / 14.97MB 2.0s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 4.19MB / 31.43MB 2.0s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 4.19MB / 32.46MB 2.3s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 6.29MB / 14.97MB 2.4s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 7.34MB / 14.97MB 2.9s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 8.39MB / 14.97MB 3.2s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 6.29MB / 32.46MB 3.5s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 9.44MB / 14.97MB 3.5s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 6.29MB / 31.43MB 3.5s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 10.49MB / 14.97MB 3.9s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 11.53MB / 14.97MB 4.5s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 8.39MB / 31.43MB 4.5s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 8.39MB / 32.46MB 4.8s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 12.58MB / 14.97MB 5.1s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 13.63MB / 14.97MB 5.6s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 10.49MB / 32.46MB 6.0s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 10.49MB / 31.43MB 6.0s
+#6 sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 14.97MB / 14.97MB 6.2s done
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 12.58MB / 32.46MB 6.9s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 12.58MB / 31.43MB 6.9s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 14.68MB / 31.43MB 7.7s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 14.68MB / 32.46MB 8.3s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 16.78MB / 31.43MB 8.9s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 16.78MB / 32.46MB 9.6s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 18.87MB / 31.43MB 10.2s
+#6 ...
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 sha256:c549dbd140e5a09bcc7e4b1da89ed4b96a0340a730303fbe2e903d46cf06456e 13.99MB / 13.99MB 5.1s done
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 7.34MB / 180.57MB 4.8s
+#7 sha256:22689bb63f95af71c8c0079742ff0afa570fa6cfc30ecfa7873976890829a24d 7.34MB / 25.37MB 4.1s
+#7 ...
+
+#6 [stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 18.87MB / 32.46MB 10.7s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 20.97MB / 31.43MB 11.6s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 20.97MB / 32.46MB 11.7s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 23.07MB / 32.46MB 12.5s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 23.07MB / 31.43MB 12.5s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 25.17MB / 31.43MB 13.2s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 25.17MB / 32.46MB 13.8s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 27.26MB / 31.43MB 14.4s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 27.26MB / 32.46MB 14.7s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 29.36MB / 31.43MB 15.1s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 29.36MB / 32.46MB 16.0s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 31.43MB / 31.43MB 16.5s
+#6 sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 31.43MB / 31.43MB 16.8s done
+#6 extracting sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 31.46MB / 32.46MB 16.9s
+#6 sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 32.46MB / 32.46MB 17.5s done
+#6 ...
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 23.07MB / 180.57MB 13.5s
+#7 sha256:22689bb63f95af71c8c0079742ff0afa570fa6cfc30ecfa7873976890829a24d 25.37MB / 25.37MB 12.8s done
+#7 sha256:f194078e85f8008c084163778aaf266434f7182e0d4f783646f41b388c88a13a 7.34MB / 10.12MB 2.3s
+#7 sha256:f194078e85f8008c084163778aaf266434f7182e0d4f783646f41b388c88a13a 8.39MB / 10.12MB 2.6s
+#7 sha256:f194078e85f8008c084163778aaf266434f7182e0d4f783646f41b388c88a13a 9.44MB / 10.12MB 3.0s
+#7 ...
+
+#6 [stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#6 extracting sha256:728328ac3bde9b85225b1f0d60f5c149f5635a191f5d8eaeeb00e095d36ef9fd 3.1s done
+#6 extracting sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc
+#6 extracting sha256:82bb7a80de578404d92b5ae5e67f3de90eab30027694d2609be35ad25b09e3bc 0.7s done
+#6 DONE 21.3s
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 sha256:f194078e85f8008c084163778aaf266434f7182e0d4f783646f41b388c88a13a 10.12MB / 10.12MB 3.3s done
+#7 ...
+
+#6 [stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#6 extracting sha256:534ba947de6ac79fd6168f4a93847954b23bab2782700bbfff7f31e61a03e8d4 0.8s done
+#6 extracting sha256:f1b39e168c1c776458e172f157167607b9fd3cc550af8e6ff0a7dd363c1e64ea 0.1s done
+#6 DONE 22.2s
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 extracting sha256:f194078e85f8008c084163778aaf266434f7182e0d4f783646f41b388c88a13a
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 32.51MB / 180.57MB 17.6s
+#7 ...
+
+#8 [stage-1 2/3] WORKDIR /app
+#8 DONE 3.3s
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 extracting sha256:f194078e85f8008c084163778aaf266434f7182e0d4f783646f41b388c88a13a 3.2s done
+#7 extracting sha256:22689bb63f95af71c8c0079742ff0afa570fa6cfc30ecfa7873976890829a24d
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 41.94MB / 180.57MB 21.9s
+#7 extracting sha256:22689bb63f95af71c8c0079742ff0afa570fa6cfc30ecfa7873976890829a24d 4.0s done
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 51.38MB / 180.57MB 25.6s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 60.82MB / 180.57MB 29.7s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 70.25MB / 180.57MB 33.3s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 79.69MB / 180.57MB 35.4s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 89.13MB / 180.57MB 38.5s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 98.57MB / 180.57MB 41.4s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 107.92MB / 180.57MB 43.8s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 117.44MB / 180.57MB 47.7s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 126.88MB / 180.57MB 51.6s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 136.31MB / 180.57MB 54.3s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 145.75MB / 180.57MB 57.6s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 155.19MB / 180.57MB 60.6s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 164.63MB / 180.57MB 64.0s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 174.06MB / 180.57MB 67.0s
+#7 sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 180.57MB / 180.57MB 68.7s done
+#7 extracting sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4
+#7 extracting sha256:5e263829ce76bc29ff631384bd5e93356d28625461ca507fadc46ec4ac549fb4 7.3s done
+#7 DONE 82.2s
+
+#7 [build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#7 extracting sha256:c549dbd140e5a09bcc7e4b1da89ed4b96a0340a730303fbe2e903d46cf06456e
+#7 extracting sha256:c549dbd140e5a09bcc7e4b1da89ed4b96a0340a730303fbe2e903d46cf06456e 1.2s done
+#7 DONE 83.4s
+
+#9 [build 2/7] RUN echo "I am running on linux/amd64, building for linux/amd64"
+#9 0.448 I am running on linux/amd64, building for linux/amd64
+#9 DONE 4.3s
+
+#10 [build 3/7] WORKDIR /source
+#10 DONE 0.2s
+
+#11 [build 4/7] COPY *.csproj .
+#11 DONE 0.1s
+
+#12 [build 5/7] RUN dotnet restore -a amd64
+#12 2.403   Determining projects to restore...
+#12 7.254   Restored /source/Worker.csproj (in 4.15 sec).
+#12 DONE 7.7s
+
+#13 [build 6/7] COPY . .
+#13 DONE 0.2s
+
+#14 [build 7/7] RUN dotnet publish -c release -o /app -a amd64 --self-contained false --no-restore
+#14 0.879 MSBuild version 17.7.6+77d58ec69 for .NET
+#14 9.778   Worker -> /source/bin/release/net7.0/linux-x64/Worker.dll
+#14 9.856   Worker -> /app/
+#14 DONE 10.0s
+
+#15 [stage-1 3/3] COPY --from=build /app .
+#15 DONE 0.2s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.9s done
+#16 exporting manifest sha256:22cd3458c786dbd836b3ee6753ff682c84097094c3551390ccb02d1f9170f501 0.1s done
+#16 exporting config sha256:7a2deddf8409d2f907620c0f6b9399fb326405b261eb5f6590713df4834005f1
+#16 exporting config sha256:7a2deddf8409d2f907620c0f6b9399fb326405b261eb5f6590713df4834005f1 0.2s done
+#16 exporting attestation manifest sha256:adaea66a79190c6ffd2fab28a6f7bc2e91a57310d8c34b9b9a82a083d649185e 0.1s done
+#16 exporting manifest list sha256:56d6d621b8a2405069b12720094a14be20c335bf6c9baa3e403d28134ab9f024
+#16 exporting manifest list sha256:56d6d621b8a2405069b12720094a14be20c335bf6c9baa3e403d28134ab9f024 0.0s done
+#16 naming to docker.io/library/example-voting-app-worker:ci 0.0s done
+#16 unpacking to docker.io/library/example-voting-app-worker:ci
+#16 unpacking to docker.io/library/example-voting-app-worker:ci 0.2s done
+#16 DONE 1.5s
+<<< worker build exit=0
+----------------------------------------------------------------
+##[endgroup]
+
+##[group] job: e2e -- docker compose up -d --build --wait
+----------------------------------------------------------------
+ Image redis:alpine Pulling 
+ Image postgres:15-alpine Pulling 
+ aae5c34d2458 Pulling fs layer 0B
+ dcaf2c69e5bf Pulling fs layer 0B
+ e6f31ffc071e Pulling fs layer 0B
+ 5c39d5b7aae4 Pulling fs layer 0B
+ 59b5200b7471 Pulling fs layer 0B
+ 5107053fcce4 Pulling fs layer 0B
+ 4f4fb700ef54 Pulling fs layer 0B
+ 236e3b4c2204 Pulling fs layer 0B
+ d30adf595bd0 Pulling fs layer 0B
+ 55afa1ecc21d Pulling fs layer 0B
+ 2521846a4c4b Pulling fs layer 0B
+ 516ac23b2d22 Pulling fs layer 0B
+ 26065aa66f8d Pulling fs layer 0B
+ a5b616744b9f Pulling fs layer 0B
+ ecbc0f97fe87 Pulling fs layer 0B
+ 0141deae452e Pulling fs layer 0B
+ 4989bdaa0ad3 Pulling fs layer 0B
+ e7426913c582 Pulling fs layer 0B
+ e6f31ffc071e Downloading 1.049MB
+ e6f31ffc071e Downloading 2.097MB
+ e6f31ffc071e Downloading 3.146MB
+ aae5c34d2458 Downloading 951B
+ e6f31ffc071e Download complete 0B
+ e6f31ffc071e Extracting 1B
+ dcaf2c69e5bf Downloading 196.9kB
+ aae5c34d2458 Downloading 951B
+ e6f31ffc071e Extracting 1B
+ aae5c34d2458 Download complete 0B
+ dcaf2c69e5bf Download complete 0B
+ e6f31ffc071e Extracting 1B
+ e6f31ffc071e Extracting 1B
+ 5c39d5b7aae4 Downloading 1.049MB
+ 59b5200b7471 Downloading 100B
+ 4f4fb700ef54 Downloading 32B
+ e6f31ffc071e Extracting 1B
+ 5107053fcce4 Downloading 2.102kB
+ 4f4fb700ef54 Download complete 0B
+ 5c39d5b7aae4 Downloading 2.097MB
+ e6f31ffc071e Extracting 1B
+ 5c39d5b7aae4 Downloading 3.146MB
+ 59b5200b7471 Download complete 0B
+ e6f31ffc071e Extracting 1B
+ 5107053fcce4 Download complete 0B
+ 5c39d5b7aae4 Downloading 3.146MB
+ 516ac23b2d22 Downloading 900.3kB
+ 5c39d5b7aae4 Downloading 3.146MB
+ 2521846a4c4b Download complete 0B
+ e6f31ffc071e Pull complete 0B
+ 516ac23b2d22 Download complete 0B
+ aae5c34d2458 Extracting 1B
+ 55afa1ecc21d Downloading 1.049MB
+ 5c39d5b7aae4 Downloading 3.666MB
+ 5c39d5b7aae4 Downloading 4.194MB
+ 55afa1ecc21d Downloading 1.049MB
+ aae5c34d2458 Pull complete 0B
+ 5c39d5b7aae4 Downloading 4.194MB
+ dcaf2c69e5bf Extracting 1B
+ 236e3b4c2204 Download complete 0B
+ 55afa1ecc21d Downloading 1.049MB
+ 5c39d5b7aae4 Downloading 4.194MB
+ dcaf2c69e5bf Extracting 1B
+ 55afa1ecc21d Downloading 2.097MB
+ 26065aa66f8d Download complete 0B
+ 5c39d5b7aae4 Downloading 5.243MB
+ dcaf2c69e5bf Extracting 1B
+ 55afa1ecc21d Downloading 2.097MB
+ 0141deae452e Download complete 0B
+ 5c39d5b7aae4 Downloading 5.243MB
+ dcaf2c69e5bf Pull complete 0B
+ 55afa1ecc21d Downloading 3.146MB
+ 5c39d5b7aae4 Downloading 6.291MB
+ 55afa1ecc21d Downloading 3.846MB
+ e7426913c582 Download complete 0B
+ a5b616744b9f Download complete 0B
+ 5c39d5b7aae4 Downloading 7.34MB
+ 55afa1ecc21d Download complete 0B
+ 55afa1ecc21d Extracting 1B
+ 5c39d5b7aae4 Downloading 7.34MB
+ 55afa1ecc21d Extracting 1B
+ 5c39d5b7aae4 Downloading 8.389MB
+ 4989bdaa0ad3 Download complete 0B
+ 55afa1ecc21d Extracting 1B
+ 5c39d5b7aae4 Downloading 8.389MB
+ ecbc0f97fe87 Downloading 1.049MB
+ 55afa1ecc21d Extracting 1B
+ 5c39d5b7aae4 Downloading 9.437MB
+ d30adf595bd0 Download complete 0B
+ ecbc0f97fe87 Downloading 1.049MB
+ 55afa1ecc21d Extracting 1B
+ 5c39d5b7aae4 Downloading 9.437MB
+ ecbc0f97fe87 Downloading 1.049MB
+ 55afa1ecc21d Pull complete 0B
+ 5c39d5b7aae4 Downloading 9.732MB
+ 72951379407e Download complete 0B
+ ecbc0f97fe87 Downloading 2.097MB
+ 2521846a4c4b Pull complete 0B
+ 5c39d5b7aae4 Downloading 10.49MB
+ e237c80e2d80 Download complete 0B
+ ecbc0f97fe87 Downloading 3.146MB
+ 516ac23b2d22 Extracting 1B
+ 5c39d5b7aae4 Downloading 10.49MB
+ ecbc0f97fe87 Downloading 3.146MB
+ 5c39d5b7aae4 Downloading 11.53MB
+ ecbc0f97fe87 Downloading 3.146MB
+ 516ac23b2d22 Pull complete 0B
+ d30adf595bd0 Extracting 1B
+ 5c39d5b7aae4 Downloading 11.53MB
+ f9b271aad813 Downloading 598kB
+ ecbc0f97fe87 Downloading 4.194MB
+ d30adf595bd0 Pull complete 0B
+ 5c39d5b7aae4 Downloading 12.58MB
+ ecbc0f97fe87 Downloading 4.194MB
+ f9b271aad813 Download complete 0B
+ a5b616744b9f Pull complete 0B
+ 5c39d5b7aae4 Downloading 13.63MB
+ ecbc0f97fe87 Downloading 5.243MB
+ 5c39d5b7aae4 Downloading 14.68MB
+ ecbc0f97fe87 Downloading 6.291MB
+ f67b1fb6e304 Download complete 0B
+ 5c39d5b7aae4 Downloading 14.68MB
+ ecbc0f97fe87 Downloading 7.34MB
+ 5c39d5b7aae4 Downloading 14.68MB
+ ecbc0f97fe87 Downloading 7.34MB
+ ecbc0f97fe87 Downloading 7.34MB
+ 5c39d5b7aae4 Downloading 15.73MB
+ 5c39d5b7aae4 Downloading 15.73MB
+ ecbc0f97fe87 Downloading 8.389MB
+ 5c39d5b7aae4 Downloading 16.78MB
+ ecbc0f97fe87 Downloading 9.437MB
+ 5c39d5b7aae4 Downloading 16.78MB
+ ecbc0f97fe87 Downloading 9.437MB
+ ecbc0f97fe87 Downloading 10.49MB
+ 5c39d5b7aae4 Downloading 17.83MB
+ 5c39d5b7aae4 Downloading 18.87MB
+ ecbc0f97fe87 Downloading 11.53MB
+ 5c39d5b7aae4 Downloading 18.87MB
+ ecbc0f97fe87 Downloading 12.58MB
+ 5c39d5b7aae4 Downloading 19.92MB
+ ecbc0f97fe87 Downloading 13.63MB
+ 5c39d5b7aae4 Downloading 20.97MB
+ ecbc0f97fe87 Downloading 13.63MB
+ 5c39d5b7aae4 Downloading 20.97MB
+ ecbc0f97fe87 Downloading 14.68MB
+ 5c39d5b7aae4 Downloading 22.02MB
+ ecbc0f97fe87 Downloading 14.68MB
+ ecbc0f97fe87 Downloading 15.73MB
+ 5c39d5b7aae4 Downloading 23.07MB
+ 5c39d5b7aae4 Downloading 24.12MB
+ ecbc0f97fe87 Downloading 16.78MB
+ 5c39d5b7aae4 Downloading 24.12MB
+ ecbc0f97fe87 Downloading 16.78MB
+ 5c39d5b7aae4 Downloading 25.17MB
+ ecbc0f97fe87 Downloading 17.83MB
+ 5c39d5b7aae4 Downloading 26.21MB
+ ecbc0f97fe87 Downloading 18.87MB
+ 5c39d5b7aae4 Downloading 26.21MB
+ ecbc0f97fe87 Downloading 19.92MB
+ 5c39d5b7aae4 Downloading 27.26MB
+ ecbc0f97fe87 Downloading 19.92MB
+ 5c39d5b7aae4 Downloading 27.26MB
+ ecbc0f97fe87 Downloading 20.97MB
+ 5c39d5b7aae4 Downloading 28.31MB
+ ecbc0f97fe87 Downloading 20.97MB
+ 5c39d5b7aae4 Downloading 28.31MB
+ ecbc0f97fe87 Downloading 22.02MB
+ ecbc0f97fe87 Downloading 22.02MB
+ 5c39d5b7aae4 Downloading 29.36MB
+ 5c39d5b7aae4 Downloading 29.36MB
+ ecbc0f97fe87 Downloading 23.07MB
+ 5c39d5b7aae4 Downloading 30.41MB
+ ecbc0f97fe87 Downloading 23.07MB
+ 5c39d5b7aae4 Downloading 30.41MB
+ ecbc0f97fe87 Downloading 23.07MB
+ 5c39d5b7aae4 Downloading 31.46MB
+ ecbc0f97fe87 Downloading 24.12MB
+ 5c39d5b7aae4 Downloading 31.46MB
+ ecbc0f97fe87 Downloading 25.17MB
+ 5c39d5b7aae4 Downloading 32.51MB
+ ecbc0f97fe87 Downloading 25.17MB
+ 5c39d5b7aae4 Downloading 32.97MB
+ ecbc0f97fe87 Downloading 26.21MB
+ 5c39d5b7aae4 Downloading 33.55MB
+ ecbc0f97fe87 Downloading 26.21MB
+ ecbc0f97fe87 Downloading 26.21MB
+ 5c39d5b7aae4 Downloading 33.55MB
+ ecbc0f97fe87 Downloading 27.26MB
+ 5c39d5b7aae4 Downloading 34.6MB
+ ecbc0f97fe87 Downloading 27.26MB
+ 5c39d5b7aae4 Downloading 34.96MB
+ 5c39d5b7aae4 Downloading 34.96MB
+ ecbc0f97fe87 Downloading 28.31MB
+ 5c39d5b7aae4 Download complete 0B
+ ecbc0f97fe87 Downloading 30.41MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 31.46MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 31.46MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 32.51MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 32.51MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 32.51MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 33.55MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 33.55MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 33.65MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 34.6MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 35.65MB
+ 5c39d5b7aae4 Extracting 1B
+ ecbc0f97fe87 Downloading 36.7MB
+ 5c39d5b7aae4 Extracting 2B
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 36.7MB
+ ecbc0f97fe87 Downloading 36.7MB
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 37.75MB
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 37.75MB
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 37.75MB
+ 5c39d5b7aae4 Extracting 2B
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 37.75MB
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 38.8MB
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 38.8MB
+ 5c39d5b7aae4 Extracting 2B
+ ecbc0f97fe87 Downloading 39.85MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 40.89MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 41.94MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 41.94MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 42.99MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 42.99MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 43.09MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 44.04MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 45.09MB
+ 5c39d5b7aae4 Extracting 3B
+ ecbc0f97fe87 Downloading 45.09MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 45.95MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 46.2MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 47.19MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 47.19MB
+ ecbc0f97fe87 Downloading 47.21MB
+ 5c39d5b7aae4 Extracting 4B
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 47.8MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 48.13MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 48.23MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 48.23MB
+ 5c39d5b7aae4 Extracting 4B
+ ecbc0f97fe87 Downloading 49.03MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 49.28MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 49.28MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 50.33MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 50.34MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 51.38MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 52.43MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 52.43MB
+ 5c39d5b7aae4 Extracting 5B
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 53.08MB
+ ecbc0f97fe87 Downloading 53.27MB
+ 5c39d5b7aae4 Extracting 5B
+ ecbc0f97fe87 Downloading 54.53MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 54.53MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 54.53MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 54.87MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 55.58MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 56.16MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 56.62MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 56.75MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 57.67MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 57.67MB
+ 5c39d5b7aae4 Extracting 6B
+ ecbc0f97fe87 Downloading 57.67MB
+ 5c39d5b7aae4 Extracting 7B
+ ecbc0f97fe87 Downloading 57.67MB
+ 5c39d5b7aae4 Extracting 7B
+ ecbc0f97fe87 Downloading 57.93MB
+ 5c39d5b7aae4 Extracting 7B
+ ecbc0f97fe87 Downloading 58.72MB
+ 5c39d5b7aae4 Extracting 7B
+ ecbc0f97fe87 Downloading 58.72MB
+ 5c39d5b7aae4 Pull complete 0B
+ ecbc0f97fe87 Downloading 59.15MB
+ 4f4fb700ef54 Pull complete 0B
+ ecbc0f97fe87 Downloading 59.77MB
+ 59b5200b7471 Pull complete 0B
+ 5107053fcce4 Pull complete 0B
+ ecbc0f97fe87 Downloading 60.82MB
+ Image redis:alpine Pulled 
+ ecbc0f97fe87 Downloading 60.82MB
+ ecbc0f97fe87 Downloading 61.87MB
+ ecbc0f97fe87 Downloading 62.12MB
+ ecbc0f97fe87 Downloading 63.09MB
+ ecbc0f97fe87 Downloading 63.96MB
+ ecbc0f97fe87 Downloading 65.01MB
+ ecbc0f97fe87 Downloading 65.01MB
+ ecbc0f97fe87 Downloading 66.06MB
+ ecbc0f97fe87 Downloading 66.8MB
+ ecbc0f97fe87 Downloading 67.6MB
+ ecbc0f97fe87 Downloading 68.16MB
+ ecbc0f97fe87 Downloading 69.21MB
+ ecbc0f97fe87 Downloading 70.25MB
+ ecbc0f97fe87 Downloading 71.3MB
+ ecbc0f97fe87 Downloading 71.3MB
+ ecbc0f97fe87 Downloading 72.35MB
+ ecbc0f97fe87 Downloading 73.4MB
+ ecbc0f97fe87 Downloading 73.4MB
+ ecbc0f97fe87 Downloading 75.5MB
+ ecbc0f97fe87 Downloading 75.5MB
+ ecbc0f97fe87 Downloading 76.9MB
+ ecbc0f97fe87 Downloading 78.64MB
+ ecbc0f97fe87 Downloading 79.69MB
+ ecbc0f97fe87 Downloading 80.74MB
+ ecbc0f97fe87 Downloading 81.79MB
+ ecbc0f97fe87 Downloading 81.79MB
+ ecbc0f97fe87 Downloading 82.84MB
+ ecbc0f97fe87 Downloading 84MB
+ ecbc0f97fe87 Downloading 84.93MB
+ ecbc0f97fe87 Downloading 87.03MB
+ ecbc0f97fe87 Downloading 87.36MB
+ ecbc0f97fe87 Downloading 88.08MB
+ ecbc0f97fe87 Downloading 89.28MB
+ ecbc0f97fe87 Downloading 90.18MB
+ ecbc0f97fe87 Downloading 91.23MB
+ ecbc0f97fe87 Downloading 91.23MB
+ ecbc0f97fe87 Downloading 92.27MB
+ ecbc0f97fe87 Downloading 93.32MB
+ ecbc0f97fe87 Downloading 93.32MB
+ ecbc0f97fe87 Downloading 93.5MB
+ ecbc0f97fe87 Downloading 95MB
+ ecbc0f97fe87 Downloading 95.42MB
+ ecbc0f97fe87 Downloading 96.47MB
+ ecbc0f97fe87 Downloading 97.52MB
+ ecbc0f97fe87 Downloading 97.52MB
+ ecbc0f97fe87 Downloading 99.54MB
+ ecbc0f97fe87 Downloading 99.61MB
+ ecbc0f97fe87 Downloading 100.7MB
+ ecbc0f97fe87 Downloading 100.7MB
+ ecbc0f97fe87 Downloading 101.7MB
+ ecbc0f97fe87 Downloading 103.4MB
+ ecbc0f97fe87 Downloading 104.9MB
+ ecbc0f97fe87 Downloading 104.9MB
+ ecbc0f97fe87 Downloading 105.9MB
+ ecbc0f97fe87 Downloading 107MB
+ ecbc0f97fe87 Downloading 107MB
+ ecbc0f97fe87 Downloading 108.4MB
+ ecbc0f97fe87 Downloading 109.1MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Downloading 110.5MB
+ ecbc0f97fe87 Download complete 0B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 1B
+ ecbc0f97fe87 Extracting 2B
+ ecbc0f97fe87 Extracting 2B
+ ecbc0f97fe87 Extracting 2B
+ ecbc0f97fe87 Extracting 2B
+ ecbc0f97fe87 Extracting 2B
+ ecbc0f97fe87 Extracting 2B
+ ecbc0f97fe87 Extracting 2B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 3B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 4B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 5B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 6B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 7B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 8B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 9B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 10B
+ ecbc0f97fe87 Extracting 11B
+ ecbc0f97fe87 Extracting 11B
+ ecbc0f97fe87 Extracting 11B
+ ecbc0f97fe87 Extracting 11B
+ ecbc0f97fe87 Extracting 11B
+ 26065aa66f8d Pull complete 0B
+ ecbc0f97fe87 Pull complete 0B
+ 0141deae452e Extracting 1B
+ 4989bdaa0ad3 Pull complete 0B
+ 0141deae452e Pull complete 0B
+ e7426913c582 Pull complete 0B
+ 236e3b4c2204 Pull complete 0B
+ Image postgres:15-alpine Pulled 
+ Image example-voting-app-vote Building 
+ Image example-voting-app-result Building 
+ Image example-voting-app-worker Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.59kB 0.0s done
+#1 DONE 0.0s
+
+#2 [vote internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.12kB 0.0s done
+#2 DONE 0.1s
+
+#3 [result internal] load build definition from Dockerfile
+#3 transferring dockerfile: 550B 0.1s done
+#3 DONE 0.2s
+
+#4 [worker internal] load build definition from Dockerfile
+#4 transferring dockerfile: 1.13kB 0.1s done
+#4 DONE 0.1s
+
+#5 [result internal] load metadata for docker.io/library/node:18-slim
+#5 ...
+
+#6 [worker internal] load metadata for mcr.microsoft.com/dotnet/runtime:7.0
+#6 DONE 0.3s
+
+#7 [worker internal] load metadata for mcr.microsoft.com/dotnet/sdk:7.0
+#7 DONE 0.3s
+
+#8 [worker internal] load .dockerignore
+#8 transferring context: 2B done
+#8 DONE 0.0s
+
+#9 [vote internal] load metadata for docker.io/library/python:3.11-slim
+#9 ...
+
+#10 [worker internal] load build context
+#10 DONE 0.0s
+
+#11 [worker build 1/7] FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d
+#11 resolve mcr.microsoft.com/dotnet/sdk:7.0@sha256:d32bd65cf5843f413e81f5d917057c82da99737cb1637e905a1a4bc2e7ec6c8d 0.1s done
+#11 DONE 0.1s
+
+#12 [worker stage-1 1/3] FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f
+#12 resolve mcr.microsoft.com/dotnet/runtime:7.0@sha256:8cd26108e7a329458e5b84342816ae39b2b38bd041cfdc0b79b8cf1c0e0d376f 0.1s done
+#12 DONE 0.1s
+
+#10 [worker internal] load build context
+#10 transferring context: 95B done
+#10 DONE 0.1s
+
+#13 [worker build 7/7] RUN dotnet publish -c release -o /app -a amd64 --self-contained false --no-restore
+#13 CACHED
+
+#14 [worker build 3/7] WORKDIR /source
+#14 CACHED
+
+#15 [worker build 5/7] RUN dotnet restore -a amd64
+#15 CACHED
+
+#16 [worker stage-1 2/3] WORKDIR /app
+#16 CACHED
+
+#17 [worker build 6/7] COPY . .
+#17 CACHED
+
+#18 [worker build 2/7] RUN echo "I am running on linux/amd64, building for linux/amd64"
+#18 CACHED
+
+#19 [worker build 4/7] COPY *.csproj .
+#19 CACHED
+
+#20 [worker stage-1 3/3] COPY --from=build /app .
+#20 CACHED
+
+#21 [worker] exporting to image
+#21 ...
+
+#9 [vote internal] load metadata for docker.io/library/python:3.11-slim
+#9 DONE 0.6s
+
+#5 [result internal] load metadata for docker.io/library/node:18-slim
+#5 DONE 0.6s
+
+#22 [vote internal] load .dockerignore
+#22 transferring context: 2B done
+#22 DONE 0.1s
+
+#23 [result internal] load .dockerignore
+#23 transferring context: 55B 0.0s done
+#23 DONE 0.1s
+
+#21 [worker] exporting to image
+#21 exporting layers done
+#21 exporting manifest sha256:f71caee74a9636e3778c264df45b7b657b47b3d73a9b2732367a7b45f71b4a10 0.1s done
+#21 exporting config sha256:4878b9fffb3bd9061ae1f3fc44fe70aeb9f53298a29f7790b3351e0839afb6ed
+#21 ...
+
+#24 [vote internal] load build context
+#24 DONE 0.0s
+
+#25 [result internal] load build context
+#25 transferring context: 593B 0.0s done
+#25 DONE 0.0s
+
+#21 [worker] exporting to image
+#21 exporting config sha256:4878b9fffb3bd9061ae1f3fc44fe70aeb9f53298a29f7790b3351e0839afb6ed 0.1s done
+#21 exporting attestation manifest sha256:1c5f39f17d776d67ae49489354c9690ee34c29bb4c9e592c6d3105afe029b371
+#21 ...
+
+#26 [vote base 1/5] FROM docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
+#26 resolve docker.io/library/python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1 0.2s done
+#26 DONE 0.2s
+
+#27 [result 1/7] FROM docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e
+#27 resolve docker.io/library/node:18-slim@sha256:f9ab18e354e6855ae56ef2b290dd225c1e51a564f87584b9bd21dd651838830e 0.2s done
+#27 DONE 0.2s
+
+#28 [result 4/7] RUN npm install -g nodemon
+#28 CACHED
+
+#29 [result 3/7] WORKDIR /usr/local/app
+#29 CACHED
+
+#30 [result 6/7] RUN npm ci &&  npm cache clean --force &&  mv /usr/local/app/node_modules /node_modules
+#30 CACHED
+
+#31 [result 5/7] COPY package*.json ./
+#31 CACHED
+
+#32 [result 2/7] RUN apt-get update &&     apt-get install -y --no-install-recommends curl tini &&     rm -rf /var/lib/apt/lists/*
+#32 CACHED
+
+#24 [vote internal] load build context
+#24 transferring context: 37B 0.0s done
+#24 DONE 0.1s
+
+#33 [result 7/7] COPY . .
+#33 CACHED
+
+#34 [vote base 2/5] RUN apt-get update &&     apt-get install -y --no-install-recommends curl &&     rm -rf /var/lib/apt/lists/*
+#34 CACHED
+
+#35 [vote base 3/5] WORKDIR /usr/local/app
+#35 CACHED
+
+#36 [vote base 4/5] COPY requirements.txt ./requirements.txt
+#36 CACHED
+
+#37 [vote base 5/5] RUN pip install --no-cache-dir -r requirements.txt
+#37 CACHED
+
+#38 [result] exporting to image
+#38 exporting layers done
+#38 exporting manifest sha256:5a65b45d41ef1945427d3880726478a0ebf07fcf1e78d47ced3490555384471f
+#38 ...
+
+#21 [worker] exporting to image
+#21 exporting attestation manifest sha256:1c5f39f17d776d67ae49489354c9690ee34c29bb4c9e592c6d3105afe029b371 0.1s done
+#21 exporting manifest list sha256:3438f2efc882233e0e3424478b863c74ff8699eccb329023c8a4a169b310efad 0.1s done
+#21 naming to docker.io/library/example-voting-app-worker:latest 0.0s done
+#21 unpacking to docker.io/library/example-voting-app-worker:latest 0.1s done
+#21 DONE 0.6s
+
+#38 [result] exporting to image
+#38 exporting manifest sha256:5a65b45d41ef1945427d3880726478a0ebf07fcf1e78d47ced3490555384471f 0.1s done
+#38 exporting config sha256:d6b5165e436e4da1042e0974a6b762e70e49891a980c794c292834d7eb0862bb 0.1s done
+#38 exporting attestation manifest sha256:56d7a802d865fbd65928fad37023c6e1295693cf594aeaf89473ab381054352e
+#38 exporting attestation manifest sha256:56d7a802d865fbd65928fad37023c6e1295693cf594aeaf89473ab381054352e 0.1s done
+#38 exporting manifest list sha256:95eff37b117181b3b7119f13be49fe5142028758ae520f8f983a47b3ed3265fb 0.1s done
+#38 naming to docker.io/library/example-voting-app-result:latest
+#38 naming to docker.io/library/example-voting-app-result:latest 0.0s done
+#38 unpacking to docker.io/library/example-voting-app-result:latest 0.0s done
+#38 DONE 0.6s
+
+#39 [vote dev 1/1] RUN pip install watchdog
+#39 ...
+
+#40 [worker] resolving provenance for metadata file
+#40 DONE 0.1s
+
+#39 [vote dev 1/1] RUN pip install watchdog
+#39 ...
+
+#41 [result] resolving provenance for metadata file
+#41 DONE 0.0s
+
+#39 [vote dev 1/1] RUN pip install watchdog
+#39 2.557 Collecting watchdog
+#39 2.696   Downloading watchdog-6.0.0-py3-none-manylinux2014_x86_64.whl.metadata (44 kB)
+#39 2.734      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.3/44.3 kB 1.0 MB/s eta 0:00:00
+#39 2.770 Downloading watchdog-6.0.0-py3-none-manylinux2014_x86_64.whl (79 kB)
+#39 2.813    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.1/79.1 kB 1.8 MB/s eta 0:00:00
+#39 2.907 Installing collected packages: watchdog
+#39 3.966 Successfully installed watchdog-6.0.0
+#39 3.967 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#39 4.239 
+#39 4.239 [notice] A new release of pip is available: 24.0 -> 26.2.1
+#39 4.239 [notice] To update, run: pip install --upgrade pip
+#39 DONE 6.9s
+
+#42 [vote] exporting to image
+#42 exporting layers
+#42 exporting layers 0.3s done
+#42 exporting manifest sha256:57db52d3f4af44a6b0b9bbff592d1dd668b34c8ad456499c20af91abaef03285 0.0s done
+#42 exporting config sha256:1d225e02cc493c36cfea705360c5b6daed512d4c15903b1eaafd677f44598fe8 0.0s done
+#42 exporting attestation manifest sha256:e1901921080060eb19cae9f7b43aa438e6e63105ac9e976dc8726000e3f080ab
+#42 exporting attestation manifest sha256:e1901921080060eb19cae9f7b43aa438e6e63105ac9e976dc8726000e3f080ab 0.1s done
+#42 exporting manifest list sha256:9cf9025db223fb61992116afb778d53098f82aa822cb6c71b959cfe8694128b8 0.0s done
+#42 naming to docker.io/library/example-voting-app-vote:latest
+#42 naming to docker.io/library/example-voting-app-vote:latest done
+#42 unpacking to docker.io/library/example-voting-app-vote:latest 0.1s done
+#42 DONE 0.6s
+
+#43 [vote] resolving provenance for metadata file
+#43 DONE 0.0s
+ Image example-voting-app-result Built 
+ Image example-voting-app-vote Built 
+ Image example-voting-app-worker Built 
+ Network example-voting-app_back-tier Creating 
+ Network example-voting-app_back-tier Created 
+ Network example-voting-app_front-tier Creating 
+ Network example-voting-app_front-tier Created 
+ Volume example-voting-app_db-data Creating 
+ Volume example-voting-app_db-data Created 
+ Container example-voting-app-db-1 Creating 
+ Container example-voting-app-redis-1 Creating 
+ Container example-voting-app-db-1 Created 
+ Container example-voting-app-result-1 Creating 
+ Container example-voting-app-redis-1 Created 
+ Container example-voting-app-vote-1 Creating 
+ Container example-voting-app-worker-1 Creating 
+ Container example-voting-app-worker-1 Created 
+ Container example-voting-app-vote-1 Created 
+ Container example-voting-app-result-1 Created 
+ Container example-voting-app-db-1 Starting 
+ Container example-voting-app-redis-1 Starting 
+ Container example-voting-app-db-1 Started 
+ Container example-voting-app-db-1 Waiting 
+ Container example-voting-app-redis-1 Started 
+ Container example-voting-app-redis-1 Waiting 
+ Container example-voting-app-db-1 Waiting 
+ Container example-voting-app-redis-1 Waiting 
+ Container example-voting-app-db-1 Healthy 
+ Container example-voting-app-result-1 Starting 
+ Container example-voting-app-redis-1 Healthy 
+ Container example-voting-app-db-1 Healthy 
+ Container example-voting-app-worker-1 Starting 
+ Container example-voting-app-redis-1 Healthy 
+ Container example-voting-app-vote-1 Starting 
+ Container example-voting-app-worker-1 Started 
+ Container example-voting-app-vote-1 Started 
+ Container example-voting-app-result-1 Started 
+ Container example-voting-app-result-1 Waiting 
+ Container example-voting-app-worker-1 Waiting 
+ Container example-voting-app-redis-1 Waiting 
+ Container example-voting-app-db-1 Waiting 
+ Container example-voting-app-vote-1 Waiting 
+ Container example-voting-app-result-1 Healthy 
+ Container example-voting-app-worker-1 Healthy 
+ Container example-voting-app-redis-1 Healthy 
+ Container example-voting-app-db-1 Healthy 
+ Container example-voting-app-vote-1 Healthy 
+compose up exit=0
+NAME                          IMAGE                       COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+example-voting-app-db-1       postgres:15-alpine          "docker-entrypoint.s…"   db        17 seconds ago   Up 15 seconds (healthy)   5432/tcp
+example-voting-app-redis-1    redis:alpine                "docker-entrypoint.s…"   redis     17 seconds ago   Up 15 seconds (healthy)   6379/tcp
+example-voting-app-result-1   example-voting-app-result   "nodemon --inspect=0…"   result    16 seconds ago   Up 8 seconds              127.0.0.1:9229->9229/tcp, 0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
+example-voting-app-vote-1     example-voting-app-vote     "python app.py"          vote      16 seconds ago   Up 8 seconds (healthy)    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+example-voting-app-worker-1   example-voting-app-worker   "dotnet Worker.dll"      worker    16 seconds ago   Up 9 seconds              
+----------------------------------------------------------------
+##[endgroup]
+
+##[group] job: e2e -- cast a vote
+----------------------------------------------------------------
+POST /  vote=a  exit=0
+----------------------------------------------------------------
+##[endgroup]
+
+##[group] job: e2e -- wait for the worker to persist it
+----------------------------------------------------------------
+attempt 1: votes table has '1' row(s)
+PASS: the vote reached Postgres via redis + worker
+--- votes table contents ---
+       id        | vote 
+-----------------+------
+ 52084a5f16f22f7 | a
+(1 row)
+
+----------------------------------------------------------------
+##[endgroup]
+
+##[group] job: e2e -- result service serves its page
+----------------------------------------------------------------
+PASS: result page served
+----------------------------------------------------------------
+##[endgroup]
+
+##[group] job: e2e -- worker logs (proof the pipeline ran)
+----------------------------------------------------------------
+worker-1  | Connected to db
+worker-1  | Found redis at 172.18.0.2
+worker-1  | Connecting to redis
+worker-1  | Processing vote for 'a' by '52084a5f16f22f7'
+----------------------------------------------------------------
+##[endgroup]
+
+##[group] job: e2e -- tear down
+----------------------------------------------------------------
+ Container example-voting-app-result-1 Stopping 
+ Container example-voting-app-vote-1 Stopping 
+ Container example-voting-app-worker-1 Stopping 
+ Container example-voting-app-worker-1 Stopped 
+ Container example-voting-app-worker-1 Removing 
+ Container example-voting-app-worker-1 Removed 
+ Container example-voting-app-result-1 Stopped 
+ Container example-voting-app-result-1 Removing 
+ Container example-voting-app-result-1 Removed 
+ Container example-voting-app-db-1 Stopping 
+ Container example-voting-app-vote-1 Stopped 
+ Container example-voting-app-vote-1 Removing 
+ Container example-voting-app-vote-1 Removed 
+ Container example-voting-app-redis-1 Stopping 
+ Container example-voting-app-db-1 Stopped 
+ Container example-voting-app-db-1 Removing 
+ Container example-voting-app-redis-1 Stopped 
+ Container example-voting-app-redis-1 Removing 
+ Container example-voting-app-db-1 Removed 
+ Container example-voting-app-redis-1 Removed 
+ Network example-voting-app_back-tier Removing 
+ Network example-voting-app_front-tier Removing 
+ Volume example-voting-app_db-data Removing 
+ Volume example-voting-app_db-data Removed 
+ Network example-voting-app_back-tier Removed 
+ Network example-voting-app_front-tier Removed 
+----------------------------------------------------------------
+##[endgroup]
+
+finished: 2026-08-16T05:39:21Z
+overall exit=0

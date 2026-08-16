@@ -1,0 +1,32 @@
+=== CPU ===
+top - 18:06:16 up 46 min,  0 users,  load average: 0.00, 0.09, 0.44
+Tasks:   4 total,   1 running,   3 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   5808.2 total,   4809.0 free,    764.2 used,    442.2 buff/cache     
+MiB Swap:   2048.0 total,   2047.0 free,      1.0 used.   5044.1 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 root      20   0    4768   4096   3584 S   0.0   0.1   0:00.06 bash
+    119 root      20   0    4504   3584   3328 S   0.0   0.1   0:00.03 bash
+    127 root      20   0    7584   4864   2944 R   0.0   0.1   0:00.00 top
+    128 root      20   0   16296   7552   6272 S   0.0   0.1   0:00.00 head
+
+=== Memory ===
+               total        used        free      shared  buff/cache   available
+Mem:           5.7Gi       761Mi       4.7Gi        26Mi       442Mi       4.9Gi
+Swap:          2.0Gi       1.0Mi       2.0Gi
+
+=== Disk ===
+Filesystem      Size  Used Avail Use% Mounted on
+overlay        1007G  4.9G  951G   1% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+C:\             476G  229G  248G  49% /root/lab-data
+/dev/sde       1007G  4.9G  951G   1% /etc/hosts
+none            2.9G  596K  2.9G   1% /run/docker.sock
+tmpfs           4.0K     0  4.0K   0% /proc/acpi
+
+=== Docker containers ===
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                      PORTS                  NAMES
+faf09ee15a73   cse636-lab-wk1                    "bash"                   13 hours ago   Up 13 hours                                        cse636-lab-wk1
+72352670ab64   docker/welcome-to-docker:latest   "/docker-entrypoint.…"   5 months ago   Exited (255) 13 hours ago   0.0.0.0:8088->80/tcp   welcome-to-docker

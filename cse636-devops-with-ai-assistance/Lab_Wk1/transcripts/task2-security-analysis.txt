@@ -1,0 +1,56 @@
+Week 1 Lab -- Task 2 (security analysis)
+Agent: Claude Code (this session), run 2026-08-16
+Target repo: example-voting-app @ 63e9150
+
+Prompt given:
+"Find any security issues or hardcoded credentials in this repository and list them with the
+file path and line number."
+
+--- Act: grep for password|secret|api[_-]?key|token across the tree (excluding node_modules) ---
+(full raw grep output kept alongside this transcript's source; findings below are the real
+matches, filtered for signal)
+
+Findings:
+
+1. Hardcoded database password, repeated in 5 places:
+   - docker-compose.yml:68            POSTGRES_PASSWORD: "postgres"
+   - docker-compose.images.yml:54     POSTGRES_PASSWORD: "postgres"
+   - docker-stack.yml:18              POSTGRES_PASSWORD: "postgres"
+   - result/docker-compose.test.yml:51 POSTGRES_PASSWORD: "postgres"
+   - worker/Program.cs:19 and :49     "Server=db;Username=postgres;Password=postgres;"
+   Severity: low for this repo's actual purpose (a public teaching demo meant to run entirely
+   on localhost with `docker compose up`), but this pattern, a plaintext default credential
+   baked into both the orchestration file and the application source, is the textbook version
+   of the mistake that becomes a real incident if anyone lifts this docker-compose.yml into a
+   repo that gets deployed somewhere reachable. "postgres" as both username and password is
+   also one of the first strings a scanner tries.
+   Fix: read from an environment variable with no baked-in default in worker/Program.cs, and
+   supply POSTGRES_PASSWORD via a git-ignored .env file or a secrets manager rather than the
+   committed compose files.
+
+2. k8s-specifications/db-deployment.yaml:23 sets POSTGRES_PASSWORD via a Kubernetes env var
+   block. I didn't find a matching Secret object in k8s-specifications/, so it's worth checking
+   whether the value there is also a plaintext literal (the file wasn't fully read in this
+   pass) rather than a `secretKeyRef`, since Kubernetes env-var literals show up in
+   `kubectl describe pod` and `kubectl get pod -o yaml` for anyone with read access to the
+   namespace.
+
+3. .github/workflows/call-docker-build-{vote,result,worker}.yaml reference
+   ${{ secrets.DOCKERHUB_USERNAME }} / ${{ secrets.DOCKERHUB_TOKEN }}. This is the correct
+   pattern (GitHub Actions encrypted secrets, not committed values), listed here only because
+   it matched the grep and is worth contrasting with finding #1: same category of credential,
+   handled two different ways in the same repo.
+
+--- Observe ---
+No API keys, cloud credentials, or session tokens showed up hardcoded anywhere in the
+application code itself. The one real finding is the Postgres password, and it's confined to
+local-only Compose/Swarm/K8s config plus the .NET worker's connection string. Not flagged: the
+`angular.min.js` / `socket.io.js` matches are minified third-party libraries whose source text
+happens to contain the substring "token" (as part of unrelated variable names) -- I read enough
+of the surrounding context to confirm these aren't credentials.
+
+Autonomy note: this was another read-only task, grep + targeted file reads, no writes. A
+sensible next level of autonomy here (human-on-the-loop) would be letting the agent open a PR
+that swaps the literal password for an env-var reference with a documented default (not
+"postgres"), but requiring a human to actually rotate/set the real value before merge. The
+agent should never be the one deciding what the production credential is.

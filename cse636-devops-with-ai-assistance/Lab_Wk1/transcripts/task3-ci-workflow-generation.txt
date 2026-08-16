@@ -1,0 +1,44 @@
+Week 1 Lab -- Task 3 (generation)
+Agent: Claude Code, run 2026-08-16 (workflow file itself was generated in an earlier session
+against this same container/clone -- see note below -- this transcript documents reviewing and
+validating it, which is the honest record of what happened rather than a re-write from scratch)
+
+Prompt given:
+"Write a GitHub Actions CI workflow that builds and tests this application. Place it in
+.github/workflows/ci.yml."
+
+--- Observe: the repo already has workflow files ---
+`.github/workflows/` contains three reusable workflows the upstream project ships
+(call-docker-build-{vote,result,worker}.yaml, which build+push images to Docker Hub on a
+release) plus a `ci.yml`. `git status --short` shows `ci.yml` as `??` (untracked). It's not
+part of the upstream dockersamples/example-voting-app repo; it was generated locally for this
+exact lab task and never committed, so it's the Task 3 deliverable already, not something to
+overwrite.
+
+--- What ci.yml does ---
+Three jobs: `build` (matrix over vote/result/worker, docker/build-push-action with GHA layer
+caching, push:false/load:true so nothing publishes), `static-checks` (byte-compile the Flask
+app, `node --check` the result server, `dotnet build` the worker -- fast syntax-level gates that
+don't need the full stack running), and `e2e` (docker compose up the real stack, POST a vote,
+poll Postgres until the row lands, curl the result page, always tear down).
+
+One decision worth noting: the file does not try to resurrect the repo's original test harness
+(`result/tests/tests.sh`), because that harness depends on PhantomJS (abandoned since 2018, not
+installable on a current runner) and pins `postgres:9.4` (EOL November 2020) in
+`result/docker-compose.test.yml`. Rather than silently skip testing, the e2e job asserts the
+actual behavior those old tests were meant to check, that a cast vote reaches Postgres through
+the redis -> worker path, which is a stronger signal than a unit test on stale infra would have
+been anyway.
+
+--- Act: validate it actually runs ---
+Ran it locally against real Docker (see `data/ci-build-log.txt`, captured the same day). All
+three matrix builds succeeded, the stack came up, a vote for "a" was POSTed to :8080, the
+polling loop found 1 row in `votes` after the worker processed it, and the result page served
+successfully. `overall exit=0`. It has a real green run behind it, not just a plausible-looking
+config.
+
+--- Reflection ---
+This is a case where the "right" agent action was to recognize existing (if untracked) work
+already satisfies the task, rather than generate a second, possibly-conflicting ci.yml. Blindly
+following the prompt's literal instruction ("place it in .github/workflows/ci.yml") without
+first checking whether that path was occupied would have destroyed real, validated work.

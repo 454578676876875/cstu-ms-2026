@@ -1,0 +1,56 @@
+Week 1 Lab -- Task 1 (exploration)
+Agent: Claude Code (this session), run 2026-08-16
+Target repo: example-voting-app (dockersamples/example-voting-app @ 63e9150), cloned into the
+Step 1b Docker lab container's mounted workspace (/root/lab-data/example-voting-app,
+host path C:\Users\salma\lab-data\example-voting-app).
+
+Prompt given:
+"Read the repository structure and give me a plain-English summary of what this application
+does and how its components are connected."
+
+--- Perceive ---
+Listed the top-level directory (vote/, result/, worker/, seed-data/, healthchecks/,
+k8s-specifications/, docker-compose.yml, docker-stack.yml, README.md).
+
+--- Act: read README.md ---
+Confirms this is a distributed voting app: Python, Node.js, and .NET services, Redis for
+messaging, Postgres for storage. Two entry points: vote app on :8080, results app on :8081.
+
+--- Act: read docker-compose.yml ---
+Five services + one optional profile:
+  vote    (Python/Flask, port 8080, front-tier + back-tier, depends_on redis healthy)
+  result  (Node.js, port 8081, front-tier + back-tier, depends_on db healthy)
+  worker  (.NET, back-tier only, depends_on redis AND db healthy)
+  redis   (redis:alpine, back-tier only, custom healthcheck script)
+  db      (postgres:15-alpine, back-tier only, custom healthcheck script, named volume)
+  seed    (optional profile, posts synthetic votes into the vote app for load-testing)
+
+--- Act: read vote/app.py, worker/Program.cs (skim), result/server.js (skim) ---
+vote/app.py is a small Flask app: GET / renders a form (already-voted cookie -> pre-selects the
+option), POST / writes {vote, voter_id} as JSON into a Redis list. worker reads that list,
+looks up (voter_id) in Postgres, and inserts/updates a row in the votes table. result/server.js
+subscribes to Postgres NOTIFY on the votes table and pushes live tallies to the browser over
+Socket.IO.
+
+--- Observe / synthesize ---
+Plain-English summary:
+
+  This is a 3-tier, polyglot microservice demo of the "vote flows through a queue into a
+  database, then out to a live dashboard" pattern. A user hits the vote service (Python) and
+  picks cat or dog; that vote is pushed onto a Redis list rather than written straight to the
+  database, which decouples the front door from storage load. A separate worker (.NET) drains
+  that queue and upserts each vote into Postgres, keyed by voter, so re-voting changes your
+  vote instead of adding a duplicate. A third service, result (Node.js), listens for Postgres
+  change notifications and streams live updated tallies to a results page over a websocket, so
+  the results page updates without polling. Redis and Postgres each expose a healthcheck the
+  Compose file uses to gate service startup order. worker won't start until both redis and db
+  report healthy, so it can't come up and immediately fail its first connection attempt.
+
+Level of autonomy observed: assistant-level / human-in-the-loop. I (the agent) planned and
+executed each read step, but the task was read-only exploration. No tool call could have
+mutated the repo, and I did not proceed to any Task 2-4 action without a fresh prompt. This
+matches the course's "perceive -> plan -> act -> observe" loop: perceive (list dir), plan
+(decide README.md next, then docker-compose.yml, then the three service entrypoints), act (Read
+tool calls), observe (each file's content shaped what I read next; the Compose file's
+`depends_on: db healthy` on worker is what sent me to worker/Program.cs to confirm it writes to
+Postgres, not just Redis).
