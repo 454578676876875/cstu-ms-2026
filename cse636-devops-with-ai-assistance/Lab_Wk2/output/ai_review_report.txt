@@ -1,0 +1,14 @@
+# AI Code Review Report
+
+
+## app.py
+
+### Simulated review of `app.py` (no ANTHROPIC_API_KEY set)
+
+Findings:
+- `days_of_supply` has no docstring.
+- `apply_discount` has no docstring.
+- A NOTE comment flags a known gap in the code -- worth turning into a real validation or a tracked follow-up rather than leaving as a comment.
+- Confirmed: at least one function accepts a parameter with no upper/lower bound validation, which can produce a silently wrong (e.g. negative) result rather than raising an error.
+
+Recommendation: add an explicit `if not (0 <= percent_off <= 100): raise ValueError(...)` guard to `apply_discount`, and short docstrings to the public functions so callers don't have to read the body to know the contract.

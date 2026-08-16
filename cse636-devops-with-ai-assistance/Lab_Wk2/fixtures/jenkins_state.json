@@ -1,0 +1,16 @@
+{
+  "jobs": {
+    "ai-review-demo": {
+      "builds": [
+        {"number": 41, "result": "SUCCESS", "duration_ms": 18342},
+        {"number": 40, "result": "FAILURE", "duration_ms": 9110},
+        {"number": 39, "result": "SUCCESS", "duration_ms": 17765}
+      ]
+    },
+    "nightly-integration": {
+      "builds": [
+        {"number": 12, "result": null, "duration_ms": 0}
+      ]
+    }
+  }
+}

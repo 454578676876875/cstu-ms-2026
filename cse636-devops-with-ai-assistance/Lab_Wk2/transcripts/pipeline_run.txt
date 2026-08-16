@@ -1,0 +1,30 @@
+
+=== stage: Lint ===
+(no lint findings)
+
+=== stage: Test ===
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk2\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk2
+configfile: pyproject.toml
+plugins: anyio-4.14.2
+collecting ... collected 5 items
+
+tests\test_app.py::test_reorder_quantity_below_point PASSED              [ 20%]
+tests\test_app.py::test_reorder_quantity_at_or_above_point PASSED        [ 40%]
+tests\test_app.py::test_days_of_supply PASSED                            [ 60%]
+tests\test_app.py::test_days_of_supply_zero_usage PASSED                 [ 80%]
+tests\test_app.py::test_apply_discount PASSED                            [100%]
+
+============================== 5 passed in 0.05s ==============================
+
+
+=== stage: AI Code Review ===
+Reviewed app.py
+Report written to C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk2\output\ai_review_report.txt
+
+=== pipeline summary ===
+lint: PASS
+test: PASS
+ai_review: PASS

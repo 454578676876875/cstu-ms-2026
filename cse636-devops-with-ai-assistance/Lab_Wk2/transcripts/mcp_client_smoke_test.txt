@@ -1,0 +1,13 @@
+Tools advertised: get_build_status, list_jobs
+
+--- list_jobs ---
+Jenkins jobs: ai-review-demo, nightly-integration
+
+--- get_build_status (job=ai-review-demo) ---
+Job 'ai-review-demo': build #41 -- SUCCESS
+
+--- get_build_status (job=nightly-integration, IN_PROGRESS case) ---
+Job 'nightly-integration': build #12 -- IN_PROGRESS
+
+--- get_build_status (job=does-not-exist, 404 case) ---
+Job 'does-not-exist' not found (or it has no builds yet).
