@@ -1,0 +1,9 @@
+# Bonus -- deprecated inline syntax. Expect 2 WARN + 1 FAIL (missing PAB).
+# See docs/step1-agent-generation.md for why this fixture exists.
+$ conftest test plans/tfplan-deprecated-inline.json --policy policy/
+WARN - plans/tfplan-deprecated-inline.json - main - S3 bucket 'aws_s3_bucket.capstone_artifacts' declares encryption with the deprecated inline block; use aws_s3_bucket_server_side_encryption_configuration.
+WARN - plans/tfplan-deprecated-inline.json - main - S3 bucket 'aws_s3_bucket.capstone_artifacts' declares versioning with the deprecated inline block; use aws_s3_bucket_versioning.
+FAIL - plans/tfplan-deprecated-inline.json - main - S3 bucket 'aws_s3_bucket.capstone_artifacts' has no public access block.
+
+9 tests, 6 passed, 2 warnings, 1 failure, 0 exceptions
+exit=1

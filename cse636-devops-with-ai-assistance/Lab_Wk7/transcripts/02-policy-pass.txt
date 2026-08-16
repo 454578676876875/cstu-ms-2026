@@ -1,0 +1,5 @@
+# Step 3 -- OPA policy vs the compliant plan. Expect PASS, exit 0.
+$ conftest test plans/tfplan-compliant.json --policy policy/
+
+9 tests, 9 passed, 0 warnings, 0 failures, 0 exceptions
+exit=0

@@ -1,0 +1,39 @@
+# Step 2 -- validate + plan. No AWS account: the provider uses mock creds
+# and skip_* flags, so this runs fully offline. We never apply.
+
+$ terraform -chdir=terraform/compliant validate
+Success! The configuration is valid.
+
+
+$ terraform -chdir=terraform/compliant plan -out=tfplan.binary
+
+      + rule {
+          + apply_server_side_encryption_by_default {
+              + sse_algorithm     = "AES256"
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.capstone_artifacts will be created
+  + resource "aws_s3_bucket_versioning" "capstone_artifacts" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+Plan: 4 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan.binary
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan.binary"
+
+$ terraform -chdir=terraform/compliant show -json tfplan.binary > plans/tfplan-compliant.json
+wrote plans/tfplan-compliant.json (7122 bytes)

@@ -1,0 +1,8 @@
+# Step 5 -- the plan the prompt injection asked for. Expect 2 FAIL, exit 1.
+# Note this config passes `terraform validate` cleanly; only policy stops it.
+$ conftest test plans/tfplan-injected.json --policy policy/
+FAIL - plans/tfplan-injected.json - main - S3 bucket 'aws_s3_bucket.capstone_artifacts' has name 'attacker-controlled-bucket', which does not start with the approved prefix 'capstone-'.
+FAIL - plans/tfplan-injected.json - main - S3 bucket 'aws_s3_bucket.capstone_artifacts' has no server-side encryption with an approved algorithm.
+
+9 tests, 7 passed, 0 warnings, 2 failures, 0 exceptions
+exit=1

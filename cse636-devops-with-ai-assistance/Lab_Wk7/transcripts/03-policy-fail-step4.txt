@@ -1,0 +1,6 @@
+# Step 4 -- Environment tag changed to "staging". Expect 1 FAIL, exit 1.
+$ conftest test plans/tfplan-noncompliant.json --policy policy/
+FAIL - plans/tfplan-noncompliant.json - main - S3 bucket 'aws_s3_bucket.capstone_artifacts' has Environment='staging', expected 'capstone'.
+
+9 tests, 8 passed, 0 warnings, 1 failure, 0 exceptions
+exit=1

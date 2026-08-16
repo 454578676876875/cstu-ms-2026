@@ -1,0 +1,9 @@
+# Terraform working dirs and binary plans. The *human-readable* plan JSON under
+# plans/ IS committed on purpose -- it's what conftest runs against, and it lets
+# the policy targets work without terraform installed.
+.terraform/
+.terraform.lock.hcl
+tfplan.binary
+*.tfstate
+*.tfstate.backup
+crash.log

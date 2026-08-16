@@ -10,6 +10,7 @@ week.
 cse636-devops-with-ai-assistance/
   Lab_Wk5/    Week 5: Anomaly Detection and AI-Generated Root Cause Analysis
   Lab_Wk6/    Week 6: Gated Incident-Triage and Self-Healing Agents
+  Lab_Wk7/    Week 7: Agentic IaC with an OPA Policy Gate
 ```
 
 ## Week 5: Anomaly Detection and Agent Instrumentation
@@ -70,3 +71,29 @@ reflection and the assignment's safety discussion.
 simulation mode, which is an option the lab doc itself allows. A scripted stand-in "brain"
 walks the same runbook a live Claude call would and stops at the same real, blocking
 `input()` approval prompt, so the transcripts are from actual runs, not written by hand.
+
+## Week 7: Agentic IaC with an OPA Policy Gate
+
+Located in [`cse636-devops-with-ai-assistance/Lab_Wk7`](cse636-devops-with-ai-assistance/Lab_Wk7).
+
+The Week 7 lab: an agent generates a Terraform S3 bucket, Terraform plans it, and an OPA
+policy run through conftest decides whether that plan is allowed — before anything is
+applied.
+
+- **The policy gate**, `policy/s3.rego`: 9 rules covering tags, bucket naming, encryption,
+  public access, and versioning. It checks *values*, not just that a resource exists, since
+  a resource that is present but switched off is exactly what careless and malicious changes
+  both look like. 19 Rego unit tests back it.
+- **Four Terraform variants**, each with a committed plan: compliant (passes), the Step 4
+  break (1 deny), the prompt-injected config (2 denies), and the deprecated inline style.
+  All four pass `terraform validate` — only the policy separates them.
+- **Prompt-injection demo**: the agent declined the injection, but the write-up argues at
+  length why that is an anecdote rather than a control, and shows the parts that don't depend
+  on the agent's judgement — OPA blocking the injected plan, and there being no `apply`
+  capability anywhere in the toolchain.
+
+Runs offline with mock AWS credentials; no cloud account and no cost. See
+[`Lab_Wk7/README.md`](cse636-devops-with-ai-assistance/Lab_Wk7/README.md) for setup and
+design decisions, and [`Lab_Wk7/WRITEUP.md`](cse636-devops-with-ai-assistance/Lab_Wk7/WRITEUP.md)
+for the Step 5 discussion — including a false positive I shipped into the policy, how it was
+caught, and why that failure mode worries me more than the injection did.
