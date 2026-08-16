@@ -1,0 +1,196 @@
+
+======================================================================
+STAGE 1 -- Agentic CI/CD (Week 2: pipeline + MCP status | Week 3: build-fixer)
+======================================================================
+-- Week 2: Lint -> Test -> AI Code Review pipeline --
+
+=== stage: Lint ===
+(no lint findings)
+
+=== stage: Test ===
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk2\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk2
+configfile: pyproject.toml
+plugins: anyio-4.14.2
+collecting ... collected 5 items
+
+tests\test_app.py::test_reorder_quantity_below_point PASSED              [ 20%]
+tests\test_app.py::test_reorder_quantity_at_or_above_point PASSED        [ 40%]
+tests\test_app.py::test_days_of_supply PASSED                            [ 60%]
+tests\test_app.py::test_days_of_supply_zero_usage PASSED                 [ 80%]
+tests\test_app.py::test_apply_discount PASSED                            [100%]
+
+============================== 5 passed in 0.06s ==============================
+
+
+=== stage: AI Code Review ===
+Reviewed app.py
+Report written to C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk2\output\ai_review_report.txt
+
+=== pipeline summary ===
+lint: PASS
+test: PASS
+ai_review: PASS
+
+
+-- Week 3: single-failure-class remediation check (F401 unused imports) --
+No unused imports found (F401). Nothing to remediate.
+
+
+======================================================================
+STAGE 2 -- Agentic IaC (Week 7: Terraform generation + OPA policy gate)
+======================================================================
+
+[32m9 tests, 9 passed, 0 warnings, 0 failures, 0 exceptions[0m
+
+
+======================================================================
+STAGE 3 -- Predictive Deploy (Week 4: forecast -> replica recommendation + cost)
+======================================================================
+Training on 1727 points, evaluating on 289 points
+# Week 4 Forecast Summary
+
+## Evaluation (held-out 24-hour test set)
+- MAE:  2.51% CPU
+- MAPE: 9.0%
+
+## Autoscaling recommendation
+- Current replicas:           4
+- Max predicted CPU (30 min): 45.8% (upper 80% CI)
+- Target CPU per replica:     60%
+- Recommended replicas:       4
+- Decision:                   No change
+
+
+# Cost-Impact Analysis (computed from the trained model + generated data)
+
+Assumptions: $0.04/hour/replica (illustrative AWS t3.medium on-demand rate),
+target 60% CPU per replica, 1 minimum replica, over the full 7-day
+(168-hour) synthetic dataset (2016 5-minute samples).
+
+| Scenario | Avg replicas | 7-day cost |
+|---|---|---|
+| Static (peak-provisioned, 24/7) | 2 | $13.44 |
+| Reactive HPA (immediate up, 15-min stabilized down) | 1.06 | $7.14 |
+| Predictive (Prophet, 30-min horizon, upper 80% CI) | 1.08 | $7.28 |
+
+Peak actual CPU over the 7 days: 69.7%.
+
+
+
+======================================================================
+STAGE 4 -- Observability (Week 5: Isolation Forest anomaly detection)
+======================================================================
+stdout: {"anomaly_detected": true, "n_flagged": 20, "precision": 0.8, "recall": 1.0, "f1": 0.889, "first_flagged_index": 188, "ground_truth_incident_window": [200, 215]}
+{
+  "anomaly_detected": true,
+  "n_flagged": 20,
+  "precision": 0.8,
+  "recall": 1.0,
+  "f1": 0.889,
+  "first_flagged_index": 188,
+  "ground_truth_incident_window": [
+    200,
+    215
+  ]
+}
+
+======================================================================
+STAGE 5 -- Auto-remediate (Week 6: gated ReAct incident-triage agent)
+======================================================================
+Incident handed to Stage 5, built from Stage 4's real output:
+  ALERT: Isolation Forest flagged an anomaly in payment-svc metrics starting at sample index 188 (precision=0.8, recall=1.0, f1=0.889 against the labeled incident window [200, 215]).
+
+
+[Agent] Starting triage for incident: ALERT: Isolation Forest flagged an anomaly in payment-svc metrics starting at sample index 188 (precision=0.8, recall=1.0, f1=0.889 against the labeled incident window [200, 215]).
+
+[Agent] Loaded runbook: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk6\runbooks\lab-payment-svc-high-error-rate.yaml
+
+[Agent] No ANTHROPIC_API_KEY found -- running in simulation mode.
+
+[Agent Thought] Incident alert: 'ALERT: Isolation Forest flagged an anomaly in payment-svc metrics starting at sample index 188 (precision=0.8, recall=1.0, f1=0.889 against the labeled incident window [200, 215]).' names payment-svc with an elevated error rate. Per the runbook, step 1 (check_metrics) is to confirm this against live metrics before doing anything else.
+
+[Agent Action] Calling tool: get_metrics({"service": "payment-svc"})
+[Tool Result] {"error_rate": 0.08, "p99_latency_ms": 450, "error_budget_remaining": 0.42}
+[Agent Thought] Confirmed: error_rate=0.08 is at/above the 0.05 trigger, and error_budget_remaining=0.42 still leaves room to safely investigate. Runbook step 2 (check_logs): fetch recent error logs to find a failure signature.
+
+[Agent Action] Calling tool: get_recent_logs({"service": "payment-svc", "tail": 20})
+[Tool Result] ERROR NullPointerException in PaymentProcessor.process() line 142
+ERROR NullPointerException in PaymentProcessor.process() line 142
+WARN  Cart total $12,450.00 exceeded expected range
+
+[Agent Thought] Logs show a repeated NullPointerException in PaymentProcessor.process(). The runbook maps this signature to 'check_recent_deploy' -- this pattern usually correlates with a bad deploy rather than a downstream dependency failure.
+
+[Agent Action] Calling tool: get_deployment_history({"service": "payment-svc"})
+[Tool Result] {"current": "v1.4.2", "previous": "v1.4.1", "deployed_at": "8 minutes ago", "migration_pending": false}
+[Agent Thought] Deploy was 8 minutes ago (within the 30-minute correlation window) and migration_pending=False. Branch 'recent_deploy_no_migration_pending' applies: proceed to dry_run_then_rollback.
+[Agent Thought] Before touching anything, I always run dry_run_rollback first, as the runbook and the tool description both require. Runbook step 4 (dry_run_then_rollback).
+
+[Agent Action] Calling tool: dry_run_rollback({"service": "payment-svc"})
+[Tool Result] DRY RUN: Would revert payment-svc v1.4.2 -> v1.4.1. No migration pending. Safe to proceed.
+[Agent Thought] Dry run confirms the rollback target and shows no migration pending: 'DRY RUN: Would revert payment-svc v1.4.2 -> v1.4.1. No migration pending. Safe to proceed.'. execute_rollback is a destructive, hard-to-reverse action, so the runbook requires human approval before I may call it. Requesting approval now -- I will not call execute_rollback without an approved_by value.
+
+============================================================
+[APPROVAL GATE] Agent requests permission to: execute_rollback on payment-svc
+============================================================
+Approve? (yes/no): Enter your name for the audit log: 
+[Agent Action] Calling tool: execute_rollback({"service": "payment-svc", "approved_by": "Capstone-Pipeline-Operator"})
+[Tool Result] ROLLBACK EXECUTED: payment-svc reverted to v1.4.1. Approved by Capstone-Pipeline-Operator. ETA 45s.
+[Agent Thought] Rollback executed and approved by a human. Runbook's final step (verify): re-check metrics to confirm the fix actually worked before declaring this resolved.
+
+[Agent Action] Calling tool: get_metrics({"service": "payment-svc"})
+[Tool Result] {"error_rate": 0.006, "p99_latency_ms": 135, "error_budget_remaining": 0.42}
+[Agent Thought] Post-rollback error_rate=0.006 is back under the 0.05 threshold. Branch 'error_rate_below_threshold' applies: incident resolved.
+
+[Agent] Triage complete.
+
+------------------------------------------------------------
+[Postmortem Draft]
+- payment-svc error rate breached its 5-minute threshold ~8 minutes after a deploy of v1.4.2.
+- Logs showed a repeated NullPointerException in PaymentProcessor.process(), traced to the recent deploy.
+- dry_run_rollback confirmed a safe target (v1.4.2 -> v1.4.1, no migration pending) before requesting approval.
+- Rollback approved by Capstone-Pipeline-Operator and executed: ROLLBACK EXECUTED: payment-svc reverted to v1.4.1. Approved by Capstone-Pipeline-Operator. ETA 45s.
+- Verified: error_rate dropped to 0.006 (below the 0.05 threshold). Incident resolved.
+------------------------------------------------------------
+
+
+======================================================================
+PIPELINE SUMMARY
+======================================================================
+{
+  "stage": "ci_cd",
+  "pipeline_passed": true,
+  "remediation_check_ran": true
+}
+{
+  "stage": "iac",
+  "opa_passed": true,
+  "source": "live_conftest"
+}
+{
+  "stage": "predictive_deploy",
+  "forecast_ok": true,
+  "summary": "# Week 4 Forecast Summary\n\n## Evaluation (held-out 24-hour test set)\n- MAE:  2.51% CPU\n- MAPE: 9.0%\n\n## Autoscaling recommendation\n- Current replicas:           4\n- Max predicted CPU (30 min): 45.8% (upper 80% CI)\n- Target CPU per replica:     60%\n- Recommended replicas:       4\n- Decision:                   No chang
+{
+  "stage": "observability",
+  "anomaly_detected": true,
+  "signal": {
+    "anomaly_detected": true,
+    "n_flagged": 20,
+    "precision": 0.8,
+    "recall": 1.0,
+    "f1": 0.889,
+    "first_flagged_index": 188,
+    "ground_truth_incident_window": [
+      200,
+      215
+    ]
+  }
+}
+{
+  "stage": "auto_remediate",
+  "ran": true,
+  "resolved": true
+}
