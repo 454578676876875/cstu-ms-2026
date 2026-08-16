@@ -11,13 +11,13 @@
 # satisfy with a resource that is present but switched off, which is exactly the
 # kind of thing a prompt-injected or careless change produces.
 #
-# Design note 2: encryption and versioning each have TWO valid spellings -- the
+# Design note 2: encryption and versioning each have two valid spellings -- the
 # modern separate resource, and the deprecated inline block on aws_s3_bucket.
-# I check for both. I did not do this originally, and testing caught it: an
-# agent that emits the old inline style (which a lot of Terraform training data
-# still shows) produced a plan that genuinely IS encrypted and versioned, but my
+# I check for both now, but I didn't originally, and testing caught it: an
+# agent that emits the old inline style (a lot of Terraform training data still
+# shows it) produced a plan that IS actually encrypted and versioned, but my
 # first policy denied it because it only looked for the separate resources.
-# That is a false positive, and a policy that cries wolf gets switched off. The
+# That's a false positive, and a policy that cries wolf gets switched off. The
 # deprecated form now raises a `warn` instead -- visible, but not blocking.
 # See docs/step1-agent-generation.md for the full experiment.
 #

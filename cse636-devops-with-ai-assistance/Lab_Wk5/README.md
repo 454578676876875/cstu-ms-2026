@@ -87,7 +87,7 @@ noise. The numbers back this up. Isolation Forest gets F1 around 0.89 (contamina
 DBSCAN only gets about 0.48 (eps=1.0, min_samples=5). The full contamination sweep is in
 `notebooks/analysis.ipynb`.
 
-**Why alert grouping is rule-based, not LLM-based.** Grouping 48 per-metric alerts into incidents is
+**Why alert grouping is rule-based.** Grouping 48 per-metric alerts into incidents is
 a simple, deterministic problem: sort by time, start a new group when the gap since the last alert
 gets too big. Using an LLM call here would just add cost and latency without improving accuracy.
 

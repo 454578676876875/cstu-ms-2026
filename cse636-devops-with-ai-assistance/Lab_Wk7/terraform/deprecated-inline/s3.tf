@@ -12,7 +12,7 @@
 #
 # The single deny is legitimate: there is no aws_s3_bucket_public_access_block
 # here, and unlike encryption/versioning that setting has no inline equivalent,
-# so this bucket genuinely would not have one.
+# so this bucket really would not have one.
 #
 # My first draft of the policy denied all three, because it only looked for the
 # modern separate resources. Two of those three were false positives -- the plan

@@ -18,14 +18,13 @@ to 4 resources, and clears all 9 policy rules.
 There are two ways to express those four requirements, and which one an agent
 picks matters more than I expected.
 
-**Modern (provider v4+):** the bucket is one resource, and versioning,
-encryption, and the public-access block are three *separate* resources that
-reference it.
+Modern (provider v4+): the bucket is one resource, and versioning, encryption,
+and the public-access block are separate resources that reference it.
 
-**Deprecated (pre-v4):** versioning and encryption are inline blocks *inside*
-the `aws_s3_bucket` resource.
+Deprecated (pre-v4): versioning and encryption are inline blocks inside the
+`aws_s3_bucket` resource itself.
 
-A lot of Terraform material still shows the second style, so it's a realistic
+A lot of Terraform material still shows the older style, so it's a realistic
 thing for a model to emit. I wrote it out (`terraform/deprecated-inline/s3.tf`)
 and ran it through every gate to see what would actually catch it.
 
@@ -52,14 +51,14 @@ inline attributes are still there with real values:
 ]
 ```
 
-Provider v5.100 still honours the deprecated blocks. The bucket really would be
-encrypted, and really would be versioned. Two of my three denies were **false
-positives** — the policy was reporting a missing security control that was in
-fact present, purely because it was spelled the old way.
+Provider v5.100 still honors the deprecated blocks. The bucket really would be
+encrypted, and really would be versioned. Two of my three denies were false
+positives: the policy was reporting a missing security control that was in fact
+present, purely because it was spelled the old way.
 
 The third deny was legitimate:
 `aws_s3_bucket_public_access_block` has no inline equivalent, so that bucket
-genuinely would not have had one.
+really would not have had one.
 
 ### The fix
 
@@ -83,14 +82,14 @@ this behaviour so it can't quietly come back.
 
 ## Why this is the part of the lab I'd defend in a review
 
-The lab's thesis is *the agent proposes, the policy decides* — which quietly
-assumes the policy is right. This was a case where it wasn't, and the failure
-mode is the bad kind: a **false positive on a security control**. Those are worse
-than they look, because a policy that blocks correct configurations gets
-exceptions carved into it, and then gets ignored, and then the one time it fires
-on something real nobody believes it.
+The lab's thesis is that the agent proposes and the policy decides, which
+quietly assumes the policy is right. This was a case where it wasn't, and the
+failure mode is the bad kind: a false positive on a security control. Those are
+worse than they look, because a policy that blocks correct configurations gets
+exceptions carved into it, then gets ignored, and then the one time it fires on
+something real nobody believes it.
 
-The thing that caught it was not the policy or the tests — both agreed with each
-other, because I wrote both from the same wrong assumption. It was reading the
-raw plan JSON to check what the tool was actually reporting before believing my
-own summary of it.
+The thing that caught it was not the policy or the tests. Both agreed with each
+other, because I'd written both from the same wrong assumption. What caught it
+was reading the raw plan JSON to check what the tool was actually reporting,
+instead of trusting my own summary of it.

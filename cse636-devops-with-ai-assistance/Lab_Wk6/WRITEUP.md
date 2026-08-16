@@ -18,8 +18,8 @@ mid-firefight on something related.
 Least privilege: exactly five tools, and `dry_run_rollback` is required before
 `execute_rollback` by both the runbook's step order and an explicit system-prompt rule.
 `approved_by` only ever comes from the terminal prompt, never synthesized by the agent.
-Honestly, that's the extent of it for the lab -- no rate limiter or kill switch here, since the
-lab doesn't ask for them (built for the assignment instead). Real gap worth naming: this agent
+That's about the extent of it for the lab -- no rate limiter or kill switch here, since the
+lab doesn't ask for them (built for the assignment instead). One gap worth naming: this agent
 alone would happily re-process a declined rollback a second time with no cooldown, the exact
 flapping risk the assignment's guardrails close.
 

@@ -143,17 +143,17 @@ code is written against, in favor of a different API. `pyproject.toml` pins `mcp
 which resolves to 1.29.0 and still has the old decorators, so both `incident_tools_server.py`
 files actually run instead of throwing an AttributeError on import.
 
-The MCP server files aren't just there for show, either. The lab's own starter code admits in
-a comment that `execute_tool()` doesn't really talk to the MCP server at runtime ("in a real
-system, these call the MCP server"), and I kept that same split because it's what the lab asks
-for: one file with the tool schema, one file with the agent. Both `incident_tools_server.py`
+The MCP server files still do something, though. The lab's own starter code admits in a comment
+that `execute_tool()` doesn't talk to the MCP server at runtime ("in a real system, these call
+the MCP server"), and I kept that same split because it's what the lab asks for: one file with
+the tool schema, one file with the agent. Both `incident_tools_server.py`
 files still work if you call `list_tools()`/`call_tool()` on them directly, which is what the
 `uv run python -c "..."` command above checks.
 
 As for why I didn't just reuse payment-svc/rollback for the assignment: the assignment wants
 its own runbook with its own decision logic, and reusing the lab's exact scenario would've
 made the remediation and verification sections basically the same thing twice. Restarting pods
-for a memory leak felt like a genuinely different situation than rolling back a bad deploy,
+for a memory leak felt like a different enough situation from rolling back a bad deploy,
 since a restart only buys time instead of fixing anything. That gap is basically what the rate
 limiter and the runbook's "second crash loop means a code fix, not another restart" note are
 built around.

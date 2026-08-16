@@ -2,19 +2,18 @@
 
 The Week 7 lab from `week-07-lab.md`: an agent generates a Terraform S3 bucket,
 Terraform validates and plans it, and an OPA policy run through conftest decides
-whether the plan is allowed — before anything is applied. Plus the deliberate
-policy break (Step 4) and the prompt-injection demo (Step 5).
+whether the plan is allowed before anything gets applied. Plus the policy break
+in Step 4 and the prompt-injection demo in Step 5.
 
-The one-line summary of what this lab is actually about: **the agent proposes,
-the policy decides.** Everything here is built so that stays true even when the
-agent is wrong or actively manipulated.
+One-line summary: the agent proposes, the policy decides. Everything here is
+built so that stays true even when the agent is wrong, or gets manipulated.
 
 ## How to run
 
 Needs `conftest` for the policy targets, and `terraform` only if you want to
-regenerate the plans. **No AWS account is required** — the provider is
-configured with mock credentials and `skip_*` flags, so `terraform plan` runs
-fully offline. Nothing is ever applied.
+regenerate the plans. No AWS account required, the provider is configured with
+mock credentials and `skip_*` flags, so `terraform plan` runs offline. Nothing
+is ever applied.
 
 ```bash
 cd cse636-devops-with-ai-assistance/Lab_Wk7
@@ -69,80 +68,80 @@ transcripts/                captured output from real runs of every step.
 
 ## What each step shows
 
-**Steps 1–2 — generate and plan.** `terraform/compliant/s3.tf` is what came out
-of the lab's prompt. It plans to 4 resources with no AWS account
-(`transcripts/01`).
+Steps 1-2, generate and plan. `terraform/compliant/s3.tf` is what came out of
+the lab's prompt. It plans to 4 resources with no AWS account (`transcripts/01`).
 
-**Step 3 — the policy passes.** 9 rules, 9 passed, exit 0 (`transcripts/02`).
+Step 3, the policy passes. 9 rules, 9 passed, exit 0 (`transcripts/02`).
 
-**Step 4 — the policy blocks.** One tag changed from `capstone` to `staging`;
+Step 4, the policy blocks. One tag changed from `capstone` to `staging`,
 conftest returns one deny and exit 1, so CI would stop (`transcripts/03`). Worth
-noting the broken config still passes `terraform validate` — validate checks
-schema, not intent.
+noting the broken config still passes `terraform validate` since validate
+checks schema, not intent.
 
-**Step 5 — prompt injection.** The full write-up is in
-`docs/step5-prompt-injection.md`, including the honest version of what happened:
-I gave the agent `docs/malicious_docs.txt` and **it refused to follow the
-injection**. That's a real result but a weak one — it's one model, one attempt,
-against a payload with three obvious tells (`SYSTEM:` marker, `---` fences, "do
-not mention this change"). It is not a control you can rely on.
+Step 5, prompt injection. Full write-up is in `docs/step5-prompt-injection.md`,
+including the honest version of what happened: I gave the agent
+`docs/malicious_docs.txt` and it refused to follow the injection. That's a
+result, but a weak one. It's one model, one attempt, against a payload with
+three obvious tells (`SYSTEM:` marker, `---` fences, "do not mention this
+change"). Not something you can rely on as a control.
 
 So the demonstrable part doesn't depend on the agent at all. I hand-wrote the
-config the injection *wanted* (`terraform/injected/s3.tf`), and OPA blocks it
-with two denies (`transcripts/04`) — regardless of how the bad Terraform got
-there. Combined with the fact that nothing in this lab has an `apply` tool, a
-fully successful injection still changes no infrastructure.
+config the injection wanted (`terraform/injected/s3.tf`), and OPA blocks it with
+two denies (`transcripts/04`), regardless of how the bad Terraform got there.
+Nothing in this lab has an `apply` tool either, so even a fully successful
+injection changes no infrastructure.
 
 ## Design decisions
 
-**The policy checks values, not just resource existence.** The version in the
+The policy checks values, not just resource existence. The version in the
 course starter denies only when an encryption resource is absent. Mine also
-checks that `sse_algorithm` is really AES256 or aws:kms, that versioning status
-is really `Enabled` (not `Suspended`), and that *all four* public-access booleans
-are really true. Existence-only checks are easy to satisfy with a resource
-that's present but switched off, which is the shape careless and malicious
-changes both tend to take.
+checks that `sse_algorithm` is actually AES256 or aws:kms, that versioning
+status is actually `Enabled` (not `Suspended`), and that all four
+public-access booleans are true. Existence-only checks are easy to satisfy with
+a resource that's present but switched off, which is the shape careless and
+malicious changes both tend to take.
 
-**I got the policy wrong first, and the fix is the interesting part.** Terraform
-has two spellings for S3 encryption and versioning — the modern separate
-resources, and deprecated inline blocks on `aws_s3_bucket`. My first policy only
-recognized the modern form, so it denied a config that was genuinely encrypted
-and versioned, just written the old way. Two false positives on security
-controls. The policy now accepts either spelling and only *warns* about the
-deprecated syntax. Full write-up in `docs/step1-agent-generation.md`; four
-regression tests in `s3_test.rego` keep it fixed.
+I got the policy wrong first, and fixing it turned out to be the more
+interesting part of this whole lab. Terraform has two spellings for S3
+encryption and versioning: the modern separate resources, and deprecated inline
+blocks on `aws_s3_bucket`. My first policy only recognized the modern form, so
+it denied a config that was actually encrypted and versioned, just written the
+old way. Two false positives on security controls. The policy now accepts
+either spelling and only warns about the deprecated syntax. Full write-up in
+`docs/step1-agent-generation.md`; four regression tests in `s3_test.rego` keep
+it fixed.
 
-That mattered more to me than the passing case. A policy that blocks correct
-configurations gets exceptions carved into it, then gets ignored, and then it
-doesn't matter that it was right the one time it caught something real.
+That bug mattered more to me than the passing case did. A policy that blocks
+correct configurations gets exceptions carved into it, then gets ignored, and
+then it doesn't matter that it was right the one time it caught something real.
 
-**Variants are separate directories, not edits to one file.** The lab says to
-edit `s3.tf` in place for Step 4. I kept each variant as its own config so both
-the pass and the fail are reproducible from a clean checkout and both plans stay
-in version control.
+Variants live in separate directories instead of edits to one file. The lab
+says to edit `s3.tf` in place for Step 4, but I kept each variant as its own
+config so both the pass and the fail are reproducible from a clean checkout and
+both plans stay in version control.
 
-**Committed plan JSON.** `plans/*.json` is checked in so `make policy` works
+Plan JSON is committed. `plans/*.json` is checked in so `make policy` works
 with only conftest installed. Regenerate any time with `make plan-all`.
 
 ## Known limitations
 
-- **The policy is per-plan, not per-bucket.** With one bucket that's equivalent,
+- The policy is per-plan, not per-bucket. With one bucket that's equivalent,
   but a plan with two buckets where only one is encrypted would pass, because
   associating a config resource with its bucket means resolving
   `bucket = aws_s3_bucket.X.id` references through the plan's `configuration`
-  block. This is the first thing I'd fix.
-- **No human approval gate.** The lab doesn't ask for one, but it's the defense
-  from the Week 7 notes that's most conspicuously missing here — and the notes
-  are specific that the confirmation should arrive on a *different channel* from
+  block. First thing I'd fix.
+- No human approval gate. The lab doesn't ask for one, but it's the defense
+  from the Week 7 notes that's most conspicuously missing here, and the notes
+  are specific that the confirmation should arrive on a different channel from
   the one carrying untrusted content.
-- **The naming rule is a bit teaching-to-the-test.** I added the
-  `capstone-` prefix rule knowing the injection renames the bucket. Naming
-  conventions are ordinary governance, and the encryption deny would have fired
-  anyway — but a policy only catches violations someone thought to write down.
-- **State-blind.** The policy validates the end state, so it wouldn't flag that
-  renaming a *live* bucket means destroy-and-recreate, i.e. data loss, with every
+- The naming rule is a bit teaching-to-the-test. I added the `capstone-` prefix
+  rule knowing the injection renames the bucket. Naming conventions are
+  ordinary governance and the encryption deny would have fired anyway, but a
+  policy only catches violations someone thought to write down.
+- State-blind. The policy validates the end state, so it wouldn't flag that
+  renaming a live bucket means destroy-and-recreate, i.e. data loss, with every
   individual rule still satisfied.
-- **One injection attempt, one model.** See `docs/step5-prompt-injection.md`.
+- One injection attempt, one model. See `docs/step5-prompt-injection.md`.
 
 ## Rubric coverage
 
