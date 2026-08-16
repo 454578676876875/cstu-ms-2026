@@ -8,10 +8,105 @@ week.
 
 ```
 cse636-devops-with-ai-assistance/
+  Lab_Wk1/    Week 1: Cloud DevOps Setup and First Agent Run
+  Lab_Wk2/    Week 2: AI Code Review Pipeline + MCP Server
+  Lab_Wk3/    Week 3: Build-Fixer Agent with a Human Approval Gate
+  Lab_Wk4/    Week 4: Time-Series Forecasting for Autoscaling
   Lab_Wk5/    Week 5: Anomaly Detection and AI-Generated Root Cause Analysis
   Lab_Wk6/    Week 6: Gated Incident-Triage and Self-Healing Agents
   Lab_Wk7/    Week 7: Agentic IaC with an OPA Policy Gate
+  CAPSTONE_INTEGRATION.md   narrative: how the seven weeks compose into one end-to-end pipeline
+  capstone/                 the actual Capstone deliverable: a wired orchestrator that runs all
+                             five pipeline stages for real, + REPORT.md + PRESENTATION.md
 ```
+
+See [`cse636-devops-with-ai-assistance/capstone/`](cse636-devops-with-ai-assistance/capstone/)
+for the Capstone deliverable (distinct from the Week 7 *lab*, `Lab_Wk7`) — a real,
+subprocess-orchestrated pipeline run across all seven weeks (`python capstone/pipeline.py`),
+the 4-6 page technical report, and the presentation script. See
+[`cse636-devops-with-ai-assistance/CAPSTONE_INTEGRATION.md`](cse636-devops-with-ai-assistance/CAPSTONE_INTEGRATION.md)
+for the stage-by-stage narrative explaining why each connection exists.
+
+## Week 1: Cloud DevOps Setup and First Agent Run
+
+Located in [`cse636-devops-with-ai-assistance/Lab_Wk1`](cse636-devops-with-ai-assistance/Lab_Wk1).
+
+Different in shape from the other weeks: the lab itself is "run an AI agent against a real repo
+and observe it," so rather than a simulated project, this ran the four suggested tasks for real
+with Claude Code against `dockersamples/example-voting-app`, cloned inside the course's Step 1b
+local Docker lab environment (`cse636-lab-wk1` container).
+
+- **Four agent tasks, run for real**: repo exploration, a security scan that found a hardcoded
+  Postgres password repeated across 5 files, reviewing an already-generated CI workflow (and
+  recognizing it shouldn't be overwritten), and finding two outdated base images across the
+  repo's three Dockerfiles.
+- **Collected data**: a 1,615-line CI build log from an actual local run (image builds +
+  a full vote -> Redis -> worker -> Postgres -> results e2e check, `exit=0`), plus system
+  metrics from inside the lab container.
+- **Assignment**: three researched, cited real-world agentic-DevOps deployments (a documented
+  production database-deletion incident, the 2025 DORA report, and a named practitioner's
+  account of Anthropic's own internal SRE use of Claude), rendered to PDF.
+
+See [`Lab_Wk1/README.md`](cse636-devops-with-ai-assistance/Lab_Wk1/README.md) and
+[`Lab_Wk1/WRITEUP.md`](cse636-devops-with-ai-assistance/Lab_Wk1/WRITEUP.md).
+
+## Week 2: AI Code Review Pipeline + MCP Server
+
+Located in [`cse636-devops-with-ai-assistance/Lab_Wk2`](cse636-devops-with-ai-assistance/Lab_Wk2).
+
+No Docker/Jenkins running on this machine, so this is a local simulation of the lab's pipeline
+(same substitution pattern as Weeks 5-7): Lint -> Test -> AI Review stages run against a
+sample app, and an MCP server (stdio JSON-RPC, verified with a client handshake) exposes
+build status backed by a local fixture instead of a live Jenkins REST API.
+
+- **Pipeline**: `flake8` + `pytest` + a dual-mode AI review step that found a gap (a
+  missing bounds check) via static analysis when no `ANTHROPIC_API_KEY` was set.
+- **MCP server**: `list_jobs`/`get_build_status`, same tool contract as the course's
+  `project/mcp_servers/jenkins_status.py`, confirmed with a subprocess client test.
+- **Assignment**: a Claude Code vs. GitHub Copilot integration + governance plan for a
+  25-engineer, 150-repo team.
+
+See [`Lab_Wk2/README.md`](cse636-devops-with-ai-assistance/Lab_Wk2/README.md) and
+[`Lab_Wk2/WRITEUP.md`](cse636-devops-with-ai-assistance/Lab_Wk2/WRITEUP.md).
+
+## Week 3: Build-Fixer Agent with a Human Approval Gate
+
+Located in [`cse636-devops-with-ai-assistance/Lab_Wk3`](cse636-devops-with-ai-assistance/Lab_Wk3).
+
+Builds the lab document's own official no-GitHub path (its J5 dry-run walkthrough): an agent
+detects a failing test, proposes a fix, and stops at a blocking approval gate before anything
+is written. Both the approved and declined outcomes are captured from actual runs, not scripted
+by hand.
+
+- **Lab**: the buggy calculator from the spec, fixed after a captured approval, re-verified by
+  re-running the actual test suite.
+- **Assignment**: test-impact analysis (`select_tests.py`, a before/after test-count demo)
+  and a single-failure-class remediation agent (detects and gate-fixes unused imports, F401).
+- **Guardrails**: documented in `docs/guardrails.md`: single-file scope, single failure
+  class, no merge/deploy capability, self-verification via the tool's actual exit code.
+
+See [`Lab_Wk3/README.md`](cse636-devops-with-ai-assistance/Lab_Wk3/README.md) and
+[`Lab_Wk3/WRITEUP.md`](cse636-devops-with-ai-assistance/Lab_Wk3/WRITEUP.md).
+
+## Week 4: Time-Series Forecasting for Autoscaling
+
+Located in [`cse636-devops-with-ai-assistance/Lab_Wk4`](cse636-devops-with-ai-assistance/Lab_Wk4).
+
+The Prophet model (`prophet==1.4.0`, `cmdstanpy` backend) installed and fit cleanly on this
+machine rather than falling back to a stub, so every number here comes from an actual trained
+model.
+
+- **Forecast**: MAE 2.51% CPU / MAPE 9.0% on a held-out 24-hour split; the components plot
+  recovers the synthetic trend/weekly/daily signal cleanly.
+- **Scaling**: `recommend_replicas()` as a tested pure function, scaling off the upper 80% CI
+  band rather than the point forecast (a safety margin against under-forecasting).
+- **Assignment**: a cost-impact comparison (static vs. reactive HPA vs. predictive, computed
+  from the actual trained model and dataset) showing predictive costs come out slightly *more*
+  than reactive here. That's not the flattering "AI saves money" result, but the write-up
+  covers when the trade-off is worth it anyway.
+
+See [`Lab_Wk4/README.md`](cse636-devops-with-ai-assistance/Lab_Wk4/README.md) and
+[`Lab_Wk4/WRITEUP.md`](cse636-devops-with-ai-assistance/Lab_Wk4/WRITEUP.md).
 
 ## Week 5: Anomaly Detection and Agent Instrumentation
 
@@ -37,9 +132,9 @@ project layout, and the design decisions behind the implementation, and
 reflection.
 
 **Note:** No Anthropic API key is configured in this environment, so LLM calls in the log-analysis
-and RCA agents are simulated. The simulated responses are derived from real detector and log output
-rather than fixed text, so the token counts, costs, and generated reports remain representative of
-what a live call would produce.
+and RCA agents are simulated. The simulated responses are derived from the actual detector and log
+output rather than fixed text, so the token counts, costs, and generated reports stay representative
+of what a live call would produce.
 
 ## Week 6: Gated Incident-Triage and Self-Healing Agents
 
@@ -50,13 +145,13 @@ Covers the Week 6 lab and the assignment:
 - **Lab**: a ReAct agent that triages a `payment-svc` error-rate spike using a YAML runbook and
   5 tools, and stops for a human approval before the one destructive action
   (`execute_rollback`).
-- **Assignment**: a self-healing agent for a different failure mode -- `notify-svc` stuck
-  restarting in an OOM crash loop -- with its own runbook, 6 tools, a gated `restart_service`,
+- **Assignment**: a self-healing agent for a different failure mode: `notify-svc` stuck
+  restarting in an OOM crash loop, with its own runbook, 6 tools, a gated `restart_service`,
   and three blast-radius controls (kill switch, error-budget check, a rate limiter on
   remediation). These are checked in code, not just written into the prompt. The captured
-  transcript runs two incidents back to back so the rate limiter actually blocks the second
-  automated restart when the crash loop comes back -- the restart-flapping scenario the course
-  notes warn about.
+  transcript runs two incidents back to back, so the rate limiter blocks the second automated
+  restart when the crash loop comes back — the restart-flapping scenario the course notes warn
+  about.
 - **Architecture diagram**: [`diagrams/architecture.svg`](cse636-devops-with-ai-assistance/Lab_Wk6/diagrams/architecture.svg),
   labeled with the gates and autonomy level for each step.
 
@@ -69,8 +164,9 @@ reflection and the assignment's safety discussion.
 
 **Note:** No Anthropic API key is configured in this environment, so both agents run in
 simulation mode, which is an option the lab doc itself allows. A scripted stand-in "brain"
-walks the same runbook a live Claude call would and stops at the same real, blocking
-`input()` approval prompt, so the transcripts are from actual runs, not written by hand.
+walks the same runbook a live Claude call would and stops at the same blocking `input()`
+approval prompt, so the transcripts come from actual runs rather than being written up after
+the fact.
 
 ## Week 7: Agentic IaC with an OPA Policy Gate
 
