@@ -1,0 +1,53 @@
+=== Build-fixer agent: running tests ===
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk3\src\lab
+collected 2 items
+
+tests\test_calculator.py F.                                              [100%]
+
+================================== FAILURES ===================================
+__________________________________ test_add ___________________________________
+tests\test_calculator.py:10: in test_add
+    assert add(2, 3) == 5  # FAILS -- calculator.add has the injected bug
+    ^^^^^^^^^^^^^^^^^^^^^
+E   assert -1 == 5
+E    +  where -1 = add(2, 3)
+=========================== short test summary info ===========================
+FAILED tests/test_calculator.py::test_add - assert -1 == 5
+========================= 1 failed, 1 passed in 0.12s =========================
+
+
+=== Build-fixer agent: proposing a fix ===
+Root cause:       add(a, b) returns a - b instead of a + b -- test_add expects add(2, 3) == 5 but the current implementation returns -1.
+Fix description:  Change the return statement in add() from `a - b` to `a + b`.
+
+Proposed diff:
+--- calculator.py (before)
++++ calculator.py (proposed)
+@@ -1,6 +1,5 @@
+ def add(a, b):
+-    # Bug: subtraction instead of addition
+-    return a - b
++    return a + b
+ 
+ 
+ def multiply(a, b):
+
+============================================================
+[APPROVAL GATE] apply this fix to calculator.py (see diff above)
+============================================================
+Approve? (yes/no): Enter your name for the audit log: 
+=== APPROVED by Salman -- fix applied ===
+
+=== Re-running tests to confirm the fix ===
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk3\src\lab
+collected 2 items
+
+tests\test_calculator.py ..                                              [100%]
+
+============================== 2 passed in 0.04s ==============================
+
+=== Fix confirmed: tests pass ===

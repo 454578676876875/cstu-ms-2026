@@ -1,0 +1,9 @@
+
+=== F401: 'os' imported but unused in inventory_ops.py:2 ===
+Proposed removal: import os  # unused -- left in deliberately for remediation_agent.py to detect and remove
+
+============================================================
+[APPROVAL GATE] remove the unused import 'os' from inventory_ops.py:2
+============================================================
+Approve? (yes/no): Enter your name for the audit log: === APPROVED by Salman -- import removed ===
+=== Confirmed: F401 cleared for this file ===

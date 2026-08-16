@@ -1,0 +1,18 @@
+Changed files: ['app/math_ops.py']
+Test selection: SELECTED -- ['test_math_ops.py']
+
+Before (full suite): 3 test files
+After (selected):    1 test files
+
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\salma\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk3
+configfile: pyproject.toml
+collecting ... collected 2 items
+
+tests\test_math_ops.py::test_add PASSED                                  [ 50%]
+tests\test_math_ops.py::test_divide PASSED                               [100%]
+
+============================== 2 passed in 0.06s ==============================
+
