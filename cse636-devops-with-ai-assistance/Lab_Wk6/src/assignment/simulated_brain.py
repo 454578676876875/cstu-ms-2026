@@ -187,6 +187,29 @@ def triage(incident: str, service: str, execute_tool, request_human_approval, ch
         )
         return
 
+    # request_human_approval() stands in for a real, unbounded-latency human
+    # decision -- guardrail state (kill switch, rate limiter, error budget)
+    # could change while we waited. Don't trust the earlier check; re-verify
+    # right before the destructive call actually fires.
+    recheck_metrics = json.loads(_act(execute_tool, "get_metrics", {"service": service}))
+    still_allowed, recheck_reason = check_blast_radius(
+        service, recheck_metrics["error_budget_remaining"]
+    )
+    if not still_allowed:
+        _thought(
+            f"Blast-radius state changed while waiting for approval: {recheck_reason} "
+            "Per the runbook, any failed check means escalate -- I will not restart."
+        )
+        print("\n[Agent] Escalating to on-call-primary.")
+        _postmortem(
+            [
+                f"- {service} matched the OOM-crash-loop signature and was approved by {approver}.",
+                f"- Blast-radius control BLOCKED at re-check, just before executing: {recheck_reason}",
+                "- Escalated to on-call-primary; no restart was attempted.",
+            ]
+        )
+        return
+
     restart_result = _act(
         execute_tool, "restart_service", {"service": service, "approved_by": approver}
     )

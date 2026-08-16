@@ -1,14 +1,14 @@
 {
     "name": "execute_tool get_metrics",
     "context": {
-        "trace_id": "0x195fbe7bdc7c109df166c58366c1bd9c",
-        "span_id": "0x0ee4d448996f140e",
+        "trace_id": "0x037b4763902a35ff6ed3e8009561dae9",
+        "span_id": "0xdc95ee20cd0a946e",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0xce623e6fd438bd55",
-    "start_time": "2026-08-09T00:19:54.818752Z",
-    "end_time": "2026-08-09T00:19:54.823333Z",
+    "parent_id": "0x9ec69f85e9121af3",
+    "start_time": "2026-08-16T18:55:50.548069Z",
+    "end_time": "2026-08-16T18:55:50.550250Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -25,7 +25,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "715ffc19-3229-4643-b247-0a04c4ffbdfe",
+            "service.instance.id": "669b4ba7-50ca-4ae6-82a5-d8085e70713f",
             "service.name": "rca-agent"
         },
         "schema_url": ""
@@ -34,14 +34,14 @@
 {
     "name": "execute_tool get_logs",
     "context": {
-        "trace_id": "0x195fbe7bdc7c109df166c58366c1bd9c",
-        "span_id": "0xf43b63b7a64e469a",
+        "trace_id": "0x037b4763902a35ff6ed3e8009561dae9",
+        "span_id": "0x50cedf3503ff08ba",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0xce623e6fd438bd55",
-    "start_time": "2026-08-09T00:19:54.823447Z",
-    "end_time": "2026-08-09T00:19:54.825306Z",
+    "parent_id": "0x9ec69f85e9121af3",
+    "start_time": "2026-08-16T18:55:50.550406Z",
+    "end_time": "2026-08-16T18:55:50.553296Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -58,7 +58,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "715ffc19-3229-4643-b247-0a04c4ffbdfe",
+            "service.instance.id": "669b4ba7-50ca-4ae6-82a5-d8085e70713f",
             "service.name": "rca-agent"
         },
         "schema_url": ""
@@ -67,14 +67,14 @@
 {
     "name": "synthesize_rca_report",
     "context": {
-        "trace_id": "0x195fbe7bdc7c109df166c58366c1bd9c",
-        "span_id": "0x4240da4299b489bb",
+        "trace_id": "0x037b4763902a35ff6ed3e8009561dae9",
+        "span_id": "0x54e01a132ffe9779",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0xce623e6fd438bd55",
-    "start_time": "2026-08-09T00:19:54.825455Z",
-    "end_time": "2026-08-09T00:19:59.280333Z",
+    "parent_id": "0x9ec69f85e9121af3",
+    "start_time": "2026-08-16T18:55:50.553732Z",
+    "end_time": "2026-08-16T18:55:55.655461Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -96,7 +96,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "715ffc19-3229-4643-b247-0a04c4ffbdfe",
+            "service.instance.id": "669b4ba7-50ca-4ae6-82a5-d8085e70713f",
             "service.name": "rca-agent"
         },
         "schema_url": ""
@@ -105,14 +105,14 @@
 {
     "name": "rca_agent.run",
     "context": {
-        "trace_id": "0x195fbe7bdc7c109df166c58366c1bd9c",
-        "span_id": "0xce623e6fd438bd55",
+        "trace_id": "0x037b4763902a35ff6ed3e8009561dae9",
+        "span_id": "0x9ec69f85e9121af3",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
     "parent_id": null,
-    "start_time": "2026-08-09T00:19:54.818638Z",
-    "end_time": "2026-08-09T00:19:59.280366Z",
+    "start_time": "2026-08-16T18:55:50.546215Z",
+    "end_time": "2026-08-16T18:55:55.655498Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -128,7 +128,7 @@
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
             "telemetry.sdk.version": "1.44.0",
-            "service.instance.id": "715ffc19-3229-4643-b247-0a04c4ffbdfe",
+            "service.instance.id": "669b4ba7-50ca-4ae6-82a5-d8085e70713f",
             "service.name": "rca-agent"
         },
         "schema_url": ""

@@ -11,6 +11,7 @@ numbers so the spans below are meaningful without spending API credits.
 
 from __future__ import annotations
 
+import atexit
 import random
 import time
 from contextlib import contextmanager
@@ -46,6 +47,13 @@ def configure_tracer(service_name: str, span_log_path: str | None = None) -> tra
     if span_log_path:
         span_file = open(span_log_path, "w", encoding="utf-8")
         exporters.append(ConsoleSpanExporter(out=span_file))
+        # ConsoleSpanExporter.shutdown() does not close a caller-provided
+        # `out` file (it only owns writing to it), so without this the file
+        # handle stays open for the life of the process. Flush+close it once
+        # the provider shuts down (explicitly via provider.shutdown(), or at
+        # interpreter exit as a fallback for scripts that just fall off the
+        # end of main()).
+        atexit.register(span_file.close)
     for exp in exporters:
         provider.add_span_processor(BatchSpanProcessor(exp))
     trace.set_tracer_provider(provider)

@@ -322,8 +322,25 @@ def run_agent_live(incident: str, service: str) -> None:
                                 "Escalate to human on-call for manual intervention."
                             )
                         else:
-                            tool_input["approved_by"] = approver
-                            tool_result = execute_tool(tool_name, tool_input)
+                            # request_human_approval() blocks on a real, unbounded
+                            # human input() -- guardrail state (kill switch, rate
+                            # limiter, error budget) can change while we wait. Don't
+                            # trust the pre-approval check; re-verify right before
+                            # the destructive call actually fires.
+                            recheck_metrics = json.loads(
+                                execute_tool("get_metrics", {"service": tool_input["service"]})
+                            )
+                            still_allowed, recheck_reason = check_blast_radius(
+                                tool_input["service"], recheck_metrics["error_budget_remaining"]
+                            )
+                            if not still_allowed:
+                                tool_result = (
+                                    f"{recheck_reason} Escalate to human on-call for manual "
+                                    "intervention."
+                                )
+                            else:
+                                tool_input["approved_by"] = approver
+                                tool_result = execute_tool(tool_name, tool_input)
                 else:
                     tool_result = _guarded_execute_tool(tool_name, tool_input)
 

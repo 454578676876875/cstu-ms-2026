@@ -6,7 +6,7 @@ Between **2025-10-01 11:20:00** and **2025-10-01 11:35:00**, 48 alerts fired acr
 **error_rate**, which moved +5207.2% relative to the preceding
 60-minute baseline. Logs corroborate an active incident: 30
 ERROR and 23 WARN lines were emitted in the window, concentrated in
-inventory-svc, checkout-api, payments-svc.
+checkout-api, inventory-svc, payments-svc.
 
 ## Evidence: Metrics
 - **cpu_pct**: baseline 34.858 -> incident 83.387 (+139.2%)
@@ -16,7 +16,7 @@ inventory-svc, checkout-api, payments-svc.
 ## Evidence: Logs
 - 64 total log lines in window
 - 30 ERROR, 23 WARN
-- Top services: inventory-svc, checkout-api, payments-svc
+- Top services: checkout-api, inventory-svc, payments-svc
 - Representative errors:
   - `2025-10-01T11:21:18 ERROR service=checkout-api request failed status=503 path=/api/v1/checkout`
   - `2025-10-01T11:21:18 ERROR service=inventory-svc connection reset by peer during db query`
