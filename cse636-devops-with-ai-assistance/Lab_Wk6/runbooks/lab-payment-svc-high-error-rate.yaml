@@ -1,0 +1,87 @@
+# runbook: lab-payment-svc-high-error-rate.yaml
+# This is copied straight from the react_agent.py starter code in
+# week-06-lab.md Step 3, which already pointed at runbooks/<this file> --
+# just moved here so the agent can load it from disk.
+name: "payment-svc: high error rate"
+
+triggers:
+  - metric: error_rate_5m
+    service: payment-svc
+    threshold: 0.05
+
+steps:
+  - id: check_metrics
+    description: "Confirm the trigger: fetch current error rate and latency"
+    tool: get_metrics
+    args:
+      service: payment-svc
+    on_result:
+      error_rate_below_threshold:
+        note: "error_rate < 0.05 -> incident does not match this runbook's trigger"
+        escalate: false
+        resolve: "Not a matching incident. No action needed."
+      error_rate_at_or_above_threshold:
+        goto: check_logs
+
+  - id: check_logs
+    description: "Fetch recent error logs to identify the failure signature"
+    tool: get_recent_logs
+    args:
+      service: payment-svc
+      tail: 20
+    on_result:
+      contains "NullPointerException":
+        goto: check_recent_deploy
+      contains "timeout connecting to postgres":
+        escalate: true
+        reason: "Dependency failure, not a bad deploy -- outside this runbook's scope."
+      else:
+        escalate: true
+        reason: "Unrecognized log signature -- no matching diagnostic path."
+
+  - id: check_recent_deploy
+    description: "Check whether a recent deploy correlates with the error onset"
+    tool: get_deployment_history
+    args:
+      service: payment-svc
+    on_result:
+      recent_deploy_no_migration_pending:
+        when: "deployed_within('30m') and not migration_pending"
+        action: dry_run_then_rollback
+      recent_deploy_migration_pending:
+        when: "deployed_within('30m') and migration_pending"
+        escalate: true
+        reason: "Rollback is unsafe while a migration is pending -- needs human judgement."
+      no_recent_deploy:
+        when: "not deployed_within('30m')"
+        escalate: true
+        reason: "No recent deploy correlates with the error onset."
+
+  - id: dry_run_then_rollback
+    description: "Preview the rollback, then execute it only after human approval"
+    tool: dry_run_rollback
+    args:
+      service: payment-svc
+    on_result:
+      always:
+        require_human_approval: true
+        then_tool: execute_rollback
+        approval_declined:
+          escalate: true
+          reason: "Operator declined the rollback -- hand off to human on-call."
+
+  - id: verify
+    description: "Confirm the remediation worked"
+    tool: get_metrics
+    args:
+      service: payment-svc
+    on_result:
+      error_rate_below_threshold:
+        resolve: "Incident resolved: error rate back under 0.05 after rollback."
+      else:
+        escalate: true
+        reason: "Rollback did not bring error rate back under threshold."
+
+escalation:
+  page: on-call-primary
+  message_template: "Agent could not auto-resolve payment-svc incident. Context: {context}"

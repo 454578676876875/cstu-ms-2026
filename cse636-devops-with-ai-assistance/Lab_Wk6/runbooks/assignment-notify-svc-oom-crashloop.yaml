@@ -1,0 +1,136 @@
+# runbook: assignment-notify-svc-oom-crashloop.yaml
+# Author: Salman
+#
+# Failure mode I picked: notify-svc's batching worker has a slow memory leak.
+# RSS climbs for hours, eventually crosses the container memory limit,
+# Kubernetes OOMKills the pod, it restarts, leaks again -- crash loop.
+# Callers see a higher error rate and latency while pods are mid-restart.
+#
+# I wanted this to be a different kind of remediation than the lab's
+# rollback, on purpose: restarting the pods only buys time (it clears the
+# leaked memory), it doesn't fix the leak itself. So if the crash loop comes
+# right back after a restart, that's a sign this is a real bug and not
+# something another restart will help with -- which is what the rate
+# limiter further down is there to catch.
+name: "notify-svc: OOM crash loop"
+
+triggers:
+  - metric: restart_count_15m
+    service: notify-svc
+    threshold: 3
+  - metric: error_rate_5m
+    service: notify-svc
+    threshold: 0.03
+
+steps:
+  - id: check_metrics
+    description: "Confirm the trigger: fetch current error rate, latency, and restart count"
+    tool: get_metrics
+    args:
+      service: notify-svc
+    on_result:
+      below_threshold:
+        note: "restart_count_15m < 3 or error_rate_5m <= 0.03 -> does not match this runbook's trigger"
+        escalate: false
+        resolve: "Not a matching incident. No action needed."
+      at_or_above_threshold:
+        goto: check_pod_status
+
+  - id: check_pod_status
+    description: "Confirm this is actually a crash loop, not just a slow/degraded pod"
+    tool: get_pod_status
+    args:
+      service: notify-svc
+    on_result:
+      crash_loop_backoff_true:
+        when: "crash_loop_backoff and restarts_15m >= 3"
+        goto: check_logs
+      crash_loop_backoff_false:
+        when: "not crash_loop_backoff"
+        escalate: true
+        reason: "Elevated error rate without a crash loop -- outside this runbook's failure signature."
+
+  - id: check_logs
+    description: "Fetch recent logs to confirm an OOM/heap signature before touching anything"
+    tool: get_recent_logs
+    args:
+      service: notify-svc
+      tail: 30
+    on_result:
+      contains "OutOfMemoryError" or contains "heap space":
+        goto: check_recent_deploy
+      else:
+        escalate: true
+        reason: "Crash loop without an OOM/heap signature in the logs -- likely a different root cause (e.g. a bad dependency), outside this runbook's scope."
+
+  - id: check_recent_deploy
+    description: "Note (not gate) whether a recent deploy correlates -- informs the postmortem, doesn't change the remediation"
+    tool: get_deployment_history
+    args:
+      service: notify-svc
+    on_result:
+      always:
+        note: >
+          If deployed_within('30m'), the leak is probably a regression in the
+          latest release and the postmortem should recommend a code rollback
+          in addition to the restart. If not, this is a long-standing slow
+          leak that just crossed the memory limit; the postmortem should
+          recommend a heap-limit or leak-detection follow-up instead.
+        goto: blast_radius_checks
+
+  - id: blast_radius_checks
+    description: "Guardrails that must all pass before a dry run is even attempted"
+    checks:
+      - name: kill_switch
+        detail: "AUTOHEAL_KILL_SWITCH env var must not be set. If it is, escalate immediately -- do not run dry_run_restart."
+      - name: error_budget_gate
+        detail: "error_budget_remaining must be >= 0.2. Below that, the service can't absorb any more risk -- escalate instead of restarting."
+      - name: rate_limiter
+        detail: >
+          At most one remediation per service per 10-minute cooldown. If
+          notify-svc was already restarted by this agent within the last 10
+          minutes, do NOT restart again -- escalate. A crash loop that
+          resumes minutes after a restart is a real bug, not something a
+          second restart will fix, and restart-looping the agent's own
+          restarts is exactly the flapping failure mode blast-radius
+          controls exist to prevent.
+    on_result:
+      all_checks_passed:
+        goto: dry_run_then_restart
+      any_check_failed:
+        escalate: true
+        reason: "A blast-radius control blocked automated remediation. See which check failed above."
+
+  - id: dry_run_then_restart
+    description: "Preview the restart, then execute it only after human approval"
+    tool: dry_run_restart
+    args:
+      service: notify-svc
+    on_result:
+      always:
+        require_human_approval: true
+        then_tool: restart_service
+        approval_declined:
+          escalate: true
+          reason: "Operator declined the restart -- hand off to human on-call."
+
+  - id: verify
+    description: "Confirm the crash loop actually stopped and error rate recovered"
+    tool: get_pod_status
+    args:
+      service: notify-svc
+    on_result:
+      crash_loop_cleared:
+        resolve: "Incident mitigated: crash loop cleared and error rate back under threshold after restart."
+      still_crash_looping:
+        escalate: true
+        reason: >
+          Restart did not clear the crash loop. This confirms the leak is a
+          real bug, not a transient condition -- needs a code fix (or a
+          rollback if check_recent_deploy found a correlating release), not
+          another restart. The rate limiter now blocks a second automated
+          restart attempt.
+
+escalation:
+  page: on-call-primary
+  message_template: "Agent could not auto-resolve notify-svc incident. Context: {context}"

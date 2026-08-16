@@ -1,0 +1,105 @@
+$ uv run python src/assignment/react_agent.py
+(approval gate for the first incident: "yes" then approver name "Salman";
+ the second incident is blocked by the rate limiter before any approval prompt)
+
+
+[Agent] Starting triage for incident: ALERT: notify-svc has restarted 4 times in the last 15 minutes and error rate is at 6.1%, above the 3% threshold. p99 latency is elevated at 2100ms.
+
+[Agent] Loaded runbook: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk6\runbooks\assignment-notify-svc-oom-crashloop.yaml
+
+[Agent] No ANTHROPIC_API_KEY found -- running in simulation mode.
+
+[Agent Thought] Incident alert: 'ALERT: notify-svc has restarted 4 times in the last 15 minutes and error rate is at 6.1%, above the 3% threshold. p99 latency is elevated at 2100ms.' names notify-svc. Per the runbook, step 1 (check_metrics) is to confirm this against live metrics before doing anything else.
+
+[Agent Action] Calling tool: get_metrics({"service": "notify-svc"})
+[Tool Result] {"error_rate": 0.061, "p99_latency_ms": 2100, "error_budget_remaining": 0.55, "restart_count_15m": 4}
+[Agent Thought] restart_count_15m=4 and error_rate=0.061 both cross the trigger. Runbook step 2 (check_pod_status): confirm this is actually a crash loop before assuming so.
+
+[Agent Action] Calling tool: get_pod_status({"service": "notify-svc"})
+[Tool Result] {"crash_loop_backoff": true, "restarts_15m": 4, "memory_usage_pct": 97, "oom_killed_last": true}
+[Agent Thought] crash_loop_backoff=True, restarts_15m=4, memory_usage_pct=97, oom_killed_last=True. This looks like a crash loop. Runbook step 3 (check_logs): confirm an OOM/heap signature before proposing any remediation.
+
+[Agent Action] Calling tool: get_recent_logs({"service": "notify-svc", "tail": 30})
+[Tool Result] ERROR java.lang.OutOfMemoryError: Java heap space
+WARN  NotificationBatcher queue depth growing: 48000 pending
+ERROR java.lang.OutOfMemoryError: Java heap space
+INFO  Container OOMKilled, restarting pod notify-svc-7c9d4-x2p1q
+
+[Agent Thought] Logs show repeated 'java.lang.OutOfMemoryError: Java heap space' followed by an OOMKilled restart -- this matches the runbook's memory-leak signature. Runbook step 4 (check_recent_deploy): note whether a recent deploy correlates, for the postmortem -- this does not change the remediation itself, restarting is the right first move either way.
+
+[Agent Action] Calling tool: get_deployment_history({"service": "notify-svc"})
+[Tool Result] {"current": "v3.7.0", "previous": "v3.6.4", "deployed_at": "6 hours ago", "migration_pending": false}
+[Agent Thought] Deploy was 6 hours ago -- too long ago to be the trigger. This looks like a long-standing slow leak that just crossed the memory limit. Postmortem should recommend a heap-limit or leak-detection follow-up.
+[Agent Thought] Runbook step 5 (blast_radius_checks): before even running a dry run, every guardrail must pass -- kill switch, error budget, and the remediation rate limiter.
+[Agent Thought] All blast-radius checks passed. Runbook step 6: dry_run_then_restart.
+
+[Agent Action] Calling tool: dry_run_restart({"service": "notify-svc"})
+[Tool Result] DRY RUN: Would perform a rolling restart of all notify-svc pods. Estimated 3 pods, ~15s per pod, no traffic loss expected (rolling).
+[Agent Thought] Dry run confirms a safe rolling restart plan: 'DRY RUN: Would perform a rolling restart of all notify-svc pods. Estimated 3 pods, ~15s per pod, no traffic loss expected (rolling).'. restart_service is a destructive action (it will briefly cycle live pods), so the runbook requires human approval before I may call it. Requesting approval now.
+
+============================================================
+[APPROVAL GATE] Agent requests permission to: restart_service on notify-svc
+============================================================
+Approve? (yes/no): Enter your name for the audit log: 
+[Agent Action] Calling tool: restart_service({"service": "notify-svc", "approved_by": "Salman"})
+[Tool Result] RESTART EXECUTED: rolling restart of notify-svc pods completed. Approved by: Salman. ETA: 45 seconds.
+[Agent Thought] Restart executed and approved by a human. Runbook's final step (verify): re-check pod status to confirm the crash loop actually cleared before declaring this resolved.
+
+[Agent Action] Calling tool: get_pod_status({"service": "notify-svc"})
+[Tool Result] {"crash_loop_backoff": false, "restarts_15m": 4, "memory_usage_pct": 34, "oom_killed_last": false}
+[Agent Thought] Post-restart crash_loop_backoff=False, restarts_15m=4. The crash loop cleared. Branch 'crash_loop_cleared' applies: incident mitigated.
+
+[Agent] Triage complete.
+
+------------------------------------------------------------
+[Postmortem Draft]
+- notify-svc entered an OOM crash loop (repeated OutOfMemoryError, OOMKilled restarts).
+- Deploy was 6 hours ago -- too long ago to be the trigger. This looks like a long-standing slow leak that just crossed the memory limit. Postmortem should recommend a heap-limit or leak-detection follow-up.
+- All blast-radius checks (kill switch, error budget, rate limiter) passed before remediation.
+- Restart approved by Salman and executed: RESTART EXECUTED: rolling restart of notify-svc pods completed. Approved by: Salman. ETA: 45 seconds.
+- Verified: crash_loop_backoff cleared after restart. Incident mitigated -- underlying leak still needs a code fix, tracked separately.
+------------------------------------------------------------
+
+############################################################
+# A second alert fires ~3 minutes later: the crash loop has resumed.
+############################################################
+
+[Agent] Starting triage for incident: ALERT: notify-svc has restarted 4 times in the last 15 minutes and error rate is at 6.1%, above the 3% threshold. p99 latency is elevated at 2100ms. (Recurrence of the incident triaged moments ago.)
+
+[Agent] Loaded runbook: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk6\runbooks\assignment-notify-svc-oom-crashloop.yaml
+
+[Agent] No ANTHROPIC_API_KEY found -- running in simulation mode.
+
+[Agent Thought] Incident alert: 'ALERT: notify-svc has restarted 4 times in the last 15 minutes and error rate is at 6.1%, above the 3% threshold. p99 latency is elevated at 2100ms. (Recurrence of the incident triaged moments ago.)' names notify-svc. Per the runbook, step 1 (check_metrics) is to confirm this against live metrics before doing anything else.
+
+[Agent Action] Calling tool: get_metrics({"service": "notify-svc"})
+[Tool Result] {"error_rate": 0.061, "p99_latency_ms": 2100, "error_budget_remaining": 0.55, "restart_count_15m": 4}
+[Agent Thought] restart_count_15m=4 and error_rate=0.061 both cross the trigger. Runbook step 2 (check_pod_status): confirm this is actually a crash loop before assuming so.
+
+[Agent Action] Calling tool: get_pod_status({"service": "notify-svc"})
+[Tool Result] {"crash_loop_backoff": true, "restarts_15m": 4, "memory_usage_pct": 97, "oom_killed_last": true}
+[Agent Thought] crash_loop_backoff=True, restarts_15m=4, memory_usage_pct=97, oom_killed_last=True. This looks like a crash loop. Runbook step 3 (check_logs): confirm an OOM/heap signature before proposing any remediation.
+
+[Agent Action] Calling tool: get_recent_logs({"service": "notify-svc", "tail": 30})
+[Tool Result] ERROR java.lang.OutOfMemoryError: Java heap space
+WARN  NotificationBatcher queue depth growing: 48000 pending
+ERROR java.lang.OutOfMemoryError: Java heap space
+INFO  Container OOMKilled, restarting pod notify-svc-7c9d4-x2p1q
+
+[Agent Thought] Logs show repeated 'java.lang.OutOfMemoryError: Java heap space' followed by an OOMKilled restart -- this matches the runbook's memory-leak signature. Runbook step 4 (check_recent_deploy): note whether a recent deploy correlates, for the postmortem -- this does not change the remediation itself, restarting is the right first move either way.
+
+[Agent Action] Calling tool: get_deployment_history({"service": "notify-svc"})
+[Tool Result] {"current": "v3.7.0", "previous": "v3.6.4", "deployed_at": "6 hours ago", "migration_pending": false}
+[Agent Thought] Deploy was 6 hours ago -- too long ago to be the trigger. This looks like a long-standing slow leak that just crossed the memory limit. Postmortem should recommend a heap-limit or leak-detection follow-up.
+[Agent Thought] Runbook step 5 (blast_radius_checks): before even running a dry run, every guardrail must pass -- kill switch, error budget, and the remediation rate limiter.
+[Agent Thought] Blast-radius check failed: BLOCKED by rate limiter: notify-svc was already remediated within the last 600s cooldown window (600s remaining). A crash loop that resumes this fast is a real bug, not something a second restart will fix. Per the runbook, any failed check means escalate -- I will not attempt a dry run or a restart.
+
+[Agent] Escalating to on-call-primary.
+
+------------------------------------------------------------
+[Postmortem Draft]
+- notify-svc matched the OOM-crash-loop signature (logs, pod status, and metrics all agreed).
+- Deploy was 6 hours ago -- too long ago to be the trigger. This looks like a long-standing slow leak that just crossed the memory limit. Postmortem should recommend a heap-limit or leak-detection follow-up.
+- Blast-radius control BLOCKED automated remediation: BLOCKED by rate limiter: notify-svc was already remediated within the last 600s cooldown window (600s remaining). A crash loop that resumes this fast is a real bug, not something a second restart will fix.
+- Escalated to on-call-primary; no restart was attempted.
+------------------------------------------------------------

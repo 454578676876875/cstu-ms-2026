@@ -1,0 +1,48 @@
+$ uv run python src/lab/react_agent.py
+(approval gate: "no" -- declined, stretch test from the lab doc)
+
+
+[Agent] Starting triage for incident: ALERT: payment-svc error rate has been above 5% for the past 4 minutes. This started approximately 8 minutes after a deployment. Cart-svc latency is also slightly elevated. Please investigate and remediate.
+
+[Agent] Loaded runbook: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk6\runbooks\lab-payment-svc-high-error-rate.yaml
+
+[Agent] No ANTHROPIC_API_KEY found -- running in simulation mode.
+
+[Agent Thought] Incident alert: 'ALERT: payment-svc error rate has been above 5% for the past 4 minutes. This started approximately 8 minutes after a deployment. Cart-svc latency is also slightly elevated. Please investigate and remediate.' names payment-svc with an elevated error rate. Per the runbook, step 1 (check_metrics) is to confirm this against live metrics before doing anything else.
+
+[Agent Action] Calling tool: get_metrics({"service": "payment-svc"})
+[Tool Result] {"error_rate": 0.08, "p99_latency_ms": 450, "error_budget_remaining": 0.42}
+[Agent Thought] Confirmed: error_rate=0.08 is at/above the 0.05 trigger, and error_budget_remaining=0.42 still leaves room to safely investigate. Runbook step 2 (check_logs): fetch recent error logs to find a failure signature.
+
+[Agent Action] Calling tool: get_recent_logs({"service": "payment-svc", "tail": 20})
+[Tool Result] ERROR NullPointerException in PaymentProcessor.process() line 142
+ERROR NullPointerException in PaymentProcessor.process() line 142
+WARN  Cart total $12,450.00 exceeded expected range
+
+[Agent Thought] Logs show a repeated NullPointerException in PaymentProcessor.process(). The runbook maps this signature to 'check_recent_deploy' -- this pattern usually correlates with a bad deploy rather than a downstream dependency failure.
+
+[Agent Action] Calling tool: get_deployment_history({"service": "payment-svc"})
+[Tool Result] {"current": "v1.4.2", "previous": "v1.4.1", "deployed_at": "8 minutes ago", "migration_pending": false}
+[Agent Thought] Deploy was 8 minutes ago (within the 30-minute correlation window) and migration_pending=False. Branch 'recent_deploy_no_migration_pending' applies: proceed to dry_run_then_rollback.
+[Agent Thought] Before touching anything, I always run dry_run_rollback first, as the runbook and the tool description both require. Runbook step 4 (dry_run_then_rollback).
+
+[Agent Action] Calling tool: dry_run_rollback({"service": "payment-svc"})
+[Tool Result] DRY RUN: Would revert payment-svc v1.4.2 -> v1.4.1. No migration pending. Safe to proceed.
+[Agent Thought] Dry run confirms the rollback target and shows no migration pending: 'DRY RUN: Would revert payment-svc v1.4.2 -> v1.4.1. No migration pending. Safe to proceed.'. execute_rollback is a destructive, hard-to-reverse action, so the runbook requires human approval before I may call it. Requesting approval now -- I will not call execute_rollback without an approved_by value.
+
+============================================================
+[APPROVAL GATE] Agent requests permission to: execute_rollback on payment-svc
+============================================================
+Approve? (yes/no): 
+[Tool Result] Rollback DECLINED by operator. Escalate to human on-call for manual intervention.
+[Agent Thought] Approval was declined. Per the runbook's approval_declined branch, I must not proceed with the rollback. Escalating to human on-call for manual intervention instead.
+
+[Agent] Escalating to on-call-primary.
+
+------------------------------------------------------------
+[Postmortem Draft]
+- payment-svc error rate breached threshold; NullPointerException signature traced to the deploy 8 minutes prior.
+- Dry run confirmed a safe rollback target (v1.4.2 -> v1.4.1, no migration pending).
+- Approval gate: operator DECLINED the rollback.
+- Escalated to on-call-primary for manual intervention; no destructive action was taken.
+------------------------------------------------------------

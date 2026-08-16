@@ -1,0 +1,43 @@
+$ AUTOHEAL_KILL_SWITCH=1 uv run python -c "..."
+(bonus: demonstrates the kill switch blocking remediation immediately, no approval prompt reached)
+
+
+[Agent] Starting triage for incident: ALERT: notify-svc has restarted 4 times in the last 15 minutes and error rate is at 6.1%, above the 3% threshold.
+
+[Agent] Loaded runbook: C:\Users\salma\code\cstu-ms-2026\cse636-devops-with-ai-assistance\Lab_Wk6\runbooks\assignment-notify-svc-oom-crashloop.yaml
+
+[Agent] No ANTHROPIC_API_KEY found -- running in simulation mode.
+
+[Agent Thought] Incident alert: 'ALERT: notify-svc has restarted 4 times in the last 15 minutes and error rate is at 6.1%, above the 3% threshold.' names notify-svc. Per the runbook, step 1 (check_metrics) is to confirm this against live metrics before doing anything else.
+
+[Agent Action] Calling tool: get_metrics({"service": "notify-svc"})
+[Tool Result] {"error_rate": 0.061, "p99_latency_ms": 2100, "error_budget_remaining": 0.55, "restart_count_15m": 4}
+[Agent Thought] restart_count_15m=4 and error_rate=0.061 both cross the trigger. Runbook step 2 (check_pod_status): confirm this is actually a crash loop before assuming so.
+
+[Agent Action] Calling tool: get_pod_status({"service": "notify-svc"})
+[Tool Result] {"crash_loop_backoff": true, "restarts_15m": 4, "memory_usage_pct": 97, "oom_killed_last": true}
+[Agent Thought] crash_loop_backoff=True, restarts_15m=4, memory_usage_pct=97, oom_killed_last=True. This looks like a crash loop. Runbook step 3 (check_logs): confirm an OOM/heap signature before proposing any remediation.
+
+[Agent Action] Calling tool: get_recent_logs({"service": "notify-svc", "tail": 30})
+[Tool Result] ERROR java.lang.OutOfMemoryError: Java heap space
+WARN  NotificationBatcher queue depth growing: 48000 pending
+ERROR java.lang.OutOfMemoryError: Java heap space
+INFO  Container OOMKilled, restarting pod notify-svc-7c9d4-x2p1q
+
+[Agent Thought] Logs show repeated 'java.lang.OutOfMemoryError: Java heap space' followed by an OOMKilled restart -- this matches the runbook's memory-leak signature. Runbook step 4 (check_recent_deploy): note whether a recent deploy correlates, for the postmortem -- this does not change the remediation itself, restarting is the right first move either way.
+
+[Agent Action] Calling tool: get_deployment_history({"service": "notify-svc"})
+[Tool Result] {"current": "v3.7.0", "previous": "v3.6.4", "deployed_at": "6 hours ago", "migration_pending": false}
+[Agent Thought] Deploy was 6 hours ago -- too long ago to be the trigger. This looks like a long-standing slow leak that just crossed the memory limit. Postmortem should recommend a heap-limit or leak-detection follow-up.
+[Agent Thought] Runbook step 5 (blast_radius_checks): before even running a dry run, every guardrail must pass -- kill switch, error budget, and the remediation rate limiter.
+[Agent Thought] Blast-radius check failed: BLOCKED by kill switch (AUTOHEAL_KILL_SWITCH is set). All autonomous remediation is disabled. Per the runbook, any failed check means escalate -- I will not attempt a dry run or a restart.
+
+[Agent] Escalating to on-call-primary.
+
+------------------------------------------------------------
+[Postmortem Draft]
+- notify-svc matched the OOM-crash-loop signature (logs, pod status, and metrics all agreed).
+- Deploy was 6 hours ago -- too long ago to be the trigger. This looks like a long-standing slow leak that just crossed the memory limit. Postmortem should recommend a heap-limit or leak-detection follow-up.
+- Blast-radius control BLOCKED automated remediation: BLOCKED by kill switch (AUTOHEAL_KILL_SWITCH is set). All autonomous remediation is disabled.
+- Escalated to on-call-primary; no restart was attempted.
+------------------------------------------------------------

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="700" viewBox="0 0 760 700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6366f1"/>
+    </marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/>
+    </marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+    <linearGradient id="gobs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#bfdbfe"/></linearGradient>
+    <linearGradient id="gint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cffafe"/><stop offset="1" stop-color="#a5f3fc"/></linearGradient>
+    <linearGradient id="gagent" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0e7ff"/><stop offset="1" stop-color="#c7d2fe"/></linearGradient>
+    <linearGradient id="ggate" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fee2e2"/><stop offset="1" stop-color="#fecaca"/></linearGradient>
+    <linearGradient id="gappr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fef3c7"/><stop offset="1" stop-color="#fde68a"/></linearGradient>
+    <linearGradient id="gk8s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcfce7"/><stop offset="1" stop-color="#bbf7d0"/></linearGradient>
+    <linearGradient id="gesc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffedd5"/><stop offset="1" stop-color="#fed7aa"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.16"/></filter>
+  </defs>
+
+  <rect x="0" y="0" width="760" height="700" fill="#f8fafc"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" font-weight="800" fill="#0f172a">Self-healing notify-svc: architecture, gates, and autonomy levels</text>
+  <text x="380" y="42" text-anchor="middle" font-size="10.5" fill="#64748b">Week 6 assignment — Salman</text>
+
+  <!-- A: Observability -->
+  <rect x="90" y="56" width="580" height="50" rx="10" fill="url(#gobs)" stroke="#2563eb" stroke-width="2" filter="url(#sh)"/>
+  <text x="380" y="76" text-anchor="middle" font-size="12.5" font-weight="800" fill="#1d4ed8">Observability — notify-svc</text>
+  <text x="380" y="92" text-anchor="middle" font-size="9.5" fill="#475569">metrics (error rate, p99, restarts) · pod status (crash-loop, memory) · logs · deploy history</text>
+
+  <line x1="380" y1="106" x2="380" y2="122" stroke="#6366f1" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- B: Incident intake -->
+  <rect x="90" y="122" width="580" height="46" rx="10" fill="url(#gint)" stroke="#0891b2" stroke-width="2" filter="url(#sh)"/>
+  <text x="380" y="141" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0e7490">Incident intake</text>
+  <text x="380" y="157" text-anchor="middle" font-size="9.5" fill="#475569">alert manager → match against runbook trigger: restart_count_15m ≥ 3 AND error_rate_5m &gt; 0.03</text>
+
+  <line x1="380" y1="168" x2="380" y2="184" stroke="#6366f1" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- C: Agentic SRE reasoning (read-only) -->
+  <rect x="70" y="184" width="620" height="66" rx="11" fill="url(#gagent)" stroke="#4f46e5" stroke-width="2.5" filter="url(#sh)"/>
+  <text x="380" y="205" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4338ca">Agentic SRE layer — ReAct diagnostic loop</text>
+  <text x="380" y="221" text-anchor="middle" font-size="9.5" fill="#334155">get_metrics · get_pod_status · get_recent_logs · get_deployment_history (all read-only)</text>
+  <text x="380" y="236" text-anchor="middle" font-size="9.5" font-style="italic" fill="#4338ca">Autonomy: unrestricted sensing — no gate needed, nothing is mutated yet</text>
+
+  <line x1="380" y1="250" x2="380" y2="266" stroke="#6366f1" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- D: Blast-radius gate -->
+  <rect x="70" y="266" width="620" height="98" rx="11" fill="url(#ggate)" stroke="#dc2626" stroke-width="2.5" filter="url(#sh)"/>
+  <text x="380" y="286" text-anchor="middle" font-size="12.5" font-weight="800" fill="#b91c1c">Blast-radius gate — enforced in code, not just prompted</text>
+  <text x="380" y="299" text-anchor="middle" font-size="9" fill="#7f1d1d">ALL THREE must pass before dry_run_restart even runs</text>
+
+  <rect x="90" y="308" width="184" height="46" rx="8" fill="#fff5f5" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="182" y="326" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d">⏻ Kill switch</text>
+  <text x="182" y="340" text-anchor="middle" font-size="8.5" fill="#7f1d1d">AUTOHEAL_KILL_SWITCH env var</text>
+
+  <rect x="288" y="308" width="184" height="46" rx="8" fill="#fff5f5" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="380" y="326" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d">Error-budget gate</text>
+  <text x="380" y="340" text-anchor="middle" font-size="8.5" fill="#7f1d1d">blocks if budget_remaining &lt; 0.2</text>
+
+  <rect x="486" y="308" width="184" height="46" rx="8" fill="#fff5f5" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="578" y="326" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d">Rate limiter</text>
+  <text x="578" y="340" text-anchor="middle" font-size="8.5" fill="#7f1d1d">1 remediation / service / 10 min</text>
+
+  <line x1="380" y1="364" x2="380" y2="380" stroke="#6366f1" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- E: dry run + approval gate -->
+  <rect x="90" y="380" width="580" height="70" rx="11" fill="url(#gappr)" stroke="#d97706" stroke-width="2.5" filter="url(#sh)"/>
+  <text x="380" y="400" text-anchor="middle" font-size="12.5" font-weight="800" fill="#92400e">dry_run_restart → Approval gate (human on-call)</text>
+  <text x="380" y="416" text-anchor="middle" font-size="9.5" fill="#78350f">terminal prompt simulating a Slack/PagerDuty confirm — blocks until a human answers</text>
+  <text x="380" y="431" text-anchor="middle" font-size="9.5" font-style="italic" fill="#92400e">Autonomy: Level 2 — Draft &amp; confirm (agent stages the action, human approves)</text>
+
+  <!-- two branches -->
+  <line x1="260" y1="450" x2="220" y2="486" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ahg)"/>
+  <text x="150" y="472" font-size="9.5" fill="#15803d">approved</text>
+  <line x1="500" y1="450" x2="540" y2="486" stroke="#d97706" stroke-width="2.5" marker-end="url(#aha)"/>
+  <text x="565" y="472" font-size="9.5" fill="#b45309">declined / blocked / no match</text>
+
+  <!-- F: outputs -->
+  <rect x="80" y="488" width="280" height="58" rx="11" fill="url(#gk8s)" stroke="#16a34a" stroke-width="2" filter="url(#sh)"/>
+  <text x="220" y="510" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f172a">restart_service → Kubernetes</text>
+  <text x="220" y="526" text-anchor="middle" font-size="9" fill="#475569">rolling pod restart, reversible, ~45s</text>
+  <text x="220" y="539" text-anchor="middle" font-size="8.5" font-style="italic" fill="#166534">Level 2 action, human-triggered</text>
+
+  <rect x="400" y="488" width="280" height="58" rx="11" fill="url(#gesc)" stroke="#ea580c" stroke-width="2" filter="url(#sh)"/>
+  <text x="540" y="510" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f172a">Escalate → on-call-primary</text>
+  <text x="540" y="526" text-anchor="middle" font-size="9" fill="#475569">PagerDuty page with full diagnostic context</text>
+  <text x="540" y="539" text-anchor="middle" font-size="8.5" font-style="italic" fill="#9a3412">Level 1: Recommend — human does everything</text>
+
+  <!-- verify loop-back -->
+  <path d="M 220 546 C 220 600, 40 340, 40 220 C 40 130, 60 90, 88 76" fill="none" stroke="#4338ca" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#ah)"/>
+  <text x="14" y="330" font-size="9" fill="#4338ca" transform="rotate(-90 14 330)">verify: get_pod_status</text>
+
+  <!-- footer -->
+  <rect x="90" y="566" width="580" height="98" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="380" y="584" text-anchor="middle" font-size="11" font-weight="800" fill="#334155">Why a restart isn't the end of the story</text>
+  <text x="380" y="600" text-anchor="middle" font-size="9.5" fill="#475569">A restart clears the leaked memory (mitigation) but not the leak itself (fix). If the crash</text>
+  <text x="380" y="614" text-anchor="middle" font-size="9.5" fill="#475569">loop resumes before the rate-limiter cooldown expires, the gate blocks a second automated</text>
+  <text x="380" y="628" text-anchor="middle" font-size="9.5" fill="#475569">restart and routes straight to escalation — a restart-loop is a signal that this needs a code</text>
+  <text x="380" y="642" text-anchor="middle" font-size="9.5" fill="#475569">fix (or a rollback), not more automation. See runbooks/assignment-notify-svc-oom-crashloop.yaml.</text>
+  <text x="380" y="658" text-anchor="middle" font-size="9" font-style="italic" fill="#64748b">Kill switch (⏻ above) is the one control that overrides everything else, immediately, regardless of cause.</text>
+
+  <text x="380" y="686" text-anchor="middle" font-size="10" fill="#64748b">The agent reasons freely over read-only signals — it only gains the power to act after clearing every gate.</text>
+</svg>
